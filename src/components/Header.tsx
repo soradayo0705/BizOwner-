@@ -1,0 +1,126 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+
+export default function Header({
+  active,
+}: {
+  active?: "home" | "about" | "service" | "contact";
+}) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  return (
+    <>
+      <header className="fixed top-0 left-0 right-0 z-[200] bg-black/82 backdrop-blur-[20px] backdrop-saturate-[180%]">
+        <div className="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-[48px]">
+          <Link
+            href="/"
+            className="font-[Josefin_Sans] font-bold text-[15px] tracking-[0.08em] text-white"
+          >
+            Bestimulate
+          </Link>
+          <nav className="hidden md:flex items-center gap-1">
+            <Link
+              href="/#home"
+              className="text-white/82 text-[13px] px-3 leading-[48px] tracking-[-0.08px] transition-colors hover:text-white"
+            >
+              ホーム
+            </Link>
+            <Link
+              href="/#about"
+              className="text-white/82 text-[13px] px-3 leading-[48px] tracking-[-0.08px] transition-colors hover:text-white"
+            >
+              私たちについて
+            </Link>
+            <Link
+              href="/services"
+              className={`text-[13px] px-3 leading-[48px] tracking-[-0.08px] transition-colors hover:text-white ${active === "service" ? "text-white" : "text-white/82"}`}
+            >
+              サービス
+            </Link>
+            <Link
+              href="/#contact"
+              className="text-white/82 text-[13px] px-3 leading-[48px] tracking-[-0.08px] transition-colors hover:text-white"
+            >
+              お問い合わせ
+            </Link>
+          </nav>
+          <button
+            className="md:hidden p-2 text-white/80"
+            aria-label="メニュー"
+            onClick={() => setMobileOpen(true)}
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Nav */}
+      <div
+        className={`fixed inset-0 z-[1000] bg-black/96 backdrop-blur-[30px] backdrop-saturate-[180%] flex flex-col items-center justify-center transition-all duration-400 ${mobileOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
+      >
+        <button
+          className="absolute top-5 right-5 text-white/40 p-2 hover:text-white transition-colors"
+          onClick={() => setMobileOpen(false)}
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.5"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        <p className="absolute top-[15px] left-6 font-[Josefin_Sans] font-bold text-[15px] tracking-[0.08em] text-white/50">
+          Bestimulate
+        </p>
+        <nav className="flex flex-col items-center text-center">
+          {[
+            { href: "/#home", en: "HOME", ja: "ホーム" },
+            { href: "/#about", en: "ABOUT", ja: "私たちについて" },
+            { href: "/services", en: "SERVICE", ja: "サービス" },
+            { href: "/#contact", en: "CONTACT", ja: "お問い合わせ" },
+          ].map((item, i) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="block py-4 font-[Josefin_Sans] text-[22px] font-semibold tracking-[0.12em] text-white/85 hover:text-white transition-colors"
+              style={{ transitionDelay: `${0.08 + i * 0.06}s` }}
+              onClick={() => setMobileOpen(false)}
+            >
+              {item.en}
+              <span className="block font-[Noto_Sans_JP] text-[10px] font-normal tracking-[0.06em] text-white/30 mt-0.5">
+                {item.ja}
+              </span>
+            </Link>
+          ))}
+        </nav>
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+          <div className="w-[30px] h-[1px] bg-white/15"></div>
+          <p className="text-white/20 text-[10px] font-[Josefin_Sans] tracking-[0.2em]">
+            &copy; 2026
+          </p>
+        </div>
+      </div>
+    </>
+  );
+}

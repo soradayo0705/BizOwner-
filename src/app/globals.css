@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* ── HP Colors ── */
+  --color-primary: #006785;
+  --color-primary-dark: #005570;
+  --color-primary-light: #cef1fb;
+  --color-text-main: #4d4d4d;
+  --color-text-heading: #000000;
+  --color-bg-alt: #f5f5f5;
+  --color-footer-blue: #006f87;
+
+  /* ── LP Colors ── */
+  --color-lp: #0b2a4a;
+  --color-lp-light: #1a3f6b;
+  --color-lp-accent: #4a9bd9;
+  --color-lp-sky: #e8f4fd;
+  --color-cta: #E85D2F;
+  --color-cta-hover: #d04f24;
+  --color-text-dark: #1a1a1a;
+  --color-text-body: #444444;
+  --color-text-light: #777777;
+  --color-bg-section: #f7f9fc;
+  --color-dark-surface: #161617;
+
+  /* ── Fonts ── */
+  --font-sans: var(--font-inter), "Noto Sans JP", -apple-system, sans-serif;
+  --font-display: "Josefin Sans", sans-serif;
+  --font-jp: "Noto Sans JP", sans-serif;
+  --font-en: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Ghost Button ── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 32px;
+  border: 2px solid #006785;
+  border-radius: 50px;
+  color: #006785;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 0.08em;
+  transition: background 0.3s, color 0.3s;
+}
+.btn-ghost:hover {
+  background: #006785;
+  color: #fff;
+}
+.btn-ghost.white {
+  border-color: #fff;
+  color: #fff;
+}
+.btn-ghost.white:hover {
+  background: #fff;
+  color: #006785;
+}
+.btn-ghost .arrow {
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+  position: relative;
+  transition: width 0.3s;
+}
+.btn-ghost .arrow::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-top: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+.btn-ghost:hover .arrow {
+  width: 28px;
+}
+
+/* ── Section Decorator ── */
+.section-deco {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  color: rgba(0, 103, 133, 0.06);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+/* ── Service Card ── */
+.svc-card {
+  border: 1px solid #e0e0e0;
+  transition: border-color 0.3s;
+}
+.svc-card:hover {
+  border-color: #006785;
+}
+
+/* ── Nav Card ── */
+.nav-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+.nav-card::after {
+  content: "VIEW";
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 4px 18px;
+  border-radius: 980px;
+  transition: all 0.3s;
+}
+.nav-card:hover::after {
+  background: #fff;
+  color: #006785;
+  border-color: #fff;
+}
+
+/* ── Scroll Indicator ── */
+@keyframes scrollDown {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(8px);
+  }
+}
+.scroll-dot {
+  animation: scrollDown 2.4s ease-in-out infinite;
+}
+
+/* ── CTA Button (LP) ── */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #e85d2f;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 40px;
+  border-radius: 999px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(232, 93, 47, 0.35);
+}
+.cta-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 24px rgba(232, 93, 47, 0.45);
+}
+.cta-btn svg {
+  width: 24px;
+  height: 24px;
+}
+.cta-sub {
+  font-size: 12px;
+  color: #888;
+  margin-top: 8px;
+}
+
+/* ── Q&A Accordion ── */
+details summary {
+  cursor: pointer;
+  list-style: none;
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary::after {
+  content: "+";
+  font-size: 20px;
+  font-weight: 700;
+  color: #4a9bd9;
+  transition: transform 0.3s;
+}
+details[open] summary::after {
+  content: "\2212";
+}
+
+/* ── Step connector (LP) ── */
+.step-line {
+  position: relative;
+}
+.step-line::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -28px;
+  width: 2px;
+  height: 28px;
+  background: #4a9bd9;
+  transform: translateX(-50%);
+}
+.step-line:last-child::after {
+  display: none;
+}
