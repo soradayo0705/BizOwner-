@@ -1,0 +1,3 @@
+# 検索エンジンへの掲載を抑止（URL共有のみ想定のとき）
+User-agent: *
+Disallow: /

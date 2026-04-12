@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サービス一覧 | 株式会社Bestimulate</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Josefin+Sans:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:'#006785','primary-dark':'#005570','primary-light':'#cef1fb',
+            'text-main':'#4d4d4d','text-heading':'#000000','bg-alt':'#f5f5f5','footer-blue':'#006f87',
+          },
+          fontFamily: {
+            sans:['"Inter"','"Noto Sans JP"','-apple-system','sans-serif'],
+            display:['"Josefin Sans"','sans-serif'],
+            jp:['"Noto Sans JP"','sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html { scroll-behavior:smooth; }
+    body { font-weight:500; -webkit-font-smoothing:antialiased; }
+    #header { position:fixed; top:0; left:0; right:0; z-index:200; background:rgba(0,0,0,0.82); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); }
+    .nav-link { color:rgba(255,255,255,0.82); font-size:13px; padding:0 12px; line-height:48px; letter-spacing:-0.08px; transition:color 0.3s; }
+    .nav-link:hover { color:#fff; }
+    .nav-link.active { color:#fff; }
+    .section-deco { font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:clamp(2.8rem,7vw,6rem); color:rgba(0,103,133,0.06); line-height:1; letter-spacing:0.02em; user-select:none; }
+    .svc-card { border:1px solid #e0e0e0; transition:border-color 0.3s; }
+    .svc-card:hover { border-color:#006785; }
+    .nav-card { position:relative; overflow:hidden; transition:all 0.4s ease; }
+    .nav-card::after { content:'VIEW'; position:absolute; bottom:20px; right:24px; font-family:'Josefin Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.18em; color:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.3); padding:4px 18px; border-radius:980px; transition:all 0.3s; }
+    .nav-card:hover::after { background:#fff; color:#006785; border-color:#fff; }
+    .btn-ghost { display:inline-flex; align-items:center; gap:12px; padding:12px 32px; border:2px solid #006785; border-radius:50px; color:#006785; font-weight:600; font-size:14px; font-family:'Josefin Sans',sans-serif; letter-spacing:0.08em; transition:background 0.3s, color 0.3s; }
+    .btn-ghost:hover { background:#006785; color:#fff; }
+    .btn-ghost.white { border-color:#fff; color:#fff; }
+    .btn-ghost.white:hover { background:#fff; color:#006785; }
+    .btn-ghost .arrow { width:20px; height:1px; background:currentColor; position:relative; transition:width 0.3s; }
+    .btn-ghost .arrow::after { content:''; position:absolute; right:-1px; top:-3px; width:7px; height:7px; border-right:1.5px solid currentColor; border-top:1.5px solid currentColor; transform:rotate(45deg); }
+    .btn-ghost:hover .arrow { width:28px; }
+    .fade-up { opacity:0; transform:translateY(36px); transition:opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1); }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+    #mobileNav { position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,0.96); backdrop-filter:saturate(180%) blur(30px); -webkit-backdrop-filter:saturate(180%) blur(30px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0; opacity:0; visibility:hidden; transition:opacity 0.4s ease, visibility 0.4s ease; }
+    #mobileNav.open { opacity:1; visibility:visible; }
+    .mobile-nav-link { display:block; padding:16px 0; font-family:'Josefin Sans',sans-serif; font-size:22px; font-weight:600; letter-spacing:0.12em; color:rgba(255,255,255,0.85); opacity:0; transform:translateY(20px); transition:opacity 0.4s ease, transform 0.4s ease, color 0.3s; }
+    #mobileNav.open .mobile-nav-link { opacity:1; transform:translateY(0); }
+    .mobile-nav-link:nth-child(1) { transition-delay:0.08s; }
+    .mobile-nav-link:nth-child(2) { transition-delay:0.14s; }
+    .mobile-nav-link:nth-child(3) { transition-delay:0.20s; }
+    .mobile-nav-link:nth-child(4) { transition-delay:0.26s; }
+    .mobile-nav-link:hover,.mobile-nav-link:active { color:#fff; }
+    .mobile-nav-label { font-family:'Noto Sans JP',sans-serif; font-size:10px; font-weight:400; letter-spacing:0.06em; color:rgba(255,255,255,0.3); margin-top:2px; }
+  </style>
+</head>
+<body class="font-sans text-text-main bg-white overflow-x-hidden">
+
+  <header id="header">
+    <div class="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-[48px]">
+      <a href="index.html" class="font-display font-bold text-[15px] tracking-[0.08em] text-white">Bestimulate</a>
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="index.html" class="nav-link">ホーム</a>
+        <a href="index.html#about" class="nav-link">私たちについて</a>
+        <a href="services.html" class="nav-link active">サービス</a>
+        <a href="index.html#contact" class="nav-link">お問い合わせ</a>
+      </nav>
+      <button id="menuOpen" class="md:hidden p-2 text-white/80" aria-label="メニュー">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+  <div id="mobileNav">
+    <button id="menuClose" class="absolute top-5 right-5 text-white/40 p-2 hover:text-white transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <p class="absolute top-[15px] left-6 font-display font-bold text-[15px] tracking-[0.08em] text-white/50">Bestimulate</p>
+    <nav class="flex flex-col items-center text-center">
+      <a href="index.html" class="mobile-nav-link">HOME<span class="mobile-nav-label block">ホーム</span></a>
+      <a href="services.html" class="mobile-nav-link" style="color:rgba(255,255,255,0.4);">SERVICE<span class="mobile-nav-label block">サービス</span></a>
+      <a href="index.html#contact" class="mobile-nav-link">CONTACT<span class="mobile-nav-label block">お問い合わせ</span></a>
+    </nav>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+      <div class="w-[30px] h-[1px] bg-white/15"></div>
+      <p class="text-white/20 text-[10px] font-display tracking-[0.2em]">&copy; 2026</p>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="pt-[100px] pb-20 bg-white">
+    <div class="max-w-[1100px] mx-auto px-6">
+      <p class="section-deco fade-up">SERVICE</p>
+      <div class="w-10 h-[3px] bg-primary mt-5 mb-6 fade-up"></div>
+      <h1 class="font-jp text-text-heading font-bold mb-4 fade-up" style="font-size:28px;letter-spacing:-0.4px;">サービス一覧</h1>
+      <p class="font-jp text-text-main max-w-lg fade-up" style="font-size:14px;line-height:2;letter-spacing:-0.2px;">
+        Bestimulateが提供する3つの事業領域と、各サービスの詳細をご紹介します。
+      </p>
+    </div>
+  </section>
+
+  <!-- 3 PILLARS -->
+  <section class="py-24 bg-bg-alt">
+    <div class="max-w-[1100px] mx-auto px-6">
+      <div class="text-center mb-14 fade-up">
+        <p class="font-display font-semibold text-primary text-[12px] tracking-[0.2em] mb-3">BUSINESS PILLARS</p>
+        <h2 class="font-jp text-text-heading font-bold text-[20px] md:text-[24px]" style="letter-spacing:-0.3px;">3つの事業領域</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5 fade-up">
+        <div class="svc-card bg-white p-7 md:p-8 relative">
+          <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
+          <div class="w-11 h-11 rounded-full border-2 border-primary/20 flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <h3 class="text-text-heading font-bold text-[16px] mb-3" style="letter-spacing:-0.3px;">営業代行</h3>
+          <p class="font-jp text-text-main text-[13px] leading-[2] mb-5">新規開拓から既存顧客フォローまで、経験豊富なプロフェッショナルが営業力を強化。成果にコミットします。</p>
+          <ul class="space-y-2 text-[13px] text-text-main">
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-primary mt-[9px] flex-shrink-0"></span>新規顧客の開拓・アポイント獲得</li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-primary mt-[9px] flex-shrink-0"></span>既存顧客のフォローアップ</li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-primary mt-[9px] flex-shrink-0"></span>営業戦略の立案・改善</li>
+          </ul>
+        </div>
+        <div class="svc-card bg-white p-7 md:p-8 relative">
+          <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
+          <div class="w-11 h-11 rounded-full border-2 border-primary/20 flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="text-text-heading font-bold text-[16px] mb-3" style="letter-spacing:-0.3px;">コミュニティ運営</h3>
+          <p class="font-jp text-text-main text-[13px] leading-[2] mb-5">顧客やファンを繋ぐコミュニティの構築・運営。エンゲージメントとロイヤリティの向上を実現します。</p>
+          <ul class="space-y-2 text-[13px] text-text-main">
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-primary mt-[9px] flex-shrink-0"></span>コミュニティ設計・立ち上げ</li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-primary mt-[9px] flex-shrink-0"></span>イベント企画・運営</li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-primary mt-[9px] flex-shrink-0"></span>メンバーエンゲージメント施策</li>
+          </ul>
+        </div>
+        <div class="svc-card bg-white p-7 md:p-8 relative">
+          <div class="absolute top-0 left-0 right-0 h-[3px] bg-primary"></div>
+          <div class="w-11 h-11 rounded-full border-2 border-primary/20 flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3 class="text-text-heading font-bold text-[16px] mb-3" style="letter-spacing:-0.3px;">経営コンサルティング</h3>
+          <p class="font-jp text-text-main text-[13px] leading-[2] mb-5">経営課題の分析から戦略立案、実行支援まで。包括的にサポートします。</p>
+          <ul class="space-y-2 text-[13px] text-text-main">
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-primary mt-[9px] flex-shrink-0"></span>経営課題の分析・可視化</li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-primary mt-[9px] flex-shrink-0"></span>事業戦略・成長戦略の策定</li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-primary mt-[9px] flex-shrink-0"></span>実行フェーズの伴走支援</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE DETAIL -->
+  <section class="py-24 bg-white">
+    <div class="max-w-[1100px] mx-auto px-6">
+      <div class="text-center mb-14 fade-up">
+        <p class="font-display font-semibold text-primary text-[12px] tracking-[0.2em] mb-3">SERVICE DETAIL</p>
+        <h2 class="font-jp text-text-heading font-bold text-[20px] md:text-[24px] mb-3" style="letter-spacing:-0.3px;">提供サービス</h2>
+        <p class="font-jp text-text-main text-[14px]">各サービスの詳細ページで具体的な内容をご確認いただけます。</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5 fade-up">
+        <a href="bizowner.html" class="nav-card flex flex-col justify-end p-7 md:p-8 min-h-[200px] md:min-h-[260px]" style="background:linear-gradient(135deg,#003d52 0%,#006785 100%);">
+          <p class="font-display text-[11px] text-white/40 tracking-[0.15em] mb-2">BUSINESS PROGRAM</p>
+          <h3 class="font-display font-bold text-[22px] md:text-[24px] text-white mb-2" style="letter-spacing:0.02em;">BizOwner</h3>
+          <p class="text-white/45 text-[13px] leading-[1.8]">副業感覚で会社経営。権利収入を実現するビジネスプログラム。</p>
+        </a>
+        <a href="sarudemo.html" class="nav-card flex flex-col justify-end p-7 md:p-8 min-h-[200px] md:min-h-[260px]" style="background:linear-gradient(135deg,#004b5e 0%,#007a96 100%);">
+          <p class="font-display text-[11px] text-white/40 tracking-[0.15em] mb-2">FAST PASS TO BUSINESS</p>
+          <h3 class="font-display font-bold text-[22px] md:text-[24px] text-white mb-2" style="letter-spacing:0.02em;">SARUDEMO</h3>
+          <p class="text-white/45 text-[13px] leading-[1.8]">猿でも出来る起業。最短最速の起業ファストパス。</p>
+        </a>
+        <a href="manabiya.html" class="nav-card flex flex-col justify-end p-7 md:p-8 min-h-[200px] md:min-h-[260px]" style="background:linear-gradient(135deg,#005064 0%,#008ba3 100%);">
+          <p class="font-display text-[11px] text-white/40 tracking-[0.15em] mb-2">COMMUNITY</p>
+          <h3 class="font-jp font-bold text-[20px] md:text-[22px] text-white mb-2">ビジネスの学び家</h3>
+          <p class="text-white/45 text-[13px] leading-[1.8]">副業・起業・エンタメを融合した総合コミュニティ。</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 bg-primary">
+    <div class="max-w-[700px] mx-auto px-6 text-center fade-up">
+      <h2 class="font-jp text-white font-bold text-[20px] md:text-[24px] mb-5" style="letter-spacing:-0.3px;">まずはお気軽にご相談ください</h2>
+      <p class="text-white/50 text-[14px] leading-[2] mb-10">サービスに関するご質問やお見積もりのご依頼など、<br class="hidden md:block">お気軽にお問い合わせください。</p>
+      <a href="index.html#contact" class="btn-ghost white">
+        CONTACT
+        <span class="arrow"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="flex flex-col md:flex-row">
+      <div class="bg-footer-blue md:w-[280px] p-8 md:p-10">
+        <p class="font-display font-bold text-[18px] text-white tracking-[0.1em] mb-4">Bestimulate</p>
+        <p class="text-white/50 text-[12px] leading-[1.9]">ビジネスを、<br>より戦略的に、より本質的に。</p>
+      </div>
+      <div class="flex-1 bg-bg-alt px-8 md:px-12 py-10">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div>
+            <p class="font-jp font-bold text-text-heading text-[12px] tracking-wider mb-4">サービス</p>
+            <ul class="space-y-2.5 text-[13px] text-text-main">
+              <li><a href="bizowner.html" class="hover:text-primary transition-colors">BizOwner</a></li>
+              <li><a href="sarudemo.html" class="hover:text-primary transition-colors">SARUDEMO</a></li>
+              <li><a href="manabiya.html" class="hover:text-primary transition-colors">ビジネスの学び家</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-jp font-bold text-text-heading text-[12px] tracking-wider mb-4">リンク</p>
+            <ul class="space-y-2.5 text-[13px] text-text-main">
+              <li><a href="index.html" class="hover:text-primary transition-colors">ホーム</a></li>
+              <li><a href="index.html#contact" class="hover:text-primary transition-colors">お問い合わせ</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-jp font-bold text-text-heading text-[12px] tracking-wider mb-4">法的情報</p>
+            <ul class="space-y-2.5 text-[13px] text-text-main">
+              <li><a href="#" class="hover:text-primary transition-colors">利用規約</a></li>
+              <li><a href="#" class="hover:text-primary transition-colors">プライバシーポリシー</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-black text-white/40 text-center py-4 text-[11px] tracking-wider">
+      &copy; 2026 Bestimulate. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    const mobileNav = document.getElementById('mobileNav');
+    document.getElementById('menuOpen').addEventListener('click', () => { mobileNav.classList.add('open'); document.body.style.overflow='hidden'; });
+    document.getElementById('menuClose').addEventListener('click', () => { mobileNav.classList.remove('open'); document.body.style.overflow=''; });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileNav.classList.remove('open'); document.body.style.overflow=''; }));
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold:0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
