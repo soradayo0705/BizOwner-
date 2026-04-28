@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Josefin_Sans, Noto_Sans_JP } from "next/font/google";
+import { Inter, Josefin_Sans, Montserrat, Noto_Sans_JP, Noto_Serif_JP, RocknRoll_One, Yusei_Magic } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,10 +14,34 @@ const josefinSans = Josefin_Sans({
   weight: ["300", "400", "600", "700"],
 });
 
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["700", "800", "900"],
+});
+
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto-jp",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+});
+
+const notoSerifJP = Noto_Serif_JP({
+  variable: "--font-noto-serif-jp",
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+});
+
+const rocknRollOne = RocknRoll_One({
+  variable: "--font-rocknroll",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const yuseiMagic = Yusei_Magic({
+  variable: "--font-yusei",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -37,7 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${inter.variable} ${josefinSans.variable} ${notoSansJP.variable}`}
+      className={`${inter.variable} ${josefinSans.variable} ${montserrat.variable} ${notoSansJP.variable} ${notoSerifJP.variable} ${rocknRollOne.variable} ${yuseiMagic.variable}`}
     >
       <body className="font-sans text-text-main bg-white overflow-x-hidden">
         {children}

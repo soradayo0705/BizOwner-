@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="FVキャラクター・男性プレースホルダー">
+  <defs>
+    <linearGradient id="boyBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FDEEF3"/>
+      <stop offset="100%" stop-color="#FDC9DA"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="400" rx="20" fill="url(#boyBg)" stroke="#E84B8A" stroke-width="3" stroke-dasharray="8 6"/>
+  <g transform="translate(150 140)">
+    <circle r="52" fill="#FFE0B2" stroke="#2D2D2D" stroke-width="3"/>
+    <path d="M-45 -10 Q-50 -55 0 -62 Q55 -58 48 -12 Q45 -30 30 -30 L-30 -30 Q-45 -30 -45 -10 Z" fill="#6D4C41"/>
+    <circle cx="-18" cy="-4" r="4" fill="#2D2D2D"/>
+    <circle cx="18" cy="-4" r="4" fill="#2D2D2D"/>
+    <path d="M-14 20 Q0 30 14 20" stroke="#2D2D2D" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  <path d="M90 220 Q90 200 150 200 Q210 200 210 220 L210 340 Q150 350 90 340 Z" fill="#F48FB1" stroke="#2D2D2D" stroke-width="3"/>
+  <rect x="140" y="335" width="20" height="45" fill="#1565C0" stroke="#2D2D2D" stroke-width="3"/>
+  <text x="150" y="395" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#E84B8A">
+    PLACEHOLDER (boy)
+  </text>
+</svg>

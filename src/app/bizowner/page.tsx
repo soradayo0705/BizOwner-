@@ -1,27 +1,71 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import FadeUp from "@/components/FadeUp";
+import FadeSlide from "@/components/manabiya/FadeSlide";
+import StaggerChildren, { StaggerItem } from "@/components/manabiya/StaggerChildren";
+import CountUp from "@/components/manabiya/CountUp";
+import TiltCard from "@/components/manabiya/TiltCard";
+import ImageReveal from "@/components/lp/ImageReveal";
+import LineDivider from "@/components/lp/LineDivider";
 import LineIcon from "@/components/LineIcon";
 
 export const metadata: Metadata = {
   title: "BizOwner｜副業感覚で会社のオーナーに",
 };
 
-function CtaBanner({ large = false }: { large?: boolean }) {
+/* ── CTA Banner (variation A - full width) ── */
+function CtaBannerFull() {
   return (
-    <section className="bg-lp-sky py-8">
-      <div className="text-center">
-        <a
-          href="#"
-          className={`cta-btn ${large ? "text-[18px] px-12 py-5" : ""}`}
-        >
-          <LineIcon className={large ? "w-7 h-7" : "w-6 h-6"} />
+    <section className="relative py-14 overflow-hidden" style={{ background: "linear-gradient(135deg, #0b2a4a 0%, #1a4f7a 50%, #0b2a4a 100%)" }}>
+      <div className="absolute inset-0 lp-dots-pattern opacity-30" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-cta/20 rounded-full blur-[100px]" />
+      <div className="max-w-4xl mx-auto px-6 text-center relative z-10 flex flex-col items-center">
+        <p className="text-white/60 text-[13px] font-bold mb-4 tracking-wider">＼ 今すぐ無料で始める ／</p>
+        <a href="#" className="cta-btn cta-glow lp-shine text-[16px] md:text-[18px] px-10 py-5">
+          <LineIcon className="w-6 h-6" />
           1ヶ月無料でLINE登録する
         </a>
-        <p className="cta-sub">※ 解約自由・しつこい勧誘なし</p>
+        <p className="mt-4 text-[13px] text-white/50 font-medium">※ 解約自由・しつこい勧誘なし</p>
       </div>
     </section>
+  );
+}
+
+/* ── CTA Banner (variation B - card style) ── */
+function CtaBannerCard() {
+  return (
+    <section className="py-10 bg-white">
+      <div className="max-w-3xl mx-auto px-6">
+        <div className="lp-gradient-border">
+          <div className="bg-white py-8 px-6 md:px-10 text-center">
+            <p className="text-lp font-bold text-[18px] md:text-[22px] mb-2">まずは無料で体験してみませんか？</p>
+            <p className="text-text-light text-[13px] mb-6">1ヶ月無料・解約自由。リスクゼロで始められます。</p>
+            <a href="#" className="cta-btn cta-glow lp-shine text-[15px] md:text-[16px] px-8 py-4">
+              <LineIcon className="w-5 h-5" />
+              LINE登録して無料体験する
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Marquee Banner ── */
+function MarqueeBanner() {
+  const items = ["副業感覚で会社のオーナーに", "月額11,000円から", "知識ゼロ・経験ゼロでOK", "権利収入で未来を変える", "CICブラックでも参加可能", "1ヶ月無料キャンペーン中"];
+  const doubled = [...items, ...items];
+  return (
+    <div className="bg-lp py-4 overflow-hidden">
+      <div className="lp-marquee-track">
+        {doubled.map((item, i) => (
+          <span key={i} className="inline-flex items-center gap-4 mx-8 text-[14px] md:text-[16px] font-bold text-white/80 whitespace-nowrap">
+            {item}
+            <span className="text-lp-accent opacity-50">◆</span>
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -29,473 +73,576 @@ export default function BizOwnerPage() {
   return (
     <div className="font-sans text-text-body bg-white overflow-x-hidden">
       {/* ===== HERO ===== */}
-      <section
-        className="relative min-h-screen flex items-center overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(135deg, #0b2a4a 0%, #1a4f7a 50%, #2a7ab5 100%)",
-        }}
-      >
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'><polygon points='30,5 55,20 55,40 30,55 5,40 5,20' fill='none' stroke='white' stroke-width='1'/></svg>")`,
-          }}
-        />
-        <div className="relative z-10 max-w-[1100px] mx-auto px-6 py-24 md:py-0 w-full">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div className="text-center md:text-left">
-              <p className="inline-block bg-white/10 text-white/80 text-[12px] font-bold tracking-wider px-4 py-1.5 rounded-full mb-6 border border-white/15">
-                1ヶ���無料キャンペーン実施中
-              </p>
-              <h1
-                className="font-bold text-white mb-5"
-                style={{
-                  fontSize: "clamp(28px,5.5vw,46px)",
-                  lineHeight: 1.3,
-                  letterSpacing: "0.02em",
-                }}
-              >
-                副業感覚で、
-                <br />
-                会社の<span className="text-lp-accent">オーナー</span>になる。
-              </h1>
-              <p className="text-white/60 text-[15px] leading-[1.9] mb-8">
-                月額11,000円から始める、あなたの権利収入ライフ。
-                <br className="hidden md:block" />
-                知識ゼロ・経験ゼロでもOK。
-              </p>
-              <a href="#" className="cta-btn">
-                <LineIcon />
-                1ヶ月無料でLINE登録する
-              </a>
-              <p className="cta-sub text-white/40">
-                ※ 解約自由���しつこい勧誘なし
-              </p>
+      <section className="relative min-h-[100vh] flex flex-col justify-center overflow-hidden bg-white">
+        {/* Geometric pattern overlay */}
+        <div className="absolute inset-0 lp-dots-pattern" />
+        {/* Floating blobs */}
+        <div className="absolute top-[-10%] -left-[10%] w-96 h-96 bg-lp-sky rounded-full mix-blend-multiply blur-[80px] opacity-70 blob-float pointer-events-none" />
+        <div className="absolute top-[20%] -right-[10%] w-[500px] h-[500px] bg-lp-sky rounded-full mix-blend-multiply blur-[80px] opacity-50 blob-float-delay pointer-events-none" />
+        <div className="absolute -bottom-[20%] left-[20%] w-[600px] h-[600px] bg-gray-100 rounded-full mix-blend-multiply blur-[80px] opacity-50 blob-float-delay-2 pointer-events-none" />
+        {/* Floating geometric shapes */}
+        <div className="absolute top-[15%] right-[15%] w-16 h-16 border-2 border-lp-accent/20 rounded-lg rotate-45 lp-float-slow pointer-events-none hidden lg:block" />
+        <div className="absolute bottom-[25%] left-[8%] w-10 h-10 bg-lp-accent/10 rounded-full lp-float-medium pointer-events-none hidden lg:block" />
+        <div className="absolute top-[40%] left-[5%] w-3 h-3 bg-cta/30 rounded-full lp-float-slow pointer-events-none" />
+
+        <div className="max-w-[1100px] mx-auto px-6 relative z-10 pt-20 pb-32 lg:pt-28 lg:pb-40">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="text-center md:text-left space-y-7">
+              <FadeSlide direction="up" delay={100}>
+                <div className="inline-flex items-center gap-2 bg-white border border-lp-accent/20 px-4 py-2 rounded-full shadow-sm">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cta opacity-75" />
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-cta" />
+                  </span>
+                  <span className="text-lp font-bold text-[13px]">1ヶ月無料キャンペーン実施中</span>
+                </div>
+              </FadeSlide>
+              <FadeSlide direction="up" delay={300}>
+                <h1
+                  className="font-bold text-text-dark"
+                  style={{ fontSize: "clamp(32px,6vw,56px)", lineHeight: 1.25, letterSpacing: "0.02em" }}
+                >
+                  副業感覚で、
+                  <br />
+                  会社の<span className="text-lp-accent lp-marker">オーナー</span>になる。
+                </h1>
+              </FadeSlide>
+              <FadeSlide direction="up" delay={500}>
+                <p className="text-[16px] md:text-[18px] text-text-body leading-[1.9] max-w-lg">
+                  月額11,000円から始める、あなたの権利収入ライフ。
+                  <br className="hidden md:block" />
+                  知識ゼロ・経験ゼロでもOK。
+                </p>
+              </FadeSlide>
+              <FadeSlide direction="up" delay={700}>
+                <div className="flex flex-col gap-3">
+                  <a href="#" className="cta-btn cta-glow lp-shine text-[16px] md:text-[18px] w-full max-w-md px-8 py-5 justify-center">
+                    <LineIcon className="w-6 h-6" />
+                    1ヶ月無料でLINE登録する
+                  </a>
+                  <p className="text-[13px] text-text-light ml-2">※ 解約自由・しつこい勧誘なし</p>
+                </div>
+              </FadeSlide>
             </div>
-            <div className="flex justify-center">
-              <div className="w-[200px] h-[260px] md:w-[340px] md:h-[430px] rounded-2xl overflow-hidden shadow-2xl shadow-black/30 border border-white/10">
-                <Image
-                  src="/lp/hero-businessman.jpg"
-                  alt="ビジネスマン"
-                  width={340}
-                  height={430}
-                  className="w-full h-full object-cover"
-                  priority
-                />
+            <FadeSlide direction="right" delay={400}>
+              <div className="flex justify-center relative">
+                <div className="absolute inset-0 bg-gradient-to-tr from-lp-accent to-lp rounded-2xl rotate-3 scale-[1.02] opacity-10" />
+                <ImageReveal direction="right" className="w-[220px] h-[280px] md:w-[360px] md:h-[450px] rounded-2xl overflow-hidden shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] border-4 border-white relative z-10">
+                  <Image src="/lp/bizowner-hero.png" alt="BizOwner" width={1024} height={1536} className="w-full h-full object-cover" priority />
+                </ImageReveal>
+                {/* Floating stats */}
+                <div className="absolute -bottom-4 -left-4 md:-left-8 bg-white rounded-xl shadow-lg p-3 md:p-4 z-20 lp-float-slow border border-gray-100">
+                  <p className="text-[10px] text-text-light font-medium">月額費用</p>
+                  <p className="font-[Inter] font-bold text-lp text-[18px] md:text-[22px]">¥11,000<span className="text-[11px] text-text-light font-normal">/月</span></p>
+                </div>
+                <div className="absolute -top-2 -right-2 md:-right-6 bg-white rounded-xl shadow-lg p-3 md:p-4 z-20 lp-float-medium border border-gray-100">
+                  <p className="text-[10px] text-text-light font-medium">初月</p>
+                  <p className="font-bold text-cta text-[18px] md:text-[22px]">無料</p>
+                </div>
+              </div>
+            </FadeSlide>
+          </div>
+        </div>
+
+        {/* Trust numbers bar */}
+        <FadeSlide direction="up" delay={900}>
+          <div className="absolute bottom-0 left-0 right-0 bg-white/80 backdrop-blur-sm border-t border-gray-100 py-6 z-20">
+            <div className="max-w-[900px] mx-auto px-6 lp-trust-bar">
+              <div className="lp-trust-item">
+                <p className="lp-trust-number"><CountUp end={50} />+</p>
+                <p className="text-[11px] text-text-light font-medium mt-1">サポート企業数</p>
+              </div>
+              <div className="lp-trust-item">
+                <p className="lp-trust-number"><CountUp end={98} />%</p>
+                <p className="text-[11px] text-text-light font-medium mt-1">会員継続率</p>
+              </div>
+              <div className="lp-trust-item">
+                <p className="lp-trust-number"><CountUp end={6} /></p>
+                <p className="text-[11px] text-text-light font-medium mt-1">多彩な案件カテゴリ</p>
               </div>
             </div>
           </div>
+        </FadeSlide>
+
+        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-60 z-10">
+          <span className="text-[10px] font-[Inter] tracking-[0.2em] font-bold text-lp">SCROLL</span>
+          <div className="w-[1px] h-10 bg-gradient-to-b from-lp to-transparent" />
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <span className="text-white/30 text-[10px] font-[Inter] tracking-[0.2em]">
-            SCROLL
-          </span>
-          <div className="w-[1px] h-8 bg-white/15"></div>
+      </section>
+
+      {/* ===== Marquee ===== */}
+      <MarqueeBanner />
+
+      {/* ===== 共感パート ===== */}
+      <section
+        className="relative py-28 md:py-36 overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #0b2a4a 0%, #132d4a 100%)" }}
+      >
+        <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
+        <div className="max-w-[800px] mx-auto px-6 relative z-10">
+          <FadeSlide direction="up" className="text-center mb-14">
+            <div className="lp-section-counter justify-center text-white/40">
+              <span className="font-[Inter] font-bold text-[12px] tracking-[0.3em]">01 — ANXIETY</span>
+            </div>
+            <h2 className="font-bold text-white text-[26px] md:text-[36px] leading-[1.5]">
+              こんな<span className="text-lp-accent lp-marker">お悩み</span>ありませんか？
+            </h2>
+          </FadeSlide>
+          <StaggerChildren staggerMs={100} className="max-w-3xl mx-auto space-y-4">
+            {[
+              "副業を始めたいけど、何から手をつければいいか分からない",
+              "ビジネスの知識がゼロで、失敗するのが怖い",
+              "一人だとモチベーションが続かない",
+              "会社の給料だけじゃ将来が不安",
+              "起業には憧れるけど、リスクを取るのは怖い",
+            ].map((text, i) => (
+              <StaggerItem key={i}>
+                <div className="flex items-center gap-5 lp-glass-dark rounded-2xl p-6 border border-white/10 hover:-translate-y-1 transition-transform">
+                  <div className="w-12 h-12 shrink-0 rounded-full bg-white/10 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M12 3a9 9 0 100 18 9 9 0 000-18z" />
+                    </svg>
+                  </div>
+                  <p className="text-[15px] md:text-[16px] font-bold text-white/90 leading-[1.8]">{text}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
+          <FadeSlide direction="up" className="text-center mt-16">
+            <div className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-8 py-6">
+              <p className="text-white font-bold text-[20px] md:text-[26px] leading-[1.6]">
+                そのお悩み、<span className="text-cta lp-marker-orange">BizOwner</span>が解決します。
+              </p>
+            </div>
+          </FadeSlide>
         </div>
       </section>
 
       {/* CTA 1 */}
-      <CtaBanner />
-
-      {/* ===== 共感パート ===== */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-[800px] mx-auto px-6">
-          <FadeUp className="text-center mb-14">
-            <h2 className="font-bold text-text-dark text-[22px] md:text-[28px] leading-[1.5] mb-4">
-              こんな<span className="text-lp-accent">お悩み</span>ありませんか？
-            </h2>
-            <div className="w-12 h-[3px] bg-lp-accent mx-auto"></div>
-          </FadeUp>
-          <FadeUp>
-            <div className="grid gap-4">
-              {[
-                "副業を始めたいけど、何から手をつければいいか分からない",
-                "ビジネ��の知識がゼロで、失敗するのが怖い",
-                "一人だとモチベーションが続かない",
-                "会社の給料だけじゃ将来が不安",
-                "起業には憧れるけど、リスクを取るのは怖い",
-              ].map((text, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-4 bg-bg-section border border-gray-100 rounded-xl p-5 md:p-6"
-                >
-                  <span className="shrink-0 w-8 h-8 rounded-full bg-lp-accent/10 text-lp-accent flex items-center justify-center font-bold text-sm">
-                    {i + 1}
-                  </span>
-                  <p
-                    className="text-[15px] leading-[1.8] pt-1"
-                    dangerouslySetInnerHTML={{
-                      __html: text.replace(
-                        /(.+)/,
-                        (_, m) => {
-                          const parts = m.split(/(?<=、|で、|と|じゃ)/);
-                          if (parts.length > 1) {
-                            return `${parts[0]}<strong>${parts.slice(1).join("")}</strong>`;
-                          }
-                          return `<strong>${m}</strong>`;
-                        }
-                      ),
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          </FadeUp>
-          <FadeUp className="text-center mt-12">
-            <p className="text-lp-accent font-bold text-[18px] md:text-[22px] leading-[1.6]">
-              そのお悩み、
-              <br className="md:hidden" />
-              BizOwnerが解決します。
-            </p>
-          </FadeUp>
-        </div>
-      </section>
+      <CtaBannerFull />
 
       {/* ===== BizOwnerとは ===== */}
-      <section className="py-20 md:py-28 bg-bg-section">
-        <div className="max-w-[900px] mx-auto px-6">
-          <FadeUp>
-            <div className="grid md:grid-cols-2 gap-10 items-center mb-16">
-              <div className="rounded-2xl overflow-hidden shadow-lg">
-                <Image
-                  src="/lp/workspace.jpg"
-                  alt="ビジネスワークスペース"
-                  width={600}
-                  height={280}
-                  className="w-full h-[240px] md:h-[280px] object-cover"
-                />
+      <section className="py-28 md:py-36 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 lp-lines-pattern" />
+        <span className="lp-bg-number top-24 left-0">02</span>
+        <div className="max-w-[1100px] mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <FadeSlide direction="up">
+              <div className="lp-section-counter justify-center">
+                <span className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.3em]">02 — ABOUT</span>
               </div>
-              <div>
-                <p className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.2em] mb-3">
-                  WHAT IS BIZOWNER?
-                </p>
-                <h2 className="font-bold text-text-dark text-[22px] md:text-[28px] leading-[1.5] mb-4">
-                  副業感覚で、会社経営。
-                  <br />
-                  大家さん気分で、<span className="text-lp-accent">権利収入</span>。
-                </h2>
-                <div className="w-12 h-[3px] bg-lp-accent mb-6"></div>
-                <p className="text-[15px] leading-[2] text-text-body">
-                  BizOwnerは、知識・経験・資格一切不要で「会社のオーナー」として権利収入を得る仕組みを提供するビジネスプログラ���です。
-                </p>
-              </div>
+              <h2 className="font-bold text-text-dark text-[26px] md:text-[36px] leading-[1.5]">
+                副業感覚で、会社経営。
+                <br />
+                大家さん気分で、<span className="text-lp-accent lp-marker">権利収入</span>。
+              </h2>
+            </FadeSlide>
+          </div>
+          <div className="grid md:grid-cols-2 gap-14 items-center mb-20">
+            <div className="relative hidden md:block">
+              <div className="absolute top-4 -left-4 w-full h-full border-2 border-lp-accent/20 rounded-2xl" />
+              <ImageReveal direction="left" className="rounded-2xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] relative z-10">
+                <Image src="/lp/bizowner-sidework.png" alt="副業イメージ" width={1536} height={1024} className="w-full h-[300px] md:h-[400px] object-cover" />
+              </ImageReveal>
             </div>
-          </FadeUp>
-          <FadeUp>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />,
-                  title: "誰でもOK",
-                  desc: "年齢・学歴・経験不問。\nCICブラックの方も参加可��。",
-                },
-                {
-                  icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />,
-                  title: "知識不要",
-                  desc: "専門知識は一切不要。\n本部が全面サポー��。",
-                },
-                {
-                  icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />,
-                  title: "月額11,000円から",
-                  desc: "低コストで開始可能。\n売上からの天引き払いもOK。",
-                },
-              ].map((item) => (
-                <div key={item.title} className="bg-white rounded-xl p-7 text-center border border-gray-100">
-                  <div className="w-16 h-16 rounded-full bg-lp-accent/10 flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-7 h-7 text-lp-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">{item.icon}</svg>
+            <FadeSlide direction="right">
+              <p className="text-[16px] md:text-[18px] leading-[2] text-text-body font-medium">
+                BizOwnerは、知識・経験・資格一切不要で「会社のオーナー」として権利収入を得る仕組みを提供するビジネスプログラムです。
+              </p>
+              <div className="w-16 h-[3px] bg-gradient-to-r from-lp-accent to-cta my-6" />
+              <p className="text-[14px] leading-[2] text-text-light">
+                月額11,000円という低コストで開始でき、売上からの天引き払いにも対応。CICブラックの方も安心して参加いただけます。
+              </p>
+            </FadeSlide>
+          </div>
+          <StaggerChildren staggerMs={150} className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />,
+                title: "誰でもOK",
+                desc: "年齢・学歴・経験不問。\nCICブラックの方も参加可能。",
+                accent: "bg-blue-50",
+              },
+              {
+                icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />,
+                title: "知識不要",
+                desc: "専門知識は一切不要。\n本部が全面サポート。",
+                accent: "bg-green-50",
+              },
+              {
+                icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />,
+                title: "月額11,000円から",
+                desc: "低コストで開始可能。\n売上からの天引き払いもOK。",
+                accent: "bg-orange-50",
+              },
+            ].map((item) => (
+              <StaggerItem key={item.title}>
+                <TiltCard intensity={6} className="h-full">
+                  <div className="bg-white rounded-2xl p-8 text-center border border-gray-100 shadow-[0_8px_30px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.12)] transition-all relative overflow-hidden h-full group">
+                    <div className={`absolute top-0 right-0 w-28 h-28 ${item.accent} rounded-bl-full -mr-4 -mt-4 opacity-60 z-0 group-hover:scale-110 transition-transform`} />
+                    <div className="w-16 h-16 rounded-2xl bg-lp flex items-center justify-center mx-auto mb-5 relative z-10 shadow-md">
+                      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">{item.icon}</svg>
+                    </div>
+                    <h3 className="font-bold text-text-dark text-[18px] mb-3 relative z-10">{item.title}</h3>
+                    <p className="text-[13px] text-text-light leading-[1.9] whitespace-pre-line relative z-10">{item.desc}</p>
                   </div>
-                  <h3 className="font-bold text-text-dark text-[16px] mb-2">{item.title}</h3>
-                  <p className="text-[13px] text-text-light leading-[1.8] whitespace-pre-line">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </FadeUp>
+                </TiltCard>
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
         </div>
       </section>
 
       {/* CTA 2 */}
-      <CtaBanner />
+      <CtaBannerCard />
 
-      {/* ===== 3ステッ�� ===== */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-[1000px] mx-auto px-6">
-          <FadeUp className="text-center mb-14">
-            <p className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.2em] mb-3">HOW IT WORKS</p>
-            <h2 className="font-bold text-text-dark text-[22px] md:text-[28px] leading-[1.5] mb-4">
-              3ステップで<span className="text-lp-accent">稼ぐ</span>仕組み
-            </h2>
-            <div className="w-12 h-[3px] bg-lp-accent mx-auto"></div>
-          </FadeUp>
-          <FadeUp>
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { step: "STEP 01", title: "個人で案件参加", desc: "月額11,000円で会員登録。\n個人として案件に参加し、\nすぐに副収入をスタート。", price: "月額11,000円〜", accent: false },
-                { step: "STEP 02", title: "法人で追加収益", desc: "法人を作成し、法人案件にも参加。\n収益チャネルが倍増し、\n権利収入が加速。", price: "+100,000円で法人作成", accent: false },
-                { step: "STEP 03", title: "FC化で独立", desc: "フランチャイズオーナーとして\n完全独立。自分のチームを持ち、\n本格的なビジネスオーナーへ。", price: "FC加盟 200万円〜", accent: true },
-              ].map((s) => (
-                <div key={s.step} className="relative bg-bg-section rounded-2xl p-8 text-center border border-gray-100">
-                  <div className={`absolute -top-4 left-1/2 -translate-x-1/2 ${s.accent ? "bg-cta" : "bg-lp-accent"} text-white text-[11px] font-bold px-4 py-1 rounded-full tracking-wider`}>
-                    {s.step}
-                  </div>
-                  <h3 className="font-bold text-text-dark text-[17px] mb-3 mt-4">{s.title}</h3>
-                  <p className="text-[13px] text-text-body leading-[1.9] whitespace-pre-line">{s.desc}</p>
-                  <p className={`mt-4 ${s.accent ? "text-cta" : "text-lp-accent"} font-bold text-[14px]`}>{s.price}</p>
-                </div>
-              ))}
+      {/* ===== 3ステップ ===== */}
+      <section className="py-28 md:py-36 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #f7f9fc 0%, #eef3f9 100%)" }}>
+        <div className="absolute inset-0 lp-dots-pattern opacity-50" />
+        <span className="lp-bg-number top-12 right-12">03</span>
+        <div className="max-w-[1100px] mx-auto px-6 relative z-10">
+          <FadeSlide direction="up" className="text-center mb-16">
+            <div className="lp-section-counter justify-center">
+              <span className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.3em]">03 — HOW IT WORKS</span>
             </div>
-          </FadeUp>
+            <h2 className="font-bold text-text-dark text-[26px] md:text-[36px] leading-[1.5]">
+              3ステップで<span className="text-lp-accent lp-marker">稼ぐ</span>仕組み
+            </h2>
+          </FadeSlide>
+          <StaggerChildren staggerMs={200} className="grid md:grid-cols-3 gap-8 pt-8">
+            {[
+              { step: "01", title: "個人で案件参加", desc: "月額11,000円で会員登録。\n個人として案件に参加し、\nすぐに副収入をスタート。", price: "月額11,000円〜", accent: false },
+              { step: "02", title: "法人で追加収益", desc: "法人を作成し、法人案件にも参加。\n収益チャネルが倍増し、\n権利収入が加速。", price: "+100,000円で法人作成", accent: false },
+              { step: "03", title: "FC化で独立", desc: "フランチャイズオーナーとして\n完全独立。自分のチームを持ち、\n本格的なビジネスオーナーへ。", price: "FC加盟 200万円〜", accent: true },
+            ].map((s, i) => (
+              <StaggerItem key={s.step}>
+                <TiltCard intensity={5} className="h-full">
+                  <div className={`relative bg-white pt-14 pb-8 px-7 rounded-2xl ${s.accent ? "border-2 border-cta/30 shadow-[0_20px_50px_-10px_rgba(232,93,47,0.15)]" : "border border-gray-100 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)]"} text-center mt-8 md:mt-0 h-full`}>
+                    {s.accent && <div className="lp-ribbon">おすすめ</div>}
+                    <div className={`absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 ${s.accent ? "bg-gradient-to-br from-cta to-[#d04f24]" : "bg-lp"} rounded-full flex items-center justify-center border-4 border-white shadow-lg`}>
+                      <span className="font-[Inter] font-bold text-[22px] text-white">{s.step}</span>
+                    </div>
+                    {/* Arrow connector */}
+                    {i < 2 && (
+                      <div className="hidden md:block absolute top-1/2 -right-6 z-20">
+                        <svg className="w-6 h-6 text-lp-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" /></svg>
+                      </div>
+                    )}
+                    <h3 className={`font-bold ${s.accent ? "text-cta" : "text-text-dark"} text-[18px] mb-3 mt-2`}>{s.title}</h3>
+                    <p className="text-[13px] text-text-body leading-[1.9] whitespace-pre-line mb-5">{s.desc}</p>
+                    <div className={`${s.accent ? "bg-gradient-to-r from-cta to-[#d04f24] text-white" : "bg-lp-sky text-lp"} py-3 px-4 rounded-xl text-[14px] font-bold`}>
+                      {s.price}
+                    </div>
+                  </div>
+                </TiltCard>
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
         </div>
       </section>
 
+      <LineDivider />
+
       {/* ===== 案件一覧 ===== */}
-      <section className="py-20 md:py-28 bg-bg-section">
-        <div className="max-w-[1000px] mx-auto px-6">
-          <FadeUp className="text-center mb-14">
-            <p className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.2em] mb-3">BUSINESS LINEUP</p>
-            <h2 className="font-bold text-text-dark text-[22px] md:text-[28px] leading-[1.5] mb-4">
-              多彩な<span className="text-lp-accent">案���</span>で稼ぐ
-            </h2>
-            <div className="w-12 h-[3px] bg-lp-accent mx-auto mb-6"></div>
-            <p className="text-[14px] text-text-body leading-[1.9]">あなたに合った案件を自由に選べます。</p>
-          </FadeUp>
-          <FadeUp>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
-              {[
-                { title: "人材アカウント", sub: "Indeed / エアワーク等" },
-                { title: "ECショップ", sub: "メルカリ / 楽天市場等" },
-                { title: "権利運用", sub: "ビザ / 派遣 / 物販等" },
-                { title: "補助金・助成金", sub: "行政申請サポート" },
-                { title: "個人単発", sub: "アフィリ / MNP / 投資" },
-                { title: "夢の事業", sub: "やりたいビジネスを支援", accent: true },
-              ].map((item) => (
-                <div key={item.title} className="bg-white rounded-xl p-5 md:p-6 border border-gray-100 text-center">
-                  <h3 className="font-bold text-text-dark text-[14px] mb-1">{item.title}</h3>
-                  <p className="text-[11px] text-text-light leading-[1.7]">{item.sub}</p>
-                </div>
-              ))}
+      <section className="py-28 md:py-36 bg-white relative">
+        <span className="lp-bg-number top-0 left-0">04</span>
+        <div className="max-w-[1000px] mx-auto px-6 relative z-10">
+          <FadeSlide direction="up" className="text-center mb-16">
+            <div className="lp-section-counter justify-center">
+              <span className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.3em]">04 — BUSINESS LINEUP</span>
             </div>
-          </FadeUp>
+            <h2 className="font-bold text-text-dark text-[26px] md:text-[36px] leading-[1.5] mb-4">
+              多彩な<span className="text-lp-accent lp-marker">案件</span>で稼ぐ
+            </h2>
+            <p className="text-[14px] text-text-body">あなたに合った案件を自由に選べます。</p>
+          </FadeSlide>
+          <StaggerChildren staggerMs={80} className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6">
+            {[
+              { title: "人材アカウント", sub: "Indeed / エアワーク等", icon: "👥" },
+              { title: "ECショップ", sub: "メルカリ / 楽天市場等", icon: "🛒" },
+              { title: "権利運用", sub: "ビザ / 派遣 / 物販等", icon: "📊" },
+              { title: "補助金・助成金", sub: "行政申請サポート", icon: "📋" },
+              { title: "個人単発", sub: "アフィリ / MNP / 投資", icon: "💡" },
+              { title: "夢の事業", sub: "やりたいビジネスを支援", icon: "🚀", accent: true },
+            ].map((item) => (
+              <StaggerItem key={item.title}>
+                <TiltCard intensity={4}>
+                  <div className={`rounded-2xl p-6 md:p-7 border hover-card text-center group ${item.accent ? "bg-gradient-to-br from-lp to-[#1a4f7a] border-lp/20 shadow-[0_10px_30px_-10px_rgba(11,42,74,0.2)]" : "bg-white border-gray-100 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)]"}`}>
+                    <div className="text-3xl mb-3">{item.icon}</div>
+                    <h3 className={`font-bold text-[15px] mb-1 ${item.accent ? "text-white" : "text-text-dark"}`}>{item.title}</h3>
+                    <p className={`text-[12px] leading-[1.7] ${item.accent ? "text-white/60" : "text-text-light"}`}>{item.sub}</p>
+                  </div>
+                </TiltCard>
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
         </div>
       </section>
 
       {/* ===== コミュニティ ===== */}
       <section
-        className="py-20 md:py-28 relative overflow-hidden"
+        className="py-32 md:py-40 relative overflow-hidden"
         style={{ background: "linear-gradient(135deg, #0b2a4a 0%, #1a4f7a 100%)" }}
       >
-        <div className="relative z-10 max-w-[1000px] mx-auto px-6">
-          <FadeUp className="text-center mb-14">
-            <p className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.2em] mb-3">COMMUNITY</p>
-            <h2 className="font-bold text-white text-[22px] md:text-[28px] leading-[1.5] mb-4">
-              ただの副業じゃ終わらない。<br />
-              <span className="text-lp-accent">&ldquo;ビジネスの学び家&rdquo;</span>という、青春。
-            </h2>
-            <div className="w-12 h-[3px] bg-lp-accent mx-auto mb-8"></div>
-            <p className="text-white/50 text-[14px] leading-[2] mb-10">
-              BizOwner会員は「ビジネスの学���家」コミュニティに参加可能。<br className="hidden md:block" />
-              ビジネスだけじゃない、仲間と楽しむ場がここにあります。
-            </p>
-            <div className="grid grid-cols-2 gap-3 max-w-[700px] mx-auto mb-10">
-              <div className="rounded-xl overflow-hidden h-[160px] md:h-[200px]">
-                <Image src="/lp/meeting-laugh.jpg" alt="コミュニティ風景" width={400} height={200} className="w-full h-full object-cover" />
-              </div>
-              <div className="rounded-xl overflow-hidden h-[160px] md:h-[200px]">
-                <Image src="/lp/team-celebration.jpg" alt="チームの喜び" width={400} height={200} className="w-full h-full object-cover" />
-              </div>
-            </div>
-          </FadeUp>
-          <FadeUp>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
-              {[
-                { emoji: "🎬", title: "会員サイト", desc: "動画見放題\n一生学べる" },
-                { emoji: "🎉", title: "楽しい行事", desc: "講演会・パーティー\nキャンプ・コンテス���" },
-                { emoji: "⚽", title: "チーム所属", desc: "フットサル・読書会\nアイドル・YouTuber" },
-                { emoji: "🎁", title: "福���厚生", desc: "占い無償提供\nプレゼント配布" },
-              ].map((c) => (
-                <div key={c.title} className="bg-white/5 border border-white/10 rounded-xl p-6 text-center">
-                  <div className="text-3xl mb-3">{c.emoji}</div>
-                  <h3 className="font-bold text-white text-[14px] mb-2">{c.title}</h3>
-                  <p className="text-white/40 text-[12px] leading-[1.7] whitespace-pre-line">{c.desc}</p>
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-lp-accent/10 rounded-full blur-[100px] -translate-y-1/3 translate-x-1/4" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cta/10 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4" />
+        <div className="relative z-10 max-w-[1100px] mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-14 items-center">
+            <div>
+              <FadeSlide direction="left">
+                <div className="lp-section-counter text-white/30 mb-6">
+                  <span className="font-[Inter] font-bold text-[12px] tracking-[0.3em]">COMMUNITY</span>
                 </div>
-              ))}
+                <h2 className="font-bold text-white text-[26px] md:text-[40px] leading-[1.4] mb-6">
+                  ただの副業じゃ終わらない。
+                  <br />
+                  <span className="text-lp-accent">&ldquo;ビジネスの学び家&rdquo;</span>
+                  <br className="md:hidden" />
+                  という、青春。
+                </h2>
+                <p className="text-white/60 text-[15px] leading-[2] mb-10 max-w-lg">
+                  BizOwner会員は「ビジネスの学び家」コミュニティに参加可能。
+                  ビジネスだけじゃない、仲間と楽しむ場がここにあります。
+                </p>
+              </FadeSlide>
+              <StaggerChildren staggerMs={120} className="grid grid-cols-2 gap-4">
+                {[
+                  { emoji: "🎬", title: "会員サイト", desc: "動画で学べる" },
+                  { emoji: "🎉", title: "楽しい行事", desc: "BBQ・旅行など" },
+                  { emoji: "⚽", title: "チーム所属", desc: "仲間と切磋琢磨" },
+                  { emoji: "🎁", title: "福利厚生", desc: "会員限定特典" },
+                ].map((c) => (
+                  <StaggerItem key={c.title}>
+                    <div className="bg-white/10 backdrop-blur-sm p-5 rounded-xl border border-white/20 hover:bg-white/20 transition-all group">
+                      <span className="text-2xl block mb-2">{c.emoji}</span>
+                      <span className="font-bold text-white text-[15px] block">{c.title}</span>
+                      <span className="text-white/40 text-[11px]">{c.desc}</span>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </StaggerChildren>
             </div>
-          </FadeUp>
+            <FadeSlide direction="right">
+              <ImageReveal direction="up" delay={200} className="rounded-2xl overflow-hidden h-[260px] md:h-[400px] shadow-2xl">
+                <Image src="/lp/bizowner-community.png" alt="コミュニティ風景" width={1536} height={1024} className="w-full h-full object-cover" />
+              </ImageReveal>
+            </FadeSlide>
+          </div>
         </div>
       </section>
 
       {/* CTA 3 */}
-      <CtaBanner />
+      <CtaBannerFull />
 
       {/* ===== 顧問紹介 ===== */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-[800px] mx-auto px-6">
-          <FadeUp className="text-center mb-14">
-            <p className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.2em] mb-3">ADVISOR</p>
-            <h2 className="font-bold text-text-dark text-[22px] md:text-[28px] leading-[1.5] mb-4">顧問紹介</h2>
-            <div className="w-12 h-[3px] bg-lp-accent mx-auto"></div>
-          </FadeUp>
-          <FadeUp>
-            <div className="bg-bg-section rounded-2xl p-8 md:p-10 border border-gray-100">
-              <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
-                <div className="w-28 h-28 rounded-full overflow-hidden shrink-0 border-[3px] border-lp-accent/20">
-                  <Image src="/lp/advisor-portrait.jpg" alt="顧問" width={112} height={112} className="w-full h-full object-cover" />
-                </div>
-                <div className="text-center md:text-left">
-                  <p className="text-lp-accent font-bold text-[13px] tracking-wider mb-1">起業ニキ</p>
-                  <h3 className="font-bold text-text-dark text-[20px] mb-5">ゼロから年商1億円へ。</h3>
-                  <div className="space-y-4 text-[14px] text-text-body leading-[2]">
-                    {[
-                      { color: "bg-red-50 text-red-400", label: "絶望から", desc: "19歳で精神病院に2年間入院。退院後、人生の逆転を誓う。" },
-                      { color: "bg-yellow-50 text-yellow-500", label: "下克上", desc: "ホストNo.1、アイドルプロデュース、JAPAN EXPO出演。" },
-                      { color: "bg-green-50 text-green-500", label: "起業家へ", desc: "初年度年���1億円達成。経営コンサルタントとして50社以上を指導。" },
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <span className={`shrink-0 w-6 h-6 rounded ${item.color} flex items-center justify-center text-[11px] font-bold mt-0.5`}>{i + 1}</span>
-                        <p><strong>{item.label}</strong> — {item.desc}</p>
-                      </div>
-                    ))}
+      <section className="py-28 md:py-36 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 lp-dots-pattern opacity-40" />
+        <span className="lp-bg-number top-0 right-0">05</span>
+        <div className="max-w-[800px] mx-auto px-6 relative z-10">
+          <FadeSlide direction="up" className="text-center mb-14">
+            <div className="lp-section-counter justify-center">
+              <span className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.3em]">05 — ADVISOR</span>
+            </div>
+            <h2 className="font-bold text-text-dark text-[26px] md:text-[36px] leading-[1.5]">顧問紹介</h2>
+          </FadeSlide>
+          <FadeSlide direction="up">
+            <div className="bg-bg-section rounded-3xl p-8 md:p-12 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] border border-gray-100 flex flex-col md:flex-row gap-10 items-center relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-lp-accent/5 rounded-bl-full" />
+              <div className="flex flex-col items-center text-center shrink-0 relative z-10">
+                <ImageReveal direction="up" className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg mb-4">
+                  <Image src="/lp/advisor-kigyo-niki.png" alt="起業ニキ" width={128} height={128} className="w-full h-full object-cover" />
+                </ImageReveal>
+                <span className="text-[11px] font-bold text-white bg-gradient-to-r from-lp to-lp-accent px-4 py-1 rounded-full mb-2">BizOwner 顧問</span>
+                <h3 className="font-bold text-text-dark text-[22px] mb-1">起業ニキ</h3>
+                <p className="text-cta font-bold text-[13px]">ゼロから年商1億円へ。</p>
+              </div>
+              <div className="relative w-full border-l-2 border-lp-sky pl-6 md:pl-8 space-y-7 py-4">
+                {[
+                  { color: "bg-gray-300", label: "絶望から", desc: "19歳で精神病院に2年間入院。退院後、人生の逆転を誓う。" },
+                  { color: "bg-lp-accent", label: "下克上", desc: "ホストNo.1、アイドルプロデュース、JAPAN EXPO出演。" },
+                  { color: "bg-cta", label: "起業家へ", desc: "初年度年商1億円達成。経営コンサルタントとして50社以上を指導。" },
+                ].map((item, i) => (
+                  <div key={i} className="relative">
+                    <div className={`absolute -left-[31px] md:-left-[35px] top-1 w-4 h-4 rounded-full ${item.color} border-2 border-white shadow-sm`} />
+                    <h4 className="font-bold text-text-dark mb-1">{i + 1}. {item.label}</h4>
+                    <p className="text-[14px] text-text-body leading-relaxed">{item.desc}</p>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
-          </FadeUp>
+          </FadeSlide>
         </div>
       </section>
 
+      <LineDivider />
+
       {/* ===== 他社比較 ===== */}
-      <section className="py-20 md:py-28 bg-bg-section">
-        <div className="max-w-[900px] mx-auto px-6">
-          <FadeUp className="text-center mb-14">
-            <p className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.2em] mb-3">COMPARISON</p>
-            <h2 className="font-bold text-text-dark text-[22px] md:text-[28px] leading-[1.5] mb-4">
-              他社との<span className="text-lp-accent">比較</span>
+      <section className="py-28 md:py-36 bg-bg-section relative">
+        <span className="lp-bg-number top-48 left-12">06</span>
+        <div className="max-w-[900px] mx-auto px-6 relative z-10">
+          <FadeSlide direction="up" className="text-center mb-14">
+            <div className="lp-section-counter justify-center">
+              <span className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.3em]">06 — COMPARISON</span>
+            </div>
+            <h2 className="font-bold text-text-dark text-[26px] md:text-[36px] leading-[1.5]">
+              他社との<span className="text-lp-accent lp-marker">比較</span>
             </h2>
-            <div className="w-12 h-[3px] bg-lp-accent mx-auto"></div>
-          </FadeUp>
-          <FadeUp className="overflow-x-auto">
-            <table className="w-full min-w-[600px] text-[13px] md:text-[14px]">
-              <thead>
-                <tr>
-                  <th className="text-left p-4 bg-gray-100 font-bold text-text-dark rounded-tl-lg"></th>
-                  <th className="p-4 bg-cta text-white font-bold text-center">BizOwner</th>
-                  <th className="p-4 bg-gray-100 font-bold text-text-dark text-center">一般的な起業塾</th>
-                  <th className="p-4 bg-gray-100 font-bold text-text-dark text-center rounded-tr-lg">独学</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ["初期費用", "月額11,000円", "30〜100万円", "0円〜"],
-                  ["知識・経験", "不要", "ある程度必要", "自力で習得"],
-                  ["サポート", "本部が全面支援", "講師による指導", "なし"],
-                  ["収益化", "即日可能", "数ヶ月後", "不確定"],
-                  ["コミュニティ", "学び家に所属", "期間限定", "なし"],
-                ].map((row, i) => (
-                  <tr key={i} className={i < 4 ? "border-b border-gray-100" : ""}>
-                    <td className="p-4 font-bold text-text-dark bg-white">{row[0]}</td>
-                    <td className="p-4 text-center bg-cta/5 font-bold text-cta">{row[1]}</td>
-                    <td className="p-4 text-center bg-white text-text-body">{row[2]}</td>
-                    <td className="p-4 text-center bg-white text-text-body">{row[3]}</td>
+          </FadeSlide>
+          <FadeSlide direction="up" className="-mx-2 md:mx-0">
+            <div className="bg-white rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] border border-gray-100 overflow-x-auto">
+              <table className="w-full min-w-[520px] text-[12px] md:text-[14px]">
+                <thead>
+                  <tr>
+                    <th className="text-left p-3 md:p-5 bg-gray-50/50 font-bold text-text-dark border-b border-gray-100 w-[20%]" />
+                    <th className="p-3 md:p-5 pt-4 md:pt-5 bg-gradient-to-b from-orange-50 to-white text-cta font-bold text-center border-b-2 border-cta text-[14px] md:text-[16px] w-[30%]">
+                      <span className="bg-cta text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm whitespace-nowrap inline-block mb-1">おすすめ</span>
+                      <br />
+                      BizOwner
+                    </th>
+                    <th className="p-3 md:p-5 bg-white font-bold text-text-dark text-center border-b border-gray-100 w-[25%]">
+                      <span className="hidden md:inline">一般的な起業塾</span>
+                      <span className="md:hidden">起業塾</span>
+                    </th>
+                    <th className="p-3 md:p-5 bg-white font-bold text-text-dark text-center border-b border-gray-100 w-[15%]">独学</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </FadeUp>
+                </thead>
+                <tbody>
+                  {[
+                    { label: "初期費用", biz: "月額11,000円", other: "30〜100万円", self: "0円〜" },
+                    { label: "知識・経験", biz: "不要", other: "ある程度必要", self: "自力で習得" },
+                    { label: "サポート", biz: "本部が全面支援", other: "講師による指導", self: "なし" },
+                    { label: "収益化", biz: "即日可能", other: "数ヶ月後", self: "不確定" },
+                    { label: "コミュニティ", biz: "学び家に所属", other: "期間限定", self: "なし" },
+                  ].map((row, i) => (
+                    <tr key={i} className={i < 4 ? "border-b border-gray-50" : ""}>
+                      <td className="p-3 md:p-5 font-bold text-text-dark bg-gray-50/50 whitespace-nowrap">{row.label}</td>
+                      <td className="p-3 md:p-5 text-center bg-orange-50/30 font-bold text-cta">{row.biz}</td>
+                      <td className="p-3 md:p-5 text-center bg-white text-text-body">{row.other}</td>
+                      <td className="p-3 md:p-5 text-center bg-white text-text-body">{row.self}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </FadeSlide>
         </div>
       </section>
 
       {/* ===== 料金 ===== */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-[1000px] mx-auto px-6">
-          <FadeUp className="text-center mb-14">
-            <p className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.2em] mb-3">PRICING</p>
-            <h2 className="font-bold text-text-dark text-[22px] md:text-[28px] leading-[1.5] mb-4">料金プラン</h2>
-            <div className="w-12 h-[3px] bg-lp-accent mx-auto"></div>
-          </FadeUp>
-          <FadeUp>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
-              {[
-                { label: "ご利用料金", price: "11,000", unit: "円", sub: "/月（税込）" },
-                { label: "法人作成費用", price: "100,000", unit: "円", sub: "一括" },
-                { label: "FC加盟料金", price: "200", unit: "万円〜", sub: "一括" },
-                { label: "サークル等費用", price: "団長決定", unit: "", sub: "各サークルによる" },
-              ].map((p) => (
-                <div key={p.label} className="bg-bg-section rounded-xl p-6 text-center border border-gray-100">
-                  <p className="text-[12px] text-text-light font-bold mb-3">{p.label}</p>
-                  <p className="text-text-dark font-bold text-[28px] leading-none mb-1">
-                    {p.price}<span className="text-[14px]">{p.unit}</span>
-                  </p>
-                  <p className="text-text-light text-[12px]">{p.sub}</p>
-                </div>
-              ))}
+      <section className="py-28 md:py-36 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 lp-lines-pattern opacity-30" />
+        <div className="max-w-[1000px] mx-auto px-6 relative z-10">
+          <FadeSlide direction="up" className="text-center mb-14">
+            <div className="lp-section-counter justify-center">
+              <span className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.3em]">PRICING</span>
             </div>
-          </FadeUp>
-          <FadeUp className="mt-8">
-            <div className="bg-cta rounded-xl p-6 md:p-8 text-center">
-              <p className="text-white font-bold text-[20px] md:text-[24px] mb-2">🎉 今なら1ヶ月無料！</p>
-              <p className="text-white/70 text-[14px]">いつでも解約OK。まずはお試しください。</p>
+            <h2 className="font-bold text-text-dark text-[26px] md:text-[36px] leading-[1.5]">料金プラン</h2>
+          </FadeSlide>
+          <FadeSlide direction="up">
+            <div className="bg-gradient-to-r from-cta to-[#d04f24] text-white text-center py-6 px-8 rounded-2xl mb-12 shadow-lg font-bold text-[18px] md:text-[22px] -rotate-1 hover:rotate-0 transition-transform border border-white/20 lp-shine relative overflow-hidden">
+              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxjaXJjbGUgY3g9IjEwIiBjeT0iMTAiIHI9IjEiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKSIvPgo8L3N2Zz4=')] opacity-50" />
+              <span className="relative z-10">🎉 今なら<span className="text-yellow-300 text-[26px] mx-1">1</span>ヶ月無料！いつでも解約OK。まずはお試しください。</span>
             </div>
-          </FadeUp>
+          </FadeSlide>
+          <StaggerChildren staggerMs={100} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+            {[
+              { label: "ご利用料金", price: 11000, unit: "円", sub: "/月（税込）", highlight: true },
+              { label: "法人作成費用", price: 100000, unit: "円", sub: "一括" },
+              { label: "FC加盟料金", price: 200, unit: "万円〜", sub: "一括" },
+              { label: "サークル等費用", price: 0, unit: "", sub: "各サークルによる", isText: true },
+            ].map((p) => (
+              <StaggerItem key={p.label}>
+                <TiltCard intensity={4}>
+                  <div className={`bg-white rounded-2xl p-6 text-center border ${p.highlight ? "border-2 border-lp-accent/30 shadow-[0_10px_30px_-10px_rgba(74,155,217,0.15)]" : "border-gray-100 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)]"} relative`}>
+                    {p.highlight && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-lp-accent text-white text-[10px] font-bold px-3 py-1 rounded-full">基本</div>}
+                    <p className="text-[12px] text-text-light font-bold mb-3 mt-1">{p.label}</p>
+                    <p className="text-text-dark font-bold text-[28px] leading-none mb-1">
+                      {p.isText ? (
+                        "団長決定"
+                      ) : p.highlight ? (
+                        <span className="text-lp-accent"><CountUp end={p.price} /></span>
+                      ) : (
+                        <CountUp end={p.price} />
+                      )}
+                      <span className="text-[14px] text-gray-400">{p.unit}</span>
+                    </p>
+                    <p className="text-text-light text-[12px]">{p.sub}</p>
+                  </div>
+                </TiltCard>
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
         </div>
       </section>
 
       {/* CTA 4 */}
-      <CtaBanner />
+      <CtaBannerFull />
 
       {/* ===== 参加フロー ===== */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-28 md:py-36 bg-white relative">
         <div className="max-w-[700px] mx-auto px-6">
-          <FadeUp className="text-center mb-14">
-            <p className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.2em] mb-3">FLOW</p>
-            <h2 className="font-bold text-text-dark text-[22px] md:text-[28px] leading-[1.5] mb-4">
-              参加までの<span className="text-lp-accent">流れ</span>
+          <FadeSlide direction="up" className="text-center mb-16">
+            <div className="lp-section-counter justify-center">
+              <span className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.3em]">FLOW</span>
+            </div>
+            <h2 className="font-bold text-text-dark text-[26px] md:text-[36px] leading-[1.5]">
+              参加までの<span className="text-lp-accent lp-marker">流れ</span>
             </h2>
-            <div className="w-12 h-[3px] bg-lp-accent mx-auto"></div>
-          </FadeUp>
-          <FadeUp>
-            <div className="space-y-0">
+          </FadeSlide>
+          <StaggerChildren staggerMs={150} className="relative pl-6 md:pl-10">
+            <div className="absolute left-[27px] md:left-[41px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-lp-accent via-lp to-cta/20 rounded-full" />
+            <div className="space-y-10">
               {[
                 { title: "公式LINE追加・ウェビナー視聴", desc: "まずはLINE登録。無料ウェビナーでサービス内容を確認。" },
-                { title: "個人情報・決済フォーム入力", desc: "納得いただけたら、簡単なフォーム入力で登��完了。" },
+                { title: "個人情報・決済フォーム入力", desc: "納得いただけたら、簡単なフォーム入力で登録完了。" },
                 { title: "会員サイトから案件確認・実施", desc: "個人案件に参加して、すぐに副収入をスタート。" },
                 { title: "法人作成を本部へ依頼", desc: "法人案件にも参加し、収益を拡大。" },
                 { title: "FC加盟で完全独立", desc: "フランチャイズオーナーとして、ビジネスオーナーへ。", last: true },
               ].map((item, i) => (
-                <div key={i} className={`${!item.last ? "step-line" : ""} text-center pb-8`}>
-                  <div className={`w-14 h-14 rounded-full ${item.last ? "bg-cta" : "bg-lp-accent"} text-white flex items-center justify-center mx-auto mb-4 font-[Inter] font-bold text-[16px]`}>
-                    {i + 1}
+                <StaggerItem key={i}>
+                  <div className="relative flex items-start group">
+                    <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full ${item.last ? "bg-gradient-to-br from-cta to-[#d04f24] shadow-[0_4px_20px_rgba(232,93,47,0.3)] scale-110" : "bg-white border-2 border-lp-accent"} flex items-center justify-center font-[Inter] font-bold ${item.last ? "text-white" : "text-lp-accent"} text-[16px] relative z-10 shrink-0 group-hover:scale-110 transition-transform`}>
+                      {i + 1}
+                    </div>
+                    <div className="ml-5 md:ml-7 bg-bg-section md:bg-transparent p-5 md:p-0 rounded-xl md:rounded-none flex-grow group-hover:translate-x-2 transition-transform">
+                      <h3 className="font-bold text-text-dark text-[16px] mb-1">{item.title}</h3>
+                      <p className="text-[13px] text-text-light">{item.desc}</p>
+                    </div>
                   </div>
-                  <h3 className="font-bold text-text-dark text-[16px] mb-1">{item.title}</h3>
-                  <p className="text-[13px] text-text-light">{item.desc}</p>
-                </div>
+                </StaggerItem>
               ))}
             </div>
-          </FadeUp>
+          </StaggerChildren>
         </div>
       </section>
 
+      <LineDivider />
+
       {/* ===== Q&A ===== */}
-      <section className="py-20 md:py-28 bg-bg-section">
-        <div className="max-w-[800px] mx-auto px-6">
-          <FadeUp className="text-center mb-14">
-            <p className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.2em] mb-3">FAQ</p>
-            <h2 className="font-bold text-text-dark text-[22px] md:text-[28px] leading-[1.5] mb-4">よくある質問</h2>
-            <div className="w-12 h-[3px] bg-lp-accent mx-auto"></div>
-          </FadeUp>
-          <FadeUp>
-            <div className="space-y-3">
-              {[
-                { q: "作った法人は自由に使って良いですか？", a: "はい、作成した法人はあなたの会社です。本部案件以外にも自由にご活用いただけます。" },
-                { q: "新しくサークルを作ってもいいですか？", a: "もちろんです。学び家ではメンバー発信のサークルを歓迎しています。" },
-                { q: "案件やサービスの参加方法は？", a: "会員サイトから案件一覧を確認し、興味のあるものに申し込むだけです。" },
-                { q: "個別の質疑応答はどこでできますか？", a: "公式LINEまたは会員専用チャットで、いつでもご質問いただ���ます。" },
-                { q: "本当に知識ゼロでも大丈夫ですか？", a: "はい。案件の実行方法は会員サイトの動画で全て学べます。本部のサポートもあるのでご安��ください。" },
-                { q: "途中で解約できますか？", a: "はい、いつでも解約可能です。違約金や引き止めは一切ありません。" },
-              ].map((faq, i) => (
-                <details key={i} className="bg-white rounded-xl border border-gray-100 overflow-hidden">
-                  <summary className="flex items-center justify-between p-5 md:p-6 font-bold text-text-dark text-[14px] md:text-[15px]">
+      <section className="py-28 md:py-36 bg-bg-section relative">
+        <span className="lp-bg-number bottom-0 right-0">07</span>
+        <div className="max-w-[800px] mx-auto px-6 relative z-10">
+          <FadeSlide direction="up" className="text-center mb-14">
+            <div className="lp-section-counter justify-center">
+              <span className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.3em]">07 — FAQ</span>
+            </div>
+            <h2 className="font-bold text-text-dark text-[26px] md:text-[36px] leading-[1.5]">よくある質問</h2>
+          </FadeSlide>
+          <StaggerChildren staggerMs={100} className="space-y-4 lp-accordion">
+            {[
+              { q: "作った法人は自由に使って良いですか？", a: "はい、作成した法人はあなたの会社です。本部案件以外にも自由にご活用いただけます。" },
+              { q: "新しくサークルを作ってもいいですか？", a: "もちろんです。学び家ではメンバー発信のサークルを歓迎しています。" },
+              { q: "案件やサービスの参加方法は？", a: "会員サイトから案件一覧を確認し、興味のあるものに申し込むだけです。" },
+              { q: "個別の質疑応答はどこでできますか？", a: "公式LINEまたは会員専用チャットで、いつでもご質問いただけます。" },
+              { q: "本当に知識ゼロでも大丈夫ですか？", a: "はい。案件の実行方法は会員サイトの動画で全て学べます。本部のサポートもあるのでご安心ください。" },
+              { q: "途中で解約できますか？", a: "はい、いつでも解約可能です。違約金や引き止めは一切ありません。" },
+            ].map((faq, i) => (
+              <StaggerItem key={i}>
+                <details className="group bg-white rounded-2xl border border-gray-100 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.03)] overflow-hidden">
+                  <summary className="flex items-center justify-between p-5 md:p-6 font-bold text-text-dark text-[14px] md:text-[15px] hover:bg-gray-50 transition-colors">
                     <span className="flex items-center gap-3">
-                      <span className="text-lp-accent font-[Inter]">Q.</span>
+                      <span className="text-lp-accent font-[Inter] font-bold">Q.</span>
                       {faq.q}
                     </span>
                   </summary>
@@ -503,52 +650,62 @@ export default function BizOwnerPage() {
                     <span className="text-cta font-bold font-[Inter]">A.</span> {faq.a}
                   </div>
                 </details>
-              ))}
-            </div>
-          </FadeUp>
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
         </div>
       </section>
 
       {/* ===== 最終CTA ===== */}
       <section
-        className="relative py-28 md:py-40 overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #0b2a4a 0%, #1a4f7a 50%, #2a7ab5 100%)" }}
+        className="relative py-36 md:py-48 overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #0b2a4a 0%, #05162b 100%)" }}
       >
+        <div className="absolute inset-0 lp-dots-pattern opacity-20" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-lp-accent/15 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-[20%] right-[10%] w-[300px] h-[300px] bg-cta/10 rounded-full blur-[80px] pointer-events-none" />
         <div className="relative z-10 max-w-[700px] mx-auto px-6 text-center">
-          <p className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.2em] mb-6">START YOUR JOURNEY</p>
-          <h2
-            className="font-bold text-white mb-6"
-            style={{ fontSize: "clamp(24px,5vw,40px)", lineHeight: 1.4 }}
-          >
-            あなたも、<br />
-            <span className="text-lp-accent">オーナー</span>になる。
-          </h2>
-          <p className="text-white/50 text-[15px] leading-[2] mb-10">
-            副業感覚で会社経営。知識ゼロから始める権利収入。
-            <br className="hidden md:block" />
-            まずは無料でLINE登録して、詳しい情報を受け取ってください。
-          </p>
-          <a href="#" className="cta-btn text-[18px] px-12 py-5">
-            <LineIcon className="w-7 h-7" />
-            1ヶ月無料でLINE登録する
-          </a>
-          <p className="text-white/30 text-[12px] mt-6 leading-[1.8]">
-            ※ 解約自由・しつこい勧誘は一��ありません<br />
-            ※ LINE登録は無料です
-          </p>
+          <FadeSlide direction="up">
+            <p className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.3em] mb-6 uppercase">Start your journey</p>
+            <h2
+              className="font-bold text-white mb-6"
+              style={{ fontSize: "clamp(30px,5.5vw,52px)", lineHeight: 1.3 }}
+            >
+              あなたも、<br />
+              <span className="bg-gradient-to-r from-lp-accent to-lp-sky bg-clip-text" style={{ WebkitTextFillColor: "transparent" }}>オーナー</span>になる。
+            </h2>
+            <p className="text-white/50 text-[15px] leading-[2] mb-12 max-w-lg mx-auto">
+              副業感覚で会社経営。知識ゼロから始める権利収入。
+              <br className="hidden md:block" />
+              まずは無料でLINE登録して、詳しい情報を受け取ってください。
+            </p>
+            <a href="#" className="cta-btn lp-shine text-[18px] px-12 py-6 shadow-[0_0_40px_rgba(232,93,47,0.4)] hover:shadow-[0_0_60px_rgba(232,93,47,0.6)] hover:-translate-y-1 transition-all">
+              <LineIcon className="w-7 h-7" />
+              1ヶ月無料でLINE登録する
+            </a>
+            <p className="text-white/30 text-[12px] mt-8 leading-[1.8]">
+              ※ 解約自由・しつこい勧誘は一切ありません<br />
+              ※ LINE登録は無料です
+            </p>
+          </FadeSlide>
         </div>
       </section>
 
       {/* ===== FOOTER ===== */}
-      <footer className="bg-[#0a1e33] py-10">
-        <div className="max-w-[800px] mx-auto px-6 text-center">
-          <p className="font-[Inter] font-bold text-white/60 text-[14px] tracking-[0.1em] mb-3">Bestimulate</p>
-          <div className="flex justify-center gap-6 text-[12px] text-white/30 mb-6">
-            <Link href="/" className="hover:text-white/60 transition-colors">ホーム</Link>
-            <Link href="/services" className="hover:text-white/60 transition-colors">サービス一覧</Link>
-            <Link href="/#contact" className="hover:text-white/60 transition-colors">���問い合わせ</Link>
+      <footer className="bg-[#030e1c] py-12 border-t border-white/10">
+        <div className="max-w-[800px] mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+              <p className="font-[Montserrat] font-bold text-white/80 text-[18px] tracking-tight">BizOwner<span className="text-lp-accent">.</span></p>
+              <p className="text-white/40 text-[11px] mt-1">by Bestimulate</p>
+            </div>
+            <div className="flex gap-6 text-[12px] text-white/40 font-medium">
+              <Link href="/" className="hover:text-white/70 transition-colors">ホーム</Link>
+              <Link href="/services" className="hover:text-white/70 transition-colors">サービス一覧</Link>
+              <Link href="/#contact" className="hover:text-white/70 transition-colors">お問い合わせ</Link>
+            </div>
           </div>
-          <p className="text-white/20 text-[11px]">&copy; 2026 Bestimulate. All Rights Reserved.</p>
+          <p className="text-white/20 text-[11px] text-center mt-8 font-[Inter]">&copy; 2026 Bestimulate. All Rights Reserved.</p>
         </div>
       </footer>
     </div>
