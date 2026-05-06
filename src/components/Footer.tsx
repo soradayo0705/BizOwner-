@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="bg-footer-blue md:w-[280px] p-8 md:p-10 flex flex-col justify-between min-h-0 md:min-h-[200px]">
           <div>
             <p className="font-[Josefin_Sans] font-bold text-[18px] text-white tracking-[0.1em] mb-4">
-              Bestimulate
+              WOWNER
             </p>
             <p className="text-white/50 text-[12px] leading-[1.9]">
               ビジネスを、
@@ -93,7 +93,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="bg-black text-white/40 text-center py-4 text-[11px] tracking-wider">
-        &copy; 2026 Bestimulate. All Rights Reserved.
+        &copy; 2026 WOWNER. All Rights Reserved.
       </div>
     </footer>
   );

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Josefin_Sans, Montserrat, Noto_Sans_JP, Noto_Serif_JP, RocknRoll_One, Yusei_Magic } from "next/font/google";
+import { Inter, Josefin_Sans, Montserrat, Noto_Sans_JP, Noto_Serif_JP, Orbitron, RocknRoll_One, Yusei_Magic } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -44,10 +44,16 @@ const yuseiMagic = Yusei_Magic({
   weight: ["400"],
 });
 
+const orbitron = Orbitron({
+  variable: "--font-orbitron",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "株式会社Bestimulate",
-    template: "%s | Bestimulate",
+    default: "株式会社WOWNER",
+    template: "%s | WOWNER",
   },
   description:
     "営業支援・コミュニティ構築・経営支援で、事業成長を加速します。",
@@ -61,7 +67,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${inter.variable} ${josefinSans.variable} ${montserrat.variable} ${notoSansJP.variable} ${notoSerifJP.variable} ${rocknRollOne.variable} ${yuseiMagic.variable}`}
+      className={`${inter.variable} ${josefinSans.variable} ${montserrat.variable} ${notoSansJP.variable} ${notoSerifJP.variable} ${rocknRollOne.variable} ${yuseiMagic.variable} ${orbitron.variable}`}
     >
       <body className="font-sans text-text-main bg-white overflow-x-hidden">
         {children}

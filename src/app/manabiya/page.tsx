@@ -120,11 +120,11 @@ export default function ManabiyaPage() {
           {/* Left: Logo + site name */}
           <Link href="#top" className="flex items-center gap-2 md:gap-3 flex-shrink-0" aria-label="ファーストビューへ戻る">
             <ManabiyaLogo size={44} animate={false} />
-            <div className="leading-tight">
-              <p className="hidden sm:block text-[8px] md:text-[9px] text-tgu-pink font-bold tracking-[0.2em]">
+            <div className="leading-tight text-left">
+              <p className="hidden sm:block text-[8px] md:text-[9px] leading-none text-tgu-pink font-bold tracking-[0.2em]">
                 BUSINESS LEARNING COMMUNITY
               </p>
-              <p className="text-[15px] md:text-[19px] font-black tracking-wider text-[#2D2D2D]">
+              <p className="text-[15px] md:text-[19px] font-black tracking-wider text-[#2D2D2D] mt-[2px] md:mt-[3px] leading-none">
                 ビジネスの学び家
               </p>
             </div>
@@ -234,9 +234,8 @@ export default function ManabiyaPage() {
         <div aria-hidden className="uni-candy-stripe h-[6px] md:h-2 w-full absolute top-16 md:top-[76px] left-0 right-0 z-20 opacity-95" />
 
         <div className="relative z-10 h-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 pt-[92px] md:pt-[124px]">
-          <div className="absolute top-[-18px] sm:top-[58px] md:top-[46px] left-4 sm:left-[calc(50%-236px)] md:left-[calc(50%-332px)] w-[58px] h-[58px] sm:w-[68px] sm:h-[68px] md:w-[84px] md:h-[84px] z-40 uni-cog-badge uni-rotate flex flex-col leading-none text-[8px] sm:text-[9px] md:text-[10px]">
-            <span className="block">2026</span>
-            <span className="block text-[10px] md:text-[12px] mt-0.5">新メンバー<br />募集中</span>
+          <div className="absolute top-[-18px] sm:top-[58px] md:top-[46px] left-4 sm:left-[calc(50%-236px)] md:left-[calc(50%-332px)] w-[58px] h-[58px] sm:w-[68px] sm:h-[68px] md:w-[84px] md:h-[84px] z-40 uni-cog-badge uni-rotate flex flex-col items-center justify-center leading-none text-[8px] sm:text-[9px] md:text-[10px]">
+            <span className="block text-[10px] md:text-[12px] text-center">新メンバー<br />募集中</span>
           </div>
 
           <svg aria-hidden viewBox="0 0 60 60" className="absolute top-[128px] md:top-[168px] right-[8%] w-10 h-10 md:w-16 md:h-16 text-[#FFD93D] z-20 uni-bob-delay" fill="currentColor">
@@ -340,19 +339,27 @@ export default function ManabiyaPage() {
         <div className="max-w-[1100px] mx-auto px-4 md:px-6 relative z-10">
           <FadeSlide direction="up">
             <div className="flex flex-wrap justify-center gap-6 md:gap-14">
-              {[
-                { num: 6, suffix: "+", label: "案件カテゴリ", color: "bg-tgu-cyan" },
-                { num: 20, suffix: "+", label: "サークル数", color: "bg-tgu-coral" },
-                { num: 11000, suffix: "", label: "円/月〜", color: "bg-tgu-pink" },
-              ].map((s) => (
+              {(
+                [
+                  { kind: "count" as const, num: 100, suffix: "", label: "案件カテゴリ", color: "bg-tgu-cyan" },
+                  { kind: "text" as const, text: "年間100回以上", label: "イベント数", color: "bg-tgu-coral" },
+                  { kind: "count" as const, num: 10000, suffix: "", label: "円/月〜", color: "bg-tgu-pink" },
+                ] as const
+              ).map((s) => (
                 <div key={s.label} className="text-center">
                   <div
-                    className={`w-20 h-20 md:w-24 md:h-24 ${s.color} rounded-full flex items-center justify-center mx-auto mb-2 shadow-lg`}
+                    className={`w-20 h-20 md:w-24 md:h-24 ${s.color} rounded-full flex items-center justify-center mx-auto mb-2 shadow-lg px-1`}
                   >
-                    <p className="font-[var(--font-montserrat)] font-black text-[20px] md:text-[26px] text-white leading-none">
-                      <CountUp end={s.num} />
-                      {s.suffix}
-                    </p>
+                    {s.kind === "text" ? (
+                      <p className="font-[var(--font-montserrat)] font-black text-[10px] md:text-[12px] text-white leading-tight text-center">
+                        {s.text}
+                      </p>
+                    ) : (
+                      <p className="font-[var(--font-montserrat)] font-black text-[20px] md:text-[26px] text-white leading-none">
+                        <CountUp end={s.num} />
+                        {s.suffix}
+                      </p>
+                    )}
                   </div>
                   <p className="text-[11px] md:text-[13px] text-[#888] font-bold mt-1">{s.label}</p>
                 </div>
@@ -408,7 +415,7 @@ export default function ManabiyaPage() {
                 好きなことで繋がり、共に笑い、共に挑戦し、そして結果を出す。
               </p>
               <p>
-                「ビジネスの学び家」は、独立・副業を目指す20〜40代の若手プロフェッショナルが、
+                「ビジネスの学び家」は、独立・起業を目指す夢を持った人々が、
                 熱狂をもって共に生きるための、全く新しいコミュニティプラットフォームです。
               </p>
             </div>
@@ -472,7 +479,7 @@ export default function ManabiyaPage() {
                 icon: "🎁",
                 title: "豪華特典",
                 sub: "Special Benefits",
-                desc: "無料の占い・コーチングセッション、プレゼント企画、提携サービスの会員特別割引など。学び家だけの限定福利厚生。",
+                desc: "オンライン占い、個別コーチング・コンサル、プレゼント企画、提携サービスの会員特別割引など。学び家だけの限定福利厚生。",
                 reverse: true,
               },
             ].map((item) => (
@@ -545,7 +552,7 @@ export default function ManabiyaPage() {
                 </p>
                 <ul className="space-y-5">
                   {[
-                    { title: "副業スタートアップ講座", desc: "ゼロから副業を始めるためのステップバイステップ解説。" },
+                    { title: "起業スタートアップ講座", desc: "ビジネスを始めるまでの流れを、ステップごとにわかりやすく解説します。" },
                     { title: "ビジネスセミナー見放題", desc: "マーケティング、営業、SNS運用など、超実践的な講義。" },
                   ].map((item) => (
                     <li key={item.title} className="flex items-start gap-4">
@@ -666,20 +673,19 @@ export default function ManabiyaPage() {
         <DecoDots className="top-8 right-8 w-24 h-24" color="text-white/8" />
 
         <div className="relative z-10 max-w-[1100px] mx-auto px-4 md:px-6">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-            <FadeSlide direction="left" className="w-full lg:w-1/3 lg:sticky lg:top-32">
-              <SectionLabel en="CLUB ACTIVITIES" className="text-white/50" />
-              <h2 className="text-[26px] lg:text-[32px] font-black mb-5 leading-tight text-white">
-                本気で遊ぶ大人の
-                <br />
-                「サークル活動」
-              </h2>
-              <p className="text-white/70 text-[15px] font-medium leading-[1.9]">
-                ビジネスの枠を超えて、純粋な「好き」で繋がるからこそ、一生の仲間ができる。
-              </p>
-            </FadeSlide>
+          <FadeSlide direction="up" className="text-center max-w-2xl mx-auto mb-12 lg:mb-14">
+            <SectionLabel en="CLUB ACTIVITIES" className="justify-center text-white/50" />
+            <h2 className="text-[26px] lg:text-[32px] font-black mb-5 leading-tight text-white">
+              本気で遊ぶ大人の
+              <br />
+              「サークル活動」
+            </h2>
+            <p className="text-white/70 text-[15px] font-medium leading-[1.9]">
+              ビジネスの枠を超えて、純粋な「好き」で繋がるからこそ、一生の仲間ができる。
+            </p>
+          </FadeSlide>
 
-            <div className="w-full lg:w-2/3">
+          <div className="w-full">
               <FadeSlide direction="right">
                 <div className="flex items-center gap-2 mb-5">
                   <span className="w-3 h-3 rounded-full bg-tgu-green" />
@@ -715,7 +721,6 @@ export default function ManabiyaPage() {
               <p className="text-white/40 text-[13px] mt-8">
                 ※ 新しいサークルの立ち上げも歓迎！毎月の全体MTGでプレゼンして仲間を集めよう。
               </p>
-            </div>
           </div>
         </div>
       </section>
@@ -727,7 +732,6 @@ export default function ManabiyaPage() {
             <DecoStripes className="top-0 right-0 w-20 h-20" color="text-tgu-yellow/20" />
             <div className="text-center md:text-left relative z-10">
               <h2 className="text-lg md:text-xl font-black mb-1.5">興味が湧いたら、まずはLINE登録！</h2>
-              <p className="text-[14px] text-[#888] font-medium">最新のイベント情報や、無料体験コンテンツを配信中。</p>
             </div>
             <a
               href="#"
@@ -757,7 +761,7 @@ export default function ManabiyaPage() {
 
           <StaggerChildren staggerMs={150} className="space-y-5">
             {[
-              { icon: "🔮", iconBg: "bg-tgu-pink", title: "無料占い & コーチング", desc: "恋愛・ビジネス・人格形成をプロが指導。週1時間×月4回を無償提供。自己理解と今後の指針作りに。" },
+              { icon: "🔮", iconBg: "bg-tgu-pink", title: "オンライン占い・コーチング", desc: "恋愛やビジネス、自己理解まで。プロと対話しながら週1時間×月4回までご利用いただけます。次の一歩のヒントづくりに。" },
               { icon: "🎁", iconBg: "bg-tgu-yellow", title: "豪華プレゼント企画", desc: "ミッション達成で豪華賞品をご自宅へ郵送。毎月1回以上、ゲリラ開催も！" },
               { icon: "💎", iconBg: "bg-tgu-purple", title: "提携サービス特別割引", desc: "様々なサービスの特別優待券を配布。学び家メンバーだけの限定特典。" },
             ].map((item) => (
@@ -838,10 +842,10 @@ export default function ManabiyaPage() {
 
                 <div className="flex items-baseline gap-1 mb-2">
                   <span className="text-[36px] md:text-[48px] font-black font-[var(--font-montserrat)]">
-                    ¥<CountUp end={11000} />
+                    ¥<CountUp end={10000} />
                   </span>
                 </div>
-                <p className="text-[14px] opacity-70 mb-5">/ 月（税込）</p>
+                <p className="text-[14px] opacity-70 mb-5">/ 月（税別）</p>
 
                 <span className="bg-tgu-yellow text-[#2D2D2D] font-bold py-2 px-4 rounded-full inline-block mb-6 text-[12px] shadow-sm">
                   🎉 初月無料で体験可能！
@@ -887,8 +891,8 @@ export default function ManabiyaPage() {
             <div className="hidden md:block absolute top-[44px] left-[10%] right-[10%] h-[3px] border-t-[3px] border-dotted border-tgu-pink/40 z-0" />
 
             {[
-              { num: "1", color: "bg-tgu-cyan", title: "LINE登録", desc: "公式アカウントを友達追加" },
-              { num: "2", color: "bg-tgu-pink", title: "無料登録", desc: "案内に従い会員登録" },
+              { num: "1", color: "bg-tgu-cyan", title: "LINE追加", desc: "公式アカウントを友達追加" },
+              { num: "2", color: "bg-tgu-pink", title: "会員登録", desc: "案内に従い無料登録" },
               { num: "3", color: "bg-tgu-green", title: "動画で学習", desc: "サイトで基礎をインプット" },
               { num: "4", color: "bg-tgu-yellow", title: "サークル参加", desc: "趣味の合う仲間と合流" },
               { num: "5", color: "bg-tgu-coral", title: "人生が変わる", desc: "学びと遊びのサイクル完成", highlight: true },
@@ -927,7 +931,7 @@ export default function ManabiyaPage() {
               { q: "サークルの参加費はいくらですか？", a: "サークルごとに団長が費用を設定しています。BizOwner月額会費以外の追加料金は各活動ごとに異なります。", borderColor: "hover:border-tgu-pink" },
               { q: "新しくサークルを作ってもいいですか？", a: "もちろんです！毎月1回の全体MTGでプレゼンし、参加希望者が集まれば新サークルを立ち上げられます。", borderColor: "hover:border-tgu-yellow" },
               { q: "会員サイトの動画はどんな内容ですか？", a: "副業の始め方や初心者向けビジネスセミナーを中心に提供しています。動画は随時追加され、今後は各分野のプロによる講座も増やしていく予定です。", borderColor: "hover:border-tgu-green" },
-              { q: "占いやコーチングは本当に無料ですか？", a: "はい、学び家メンバーには週1時間×月4回の個別占い＆コーチングを無償提供しています。要予約制です。", borderColor: "hover:border-tgu-purple" },
+              { q: "占いやコーチング、コンサルの内容は？", a: "はい。学び家は週1時間×月4回の占い・コーチング・コンサルを受けられる権利を付与します。", borderColor: "hover:border-tgu-purple" },
               { q: "途中で解約できますか？", a: "はい、いつでも解約可能です。違約金や引き止めは一切ありません。無料期間内に退会された場合、費用は一切かかりません。", borderColor: "hover:border-tgu-coral" },
             ].map((faq, i) => (
               <StaggerItem key={i}>
@@ -966,25 +970,29 @@ export default function ManabiyaPage() {
         <div className="absolute top-16 left-[15%] w-8 h-8 bg-white/15 rounded-full tgu-bounce" />
         <div className="absolute bottom-12 right-[20%] w-6 h-6 bg-white/10 rounded-md rotate-45 tgu-bounce-2" />
 
-        <div className="relative z-10 max-w-[700px] mx-auto px-4 md:px-6 text-center">
-          <FadeSlide>
-            <div className="flex justify-center mb-6">
-              <ManabiyaLogo size={56} />
-            </div>
+        <div className="relative z-10 max-w-[700px] mx-auto px-4 md:px-6 flex flex-col items-center text-center">
+          <FadeSlide className="w-full flex justify-center">
+            <Image
+              src="/manabiya/manabiya-logo-pink.png"
+              alt="ビジネスの学び家"
+              width={1024}
+              height={1024}
+              className="block mx-auto h-20 md:h-24 w-auto invert select-none mb-6"
+            />
           </FadeSlide>
-          <FadeSlide delay={200}>
-            <h2 className="text-[clamp(26px,5vw,52px)] font-black mb-6 text-white leading-[1.3]">
+          <FadeSlide delay={200} className="w-full">
+            <h2 className="text-[clamp(26px,5vw,52px)] font-black mb-6 text-white leading-[1.3] text-center">
               ここが、
               <br />
               あなたの居場所になる。
             </h2>
           </FadeSlide>
-          <FadeSlide delay={400}>
-            <p className="text-lg md:text-xl font-bold text-white/80 mb-8 md:mb-10">
+          <FadeSlide delay={400} className="w-full">
+            <p className="text-lg md:text-xl font-bold text-white/80 mb-8 md:mb-10 text-center">
               最高の仲間と、最高の学びを。
             </p>
           </FadeSlide>
-          <FadeSlide delay={600}>
+          <FadeSlide delay={600} className="w-full flex flex-col items-center">
             <a
               href="#"
               className="tgu-cta-pulse inline-flex items-center gap-3 bg-white text-tgu-pink font-black text-[17px] md:text-[20px] px-10 md:px-14 py-5 md:py-6 rounded-full shadow-[0_12px_32px_-8px_rgba(0,0,0,0.2)] transition-all hover:scale-105 hover:-translate-y-1"
@@ -992,7 +1000,7 @@ export default function ManabiyaPage() {
               <LineIcon className="w-7 h-7 md:w-8 md:h-8" />
               今すぐLINE登録（無料）
             </a>
-            <p className="mt-5 text-[13px] font-bold text-white/60">
+            <p className="mt-5 text-[13px] font-bold text-white/60 text-center">
               ＼ 1ヶ月無料トライアル実施中 ／
             </p>
           </FadeSlide>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 export default function ManabiyaLogo({
   size = 48,
@@ -11,16 +12,17 @@ export default function ManabiyaLogo({
   animate?: boolean;
   className?: string;
 }) {
-  const ref = useRef<SVGSVGElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(!animate);
 
   useEffect(() => {
     if (!animate) return;
-    const el = ref.current;
+    const el = wrapRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) el.classList.add("mn-logo-drawn");
+          if (e.isIntersecting) setVisible(true);
         });
       },
       { threshold: 0.3 },
@@ -29,73 +31,24 @@ export default function ManabiyaLogo({
     return () => obs.disconnect();
   }, [animate]);
 
+  const h = size;
+  const w = size;
+
   return (
-    <svg
-      ref={ref}
-      width={size}
-      height={size}
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={`${animate ? "mn-logo-svg" : ""} ${className}`}
+    <div
+      ref={wrapRef}
+      className={`relative shrink-0 overflow-hidden transition-opacity duration-700 ${visible ? "opacity-100" : "opacity-0"} ${className}`}
+      style={{ width: w, height: h }}
     >
-      {/* House shape */}
-      <path
-        className="mn-logo-stroke"
-        d="M32 6L6 28V58H58V28L32 6Z"
-        stroke="#FF7733"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
+      <Image
+        src="/manabiya/manabiya-logo-pink.png"
+        alt="ビジネスの学び家"
+        width={1024}
+        height={1024}
+        className="h-full w-full object-contain object-center mx-auto"
+        sizes={`${w}px`}
+        priority={!animate}
       />
-      {/* Roof accent */}
-      <path
-        className="mn-logo-stroke"
-        d="M2 28L32 4L62 28"
-        stroke="#FF7733"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-      {/* Door */}
-      <path
-        className="mn-logo-stroke"
-        d="M24 58V40H40V58"
-        stroke="#FF7733"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-      {/* Book / learning symbol inside */}
-      <path
-        className="mn-logo-stroke"
-        d="M26 22L32 19L38 22V34L32 31L26 34V22Z"
-        stroke="#FF7733"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-      {/* Sparkle top-right */}
-      <circle
-        className="mn-logo-fill"
-        cx="50"
-        cy="14"
-        r="2"
-        fill="#FDF7A1"
-        opacity="0"
-      />
-      <circle
-        className="mn-logo-fill"
-        cx="54"
-        cy="8"
-        r="1.5"
-        fill="#A0E8D3"
-        opacity="0"
-      />
-    </svg>
+    </div>
   );
 }

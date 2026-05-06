@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeUp from "@/components/FadeUp";
@@ -16,23 +15,10 @@ export default function Home() {
         className="relative h-screen flex items-center justify-center overflow-hidden"
       >
         <div
-          className="absolute inset-0 bg-cover bg-center fv-kenburns"
+          className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: "url('/ファーストビュー画像.png')",
           }}
-        />
-        {/* Ambient orbs */}
-        <div
-          className="absolute -top-40 -left-32 w-[520px] h-[520px] rounded-full blur-3xl pointer-events-none fv-orb"
-          style={{ background: "radial-gradient(circle, rgba(120,220,255,0.45) 0%, rgba(120,220,255,0) 70%)" }}
-        />
-        <div
-          className="absolute -bottom-48 -right-40 w-[620px] h-[620px] rounded-full blur-3xl pointer-events-none fv-orb-2"
-          style={{ background: "radial-gradient(circle, rgba(0,180,210,0.4) 0%, rgba(0,180,210,0) 70%)" }}
-        />
-        <div
-          className="absolute top-1/3 right-1/4 w-[360px] h-[360px] rounded-full blur-3xl pointer-events-none fv-orb-3"
-          style={{ background: "radial-gradient(circle, rgba(160,255,240,0.3) 0%, rgba(160,255,240,0) 70%)" }}
         />
         <div
           className="absolute inset-0"
@@ -41,39 +27,30 @@ export default function Home() {
               "linear-gradient(180deg,rgba(0,43,55,0.72) 0%,rgba(0,103,133,0.55) 100%)",
           }}
         />
-        {/* Scan line */}
-        <div
-          className="absolute inset-x-0 h-px pointer-events-none fv-scan"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(120,220,255,0.7) 50%, transparent 100%)",
-          }}
-        />
-        <div className="relative z-10 text-center px-6 max-w-[900px] -mt-[8vh]">
+        <div className="relative z-10 text-center px-6 max-w-[900px]">
           <h1
-            className="font-semibold text-white mb-8 fv-title-anim"
+            className="font-[Josefin_Sans] font-bold text-white mb-8"
             style={{
-              fontFamily: "var(--font-orbitron), sans-serif",
               fontSize: "clamp(3rem,9vw,7.2rem)",
               lineHeight: 1.07,
-              letterSpacing: "0.18em",
+              letterSpacing: "-0.01em",
             }}
           >
-            WOWNER
+            BizOwner
           </h1>
           <p
-            className="font-[Noto_Sans_JP] text-white text-lg md:text-[22px] font-medium mb-3 fv-fade"
-            style={{ letterSpacing: "0.08em", animationDelay: "0.4s" }}
+            className="font-[Noto_Sans_JP] text-white text-lg md:text-[22px] font-medium mb-3"
+            style={{ letterSpacing: "0.08em" }}
           >
             ビジネスを、より戦略的に、より本質的に
           </p>
           <p
-            className="text-white/60 text-sm md:text-base mb-12 fv-fade"
-            style={{ letterSpacing: "-0.2px", animationDelay: "0.65s" }}
+            className="text-white/60 text-sm md:text-base mb-12"
+            style={{ letterSpacing: "-0.2px" }}
           >
             営業支援・コミュニティ構築・経営支援で、事業成長を加速します
           </p>
-          <div className="flex flex-wrap gap-5 justify-center fv-fade" style={{ animationDelay: "0.9s" }}>
+          <div className="flex flex-wrap gap-5 justify-center">
             <Link href="/services" className="btn-ghost white">
               VIEW SERVICE
               <span className="arrow"></span>
@@ -121,7 +98,7 @@ export default function Home() {
                   className="font-[Noto_Sans_JP] text-text-main text-[14px] leading-[2.1] mb-5"
                   style={{ letterSpacing: "-0.2px" }}
                 >
-                  株式会社WOWNERは、営業代行・コミュニティ運営・経営コンサルティングの3つの柱で企業の成長を多角的に支援するビジネスパートナーです。
+                  株式会社BizOwnerは、営業代行・コミュニティ運営・経営コンサルティングの3つの柱で企業の成長を多角的に支援するビジネスパートナーです。
                 </p>
                 <p
                   className="font-[Noto_Sans_JP] text-text-main text-[14px] leading-[2.1]"
@@ -334,104 +311,69 @@ export default function Home() {
           </FadeUp>
 
           <FadeUp>
-            <div className="flex flex-col gap-4">
-              {[
-                {
-                  href: "/bizowner",
-                  logo: "/lp/bizowner-logo.png",
-                  alt: "BizOwner ロゴ",
-                  eyebrow: "BUSINESS PROGRAM",
-                  badge: "CICブラック対応",
-                  title: "BizOwner",
-                  titleFont: "font-[Josefin_Sans]",
-                  desc: "副業感覚で会社経営。知識ゼロ・リスク最小限で始められる権利収入の仕組みを提供します。",
-                  tags: ["月額11,000円〜", "知識不要", "権利収入", "3ステップ"],
-                  bg: "linear-gradient(120deg,#002b3a 0%,#005f7e 55%,#0088a8 100%)",
-                },
-                {
-                  href: "/sarudemo",
-                  logo: "/lp/sarudemo-logo.png",
-                  alt: "SARUDEMO ロゴ",
-                  eyebrow: "FAST PASS",
-                  badge: "本格起業",
-                  title: "SARUDEMO",
-                  titleFont: "font-[Josefin_Sans]",
-                  desc: "最短最速で年商1億円を目指す起業ファストパス。プロチームの伴走で1年以内に社長へ。",
-                  tags: ["年商1億円", "1年で社長", "プロチーム支援"],
-                  bg: "linear-gradient(120deg,#003a4a 0%,#006e87 60%,#00a3b8 100%)",
-                },
-                {
-                  href: "/manabiya",
-                  logo: "/manabiya/manabiya-logo-pink.png",
-                  alt: "ビジネスの学び家 ロゴ",
-                  eyebrow: "COMMUNITY",
-                  badge: "総合コミュニティ",
-                  title: "ビジネスの学び家",
-                  titleFont: "font-[Noto_Sans_JP]",
-                  desc: "副業・起業・エンタメを融合した総合コミュニティ。仲間とともに学び、成長する場を提供します。",
-                  tags: ["副業×起業×エンタメ", "学び合い", "イベント"],
-                  bg: "linear-gradient(120deg,#003d52 0%,#0088a8 60%,#0fb1c4 100%)",
-                },
-              ].map((s) => (
-                <Link
-                  key={s.href}
-                  href={s.href}
-                  className="nav-card group relative overflow-hidden flex flex-col md:flex-row md:items-center p-7 md:p-10 min-h-[200px] md:min-h-[220px] gap-6 md:gap-10"
-                  style={{ background: s.bg }}
+            <div className="grid md:grid-cols-12 gap-4">
+              <Link
+                href="/bizowner"
+                className="nav-card md:col-span-7 flex flex-col justify-end p-7 md:p-10 min-h-[200px] md:min-h-[300px]"
+                style={{
+                  background:
+                    "linear-gradient(135deg,#003d52 0%,#006785 60%,#0088a8 100%)",
+                }}
+              >
+                <p className="font-[Josefin_Sans] text-[11px] text-white/40 tracking-[0.15em] mb-3">
+                  BUSINESS PROGRAM
+                </p>
+                <h3
+                  className="font-[Josefin_Sans] font-bold text-[24px] md:text-[32px] text-white mb-2"
+                  style={{ letterSpacing: "0.02em" }}
                 >
-                  <div className="absolute -right-10 -bottom-10 w-[260px] h-[260px] opacity-[0.07] pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.12]">
-                    <Image
-                      src={s.logo}
-                      alt=""
-                      fill
-                      className="object-contain brightness-0 invert"
-                    />
-                  </div>
-                  <div className="relative z-10 shrink-0">
-                    <div className="w-[80px] h-[80px] md:w-[110px] md:h-[110px] relative">
-                      <Image
-                        src={s.logo}
-                        alt={s.alt}
-                        fill
-                        className="object-contain brightness-0 invert"
-                      />
-                    </div>
-                  </div>
-                  <div className="relative z-10 flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <p className="font-[Josefin_Sans] text-[11px] text-white/55 tracking-[0.2em]">
-                        {s.eyebrow}
-                      </p>
-                      <span className="text-white/65 text-[10px] tracking-[0.1em] border border-white/20 px-2.5 py-[3px] rounded-full">
-                        {s.badge}
-                      </span>
-                    </div>
-                    <h3
-                      className={`${s.titleFont} font-bold text-[22px] md:text-[28px] text-white mb-3`}
-                      style={{ letterSpacing: "0.02em" }}
-                    >
-                      {s.title}
-                    </h3>
-                    <p className="text-white/65 text-[13px] leading-[1.95] mb-4">
-                      {s.desc}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {s.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-white/75 text-[11px] px-2.5 py-[5px] rounded-full border border-white/15 bg-white/5"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="relative z-10 hidden md:flex items-center gap-2 text-white/60 text-[11px] tracking-[0.2em] font-[Josefin_Sans] transition-colors group-hover:text-white shrink-0">
-                    VIEW LP
-                    <span className="inline-block w-7 h-px bg-white/40 transition-all group-hover:w-12 group-hover:bg-white"></span>
-                  </div>
-                </Link>
-              ))}
+                  BizOwner
+                </h3>
+                <p className="text-white/50 text-[13px] leading-[1.9] max-w-sm">
+                  副業感覚で会社経営。知識ゼロ・リスク最小限で始められる権利収入の仕組みを提供します。
+                </p>
+              </Link>
+              <Link
+                href="/sarudemo"
+                className="nav-card md:col-span-5 flex flex-col justify-end p-7 md:p-10 min-h-[200px] md:min-h-[300px]"
+                style={{
+                  background:
+                    "linear-gradient(135deg,#004b5e 0%,#007a96 100%)",
+                }}
+              >
+                <p className="font-[Josefin_Sans] text-[11px] text-white/40 tracking-[0.15em] mb-3">
+                  FAST PASS TO BUSINESS
+                </p>
+                <h3
+                  className="font-[Josefin_Sans] font-bold text-[24px] md:text-[32px] text-white mb-2"
+                  style={{ letterSpacing: "0.02em" }}
+                >
+                  SARUDEMO
+                </h3>
+                <p className="text-white/50 text-[13px] leading-[1.9]">
+                  最短最速で年商1億円を目指す
+                  <br />
+                  起業ファストパス。
+                </p>
+              </Link>
+              <Link
+                href="/manabiya"
+                className="nav-card md:col-span-8 md:col-start-3 flex flex-col justify-end p-7 md:p-10 min-h-[180px] md:min-h-[240px]"
+                style={{
+                  background:
+                    "linear-gradient(135deg,#005064 0%,#008ba3 100%)",
+                }}
+              >
+                <p className="font-[Josefin_Sans] text-[11px] text-white/40 tracking-[0.15em] mb-3">
+                  COMMUNITY
+                </p>
+                <h3 className="font-[Noto_Sans_JP] font-bold text-[22px] md:text-[28px] text-white mb-2">
+                  ビジネスの学び家
+                </h3>
+                <p className="text-white/50 text-[13px] leading-[1.9]">
+                  副業・起業・エンタメを融合した総合コミュニティ。仲間とともに学び、成長する場を提供します。
+                </p>
+              </Link>
             </div>
           </FadeUp>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Header({
@@ -13,35 +14,42 @@ export default function Header({
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-[200] bg-black/82 backdrop-blur-[20px] backdrop-saturate-[180%]">
-        <div className="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-[48px]">
-          <Link
-            href="/"
-            className="font-[Josefin_Sans] font-bold text-[15px] tracking-[0.08em] text-white"
-          >
-            Bestimulate
+        <div className="max-w-[1100px] mx-auto pl-2 pr-4 md:px-6 flex items-center justify-between h-[56px]">
+          <Link href="/" className="flex items-center gap-2" aria-label="株式会社WOWNER">
+            <Image
+              src="/wowner-logo-white.png"
+              alt="WOWNER"
+              width={600}
+              height={600}
+              priority
+              className="h-[82px] w-auto select-none translate-x-[-4px] translate-y-[2px]"
+            />
+            <span className="font-[Noto_Serif_JP] font-medium text-white text-[16px] md:text-[20px] tracking-[0.08em] md:tracking-[0.12em] whitespace-nowrap -ml-3 md:ml-0">
+              株式会社WOWNER
+            </span>
           </Link>
           <nav className="hidden md:flex items-center gap-1">
             <Link
               href="/#home"
-              className="text-white/82 text-[13px] px-3 leading-[48px] tracking-[-0.08px] transition-colors hover:text-white"
+              className="text-white/82 text-[13px] px-3 leading-[56px] tracking-[-0.08px] transition-colors hover:text-white"
             >
               ホーム
             </Link>
             <Link
               href="/#about"
-              className="text-white/82 text-[13px] px-3 leading-[48px] tracking-[-0.08px] transition-colors hover:text-white"
+              className="text-white/82 text-[13px] px-3 leading-[56px] tracking-[-0.08px] transition-colors hover:text-white"
             >
               私たちについて
             </Link>
             <Link
               href="/services"
-              className={`text-[13px] px-3 leading-[48px] tracking-[-0.08px] transition-colors hover:text-white ${active === "service" ? "text-white" : "text-white/82"}`}
+              className={`text-[13px] px-3 leading-[56px] tracking-[-0.08px] transition-colors hover:text-white ${active === "service" ? "text-white" : "text-white/82"}`}
             >
               サービス
             </Link>
             <Link
               href="/#contact"
-              className="text-white/82 text-[13px] px-3 leading-[48px] tracking-[-0.08px] transition-colors hover:text-white"
+              className="text-white/82 text-[13px] px-3 leading-[56px] tracking-[-0.08px] transition-colors hover:text-white"
             >
               お問い合わせ
             </Link>
@@ -52,7 +60,7 @@ export default function Header({
             onClick={() => setMobileOpen(true)}
           >
             <svg
-              className="w-5 h-5"
+              className="w-9 h-9"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -60,7 +68,7 @@ export default function Header({
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="1.5"
+                strokeWidth="2"
                 d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
@@ -90,9 +98,13 @@ export default function Header({
             />
           </svg>
         </button>
-        <p className="absolute top-[15px] left-6 font-[Josefin_Sans] font-bold text-[15px] tracking-[0.08em] text-white/50">
-          Bestimulate
-        </p>
+        <Image
+          src="/wowner-logo-white.png"
+          alt="WOWNER"
+          width={600}
+          height={600}
+          className="absolute top-[8px] left-6 h-[75px] w-auto opacity-70"
+        />
         <nav className="flex flex-col items-center text-center">
           {[
             { href: "/#home", en: "HOME", ja: "ホーム" },

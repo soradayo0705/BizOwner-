@@ -74,6 +74,21 @@ export default function BizOwnerPage() {
     <div className="font-sans text-text-body bg-white overflow-x-hidden">
       {/* ===== HERO ===== */}
       <section className="relative min-h-[100vh] flex flex-col justify-center overflow-hidden bg-white">
+        {/* Logo (top-left) */}
+        <Link
+          href="#"
+          aria-label="BizOwner"
+          className="absolute top-4 left-4 md:top-6 md:left-8 z-30 inline-flex items-center"
+        >
+          <Image
+            src="/lp/bizowner-logo.png"
+            alt="BizOwner"
+            width={400}
+            height={400}
+            priority
+            className="h-12 md:h-14 w-auto select-none"
+          />
+        </Link>
         {/* Geometric pattern overlay */}
         <div className="absolute inset-0 lp-dots-pattern" />
         {/* Floating blobs */}
@@ -251,7 +266,7 @@ export default function BizOwnerPage() {
               </p>
               <div className="w-16 h-[3px] bg-gradient-to-r from-lp-accent to-cta my-6" />
               <p className="text-[14px] leading-[2] text-text-light">
-                月額11,000円という低コストで開始でき、売上からの天引き払いにも対応。CICブラックの方も安心して参加いただけます。
+                月額11,000円という低コストで始められ、CICブラックの方でも安心して参加いただけます。本部が伴走するので、初めてでも迷わず一歩を踏み出せます。
               </p>
             </FadeSlide>
           </div>
@@ -272,7 +287,7 @@ export default function BizOwnerPage() {
               {
                 icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />,
                 title: "月額11,000円から",
-                desc: "低コストで開始可能。\n売上からの天引き払いもOK。",
+                desc: "低コストで気軽にスタート。\n初月無料・解約自由で安心。",
                 accent: "bg-orange-50",
               },
             ].map((item) => (
@@ -313,7 +328,7 @@ export default function BizOwnerPage() {
             {[
               { step: "01", title: "個人で案件参加", desc: "月額11,000円で会員登録。\n個人として案件に参加し、\nすぐに副収入をスタート。", price: "月額11,000円〜", accent: false },
               { step: "02", title: "法人で追加収益", desc: "法人を作成し、法人案件にも参加。\n収益チャネルが倍増し、\n権利収入が加速。", price: "+100,000円で法人作成", accent: false },
-              { step: "03", title: "FC化で独立", desc: "フランチャイズオーナーとして\n完全独立。自分のチームを持ち、\n本格的なビジネスオーナーへ。", price: "FC加盟 200万円〜", accent: true },
+              { step: "03", title: "FC化で独立", desc: "フランチャイズオーナーとして\n完全独立。自分のチームを持ち、\n本格的なビジネスオーナーへ。", price: "FC加盟 200万円", accent: true },
             ].map((s, i) => (
               <StaggerItem key={s.step}>
                 <TiltCard intensity={5} className="h-full">
@@ -387,48 +402,39 @@ export default function BizOwnerPage() {
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-lp-accent/10 rounded-full blur-[100px] -translate-y-1/3 translate-x-1/4" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cta/10 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4" />
-        <div className="relative z-10 max-w-[1100px] mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
-            <div>
-              <FadeSlide direction="left">
-                <div className="lp-section-counter text-white/30 mb-6">
-                  <span className="font-[Inter] font-bold text-[12px] tracking-[0.3em]">COMMUNITY</span>
-                </div>
-                <h2 className="font-bold text-white text-[26px] md:text-[40px] leading-[1.4] mb-6">
-                  ただの副業じゃ終わらない。
-                  <br />
-                  <span className="text-lp-accent">&ldquo;ビジネスの学び家&rdquo;</span>
-                  <br className="md:hidden" />
-                  という、青春。
-                </h2>
-                <p className="text-white/60 text-[15px] leading-[2] mb-10 max-w-lg">
-                  BizOwner会員は「ビジネスの学び家」コミュニティに参加可能。
-                  ビジネスだけじゃない、仲間と楽しむ場がここにあります。
-                </p>
-              </FadeSlide>
-              <StaggerChildren staggerMs={120} className="grid grid-cols-2 gap-4">
-                {[
-                  { emoji: "🎬", title: "会員サイト", desc: "動画で学べる" },
-                  { emoji: "🎉", title: "楽しい行事", desc: "BBQ・旅行など" },
-                  { emoji: "⚽", title: "チーム所属", desc: "仲間と切磋琢磨" },
-                  { emoji: "🎁", title: "福利厚生", desc: "会員限定特典" },
-                ].map((c) => (
-                  <StaggerItem key={c.title}>
-                    <div className="bg-white/10 backdrop-blur-sm p-5 rounded-xl border border-white/20 hover:bg-white/20 transition-all group">
-                      <span className="text-2xl block mb-2">{c.emoji}</span>
-                      <span className="font-bold text-white text-[15px] block">{c.title}</span>
-                      <span className="text-white/40 text-[11px]">{c.desc}</span>
-                    </div>
-                  </StaggerItem>
-                ))}
-              </StaggerChildren>
+        <div className="max-w-[1100px] mx-auto px-6 relative z-10 text-center">
+          <FadeSlide direction="up">
+            <div className="lp-section-counter justify-center text-white/30 mb-6">
+              <span className="font-[Inter] font-bold text-[12px] tracking-[0.3em]">COMMUNITY</span>
             </div>
-            <FadeSlide direction="right">
-              <ImageReveal direction="up" delay={200} className="rounded-2xl overflow-hidden h-[260px] md:h-[400px] shadow-2xl">
-                <Image src="/lp/bizowner-community.png" alt="コミュニティ風景" width={1536} height={1024} className="w-full h-full object-cover" />
-              </ImageReveal>
-            </FadeSlide>
-          </div>
+            <h2 className="font-bold text-white text-[26px] md:text-[40px] leading-[1.4] mb-6">
+              ただの副業じゃ終わらない。
+              <br />
+              <span className="text-lp-accent">&ldquo;ビジネスの学び家&rdquo;</span>
+              <br className="md:hidden" />
+              という、青春。
+            </h2>
+            <p className="text-white/60 text-[15px] leading-[2] max-w-lg mx-auto">
+              BizOwner会員は「ビジネスの学び家」コミュニティに参加可能。
+              ビジネスだけじゃない、仲間と楽しむ場がここにあります。
+            </p>
+          </FadeSlide>
+          <StaggerChildren staggerMs={120} className="mt-5 md:mt-6 mx-auto max-w-[820px] grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 auto-rows-fr">
+            {[
+              { emoji: "🎬", title: "会員サイト", desc: "動画で学べる" },
+              { emoji: "🎉", title: "楽しい行事", desc: "BBQ・旅行など" },
+              { emoji: "⚽", title: "チーム所属", desc: "仲間と切磋琢磨" },
+              { emoji: "🎁", title: "福利厚生", desc: "会員限定特典" },
+            ].map((c) => (
+              <StaggerItem key={c.title} className="h-full">
+                <div className="bg-white/10 backdrop-blur-sm p-5 rounded-xl border border-white/20 hover:bg-white/20 transition-all group h-full flex flex-col items-center text-center justify-center">
+                  <span className="text-2xl block mb-2 leading-none">{c.emoji}</span>
+                  <span className="font-bold text-white text-[15px] block leading-tight">{c.title}</span>
+                  <span className="text-white/40 text-[11px] mt-1">{c.desc}</span>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
         </div>
       </section>
 
@@ -549,7 +555,7 @@ export default function BizOwnerPage() {
             {[
               { label: "ご利用料金", price: 11000, unit: "円", sub: "/月（税込）", highlight: true },
               { label: "法人作成費用", price: 100000, unit: "円", sub: "一括" },
-              { label: "FC加盟料金", price: 200, unit: "万円〜", sub: "一括" },
+              { label: "FC加盟料金", price: 200, unit: "万円", sub: "一括" },
               { label: "サークル等費用", price: 0, unit: "", sub: "各サークルによる", isText: true },
             ].map((p) => (
               <StaggerItem key={p.label}>
@@ -631,10 +637,10 @@ export default function BizOwnerPage() {
           </FadeSlide>
           <StaggerChildren staggerMs={100} className="space-y-4 lp-accordion">
             {[
-              { q: "作った法人は自由に使って良いですか？", a: "はい、作成した法人はあなたの会社です。本部案件以外にも自由にご活用いただけます。" },
+              { q: "作った法人は自由に使って良いですか？", a: "作成した法人は、BizOwnerが許可した案件にてご利用いただけます。基本的には本部案件にご活用ください。" },
               { q: "新しくサークルを作ってもいいですか？", a: "もちろんです。学び家ではメンバー発信のサークルを歓迎しています。" },
-              { q: "案件やサービスの参加方法は？", a: "会員サイトから案件一覧を確認し、興味のあるものに申し込むだけです。" },
-              { q: "個別の質疑応答はどこでできますか？", a: "公式LINEまたは会員専用チャットで、いつでもご質問いただけます。" },
+              { q: "案件やサービスの参加方法は？", a: "会員サイトから案件一覧をご確認いただき、興味のあるものは解説動画をご覧のうえ実施してください。" },
+              { q: "個別の質疑応答はどこでできますか？", a: "週1回、個別コンサルを受けられる権限をご用意しています。そちらで個別のご質問にお答えしますので、ぜひご活用ください。" },
               { q: "本当に知識ゼロでも大丈夫ですか？", a: "はい。案件の実行方法は会員サイトの動画で全て学べます。本部のサポートもあるのでご安心ください。" },
               { q: "途中で解約できますか？", a: "はい、いつでも解約可能です。違約金や引き止めは一切ありません。" },
             ].map((faq, i) => (
@@ -697,7 +703,6 @@ export default function BizOwnerPage() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
               <p className="font-[Montserrat] font-bold text-white/80 text-[18px] tracking-tight">BizOwner<span className="text-lp-accent">.</span></p>
-              <p className="text-white/40 text-[11px] mt-1">by Bestimulate</p>
             </div>
             <div className="flex gap-6 text-[12px] text-white/40 font-medium">
               <Link href="/" className="hover:text-white/70 transition-colors">ホーム</Link>
@@ -705,7 +710,7 @@ export default function BizOwnerPage() {
               <Link href="/#contact" className="hover:text-white/70 transition-colors">お問い合わせ</Link>
             </div>
           </div>
-          <p className="text-white/20 text-[11px] text-center mt-8 font-[Inter]">&copy; 2026 Bestimulate. All Rights Reserved.</p>
+          <p className="text-white/20 text-[11px] text-center mt-8 font-[Inter]">&copy; 2026 BizOwner. All Rights Reserved.</p>
         </div>
       </footer>
     </div>

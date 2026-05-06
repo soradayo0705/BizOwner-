@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeUp from "@/components/FadeUp";
@@ -170,101 +169,66 @@ export default function ServicesPage() {
           </FadeUp>
           <FadeUp>
             <div className="grid md:grid-cols-3 gap-5">
-              {[
-                {
-                  href: "/bizowner",
-                  logo: "/lp/bizowner-logo.png",
-                  alt: "BizOwner ロゴ",
-                  eyebrow: "BUSINESS PROGRAM",
-                  badge: "CICブラック対応",
-                  title: "BizOwner",
-                  titleFont: "font-[Josefin_Sans]",
-                  desc: "副業感覚で会社経営。知識ゼロ・リスク最小限で始められる権利収入の仕組み。",
-                  tags: ["月額11,000円〜", "知識不要", "権利収入"],
-                  bg: "linear-gradient(160deg,#002b3a 0%,#005f7e 55%,#0088a8 100%)",
-                },
-                {
-                  href: "/sarudemo",
-                  logo: "/lp/sarudemo-logo.png",
-                  alt: "SARUDEMO ロゴ",
-                  eyebrow: "FAST PASS",
-                  badge: "本格起業",
-                  title: "SARUDEMO",
-                  titleFont: "font-[Josefin_Sans]",
-                  desc: "最短最速で年商1億円を目指す起業ファストパス。1年以内に社長へ。",
-                  tags: ["年商1億円", "1年で社長", "プロチーム支援"],
-                  bg: "linear-gradient(160deg,#003a4a 0%,#006e87 60%,#00a3b8 100%)",
-                },
-                {
-                  href: "/manabiya",
-                  logo: "/manabiya/manabiya-logo-pink.png",
-                  alt: "ビジネスの学び家 ロゴ",
-                  eyebrow: "COMMUNITY",
-                  badge: "総合コミュニティ",
-                  title: "ビジネスの学び家",
-                  titleFont: "font-[Noto_Sans_JP]",
-                  desc: "副業・起業・エンタメを融合した総合コミュニティ。仲間と学び成長する場。",
-                  tags: ["副業×起業×エンタメ", "学び合い", "イベント"],
-                  bg: "linear-gradient(160deg,#003d52 0%,#0088a8 60%,#0fb1c4 100%)",
-                },
-              ].map((s) => (
-                <Link
-                  key={s.href}
-                  href={s.href}
-                  className="nav-card group relative overflow-hidden flex flex-col p-7 md:p-8 min-h-[380px] md:min-h-[440px]"
-                  style={{ background: s.bg }}
+              <Link
+                href="/bizowner"
+                className="nav-card flex flex-col justify-end p-7 md:p-8 min-h-[200px] md:min-h-[260px]"
+                style={{
+                  background:
+                    "linear-gradient(135deg,#003d52 0%,#006785 100%)",
+                }}
+              >
+                <p className="font-[Josefin_Sans] text-[11px] text-white/40 tracking-[0.15em] mb-2">
+                  BUSINESS PROGRAM
+                </p>
+                <h3
+                  className="font-[Josefin_Sans] font-bold text-[22px] md:text-[24px] text-white mb-2"
+                  style={{ letterSpacing: "0.02em" }}
                 >
-                  <div className="absolute -right-12 -bottom-12 w-[240px] h-[240px] opacity-[0.07] pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.12]">
-                    <Image
-                      src={s.logo}
-                      alt=""
-                      fill
-                      className="object-contain brightness-0 invert"
-                    />
-                  </div>
-                  <div className="relative z-10 flex flex-col h-full">
-                    <div className="flex items-center justify-between mb-6">
-                      <p className="font-[Josefin_Sans] text-[11px] text-white/55 tracking-[0.2em]">
-                        {s.eyebrow}
-                      </p>
-                      <span className="text-white/65 text-[10px] tracking-[0.1em] border border-white/20 px-2.5 py-[3px] rounded-full">
-                        {s.badge}
-                      </span>
-                    </div>
-                    <div className="w-[72px] h-[72px] md:w-[88px] md:h-[88px] relative mb-5">
-                      <Image
-                        src={s.logo}
-                        alt={s.alt}
-                        fill
-                        className="object-contain brightness-0 invert"
-                      />
-                    </div>
-                    <h3
-                      className={`${s.titleFont} font-bold text-[22px] md:text-[26px] text-white mb-3 leading-tight`}
-                      style={{ letterSpacing: "0.02em" }}
-                    >
-                      {s.title}
-                    </h3>
-                    <p className="text-white/65 text-[13px] leading-[1.95] mb-5">
-                      {s.desc}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-5">
-                      {s.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-white/75 text-[11px] px-2.5 py-[5px] rounded-full border border-white/15 bg-white/5"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex items-center gap-2 mt-auto text-white/60 text-[11px] tracking-[0.2em] font-[Josefin_Sans] transition-colors group-hover:text-white">
-                      VIEW LP
-                      <span className="inline-block w-7 h-px bg-white/40 transition-all group-hover:w-12 group-hover:bg-white"></span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                  BizOwner
+                </h3>
+                <p className="text-white/45 text-[13px] leading-[1.8]">
+                  副業感覚で会社経営。権利収入を実現するビジネスプログラム。
+                </p>
+              </Link>
+              <Link
+                href="/sarudemo"
+                className="nav-card flex flex-col justify-end p-7 md:p-8 min-h-[200px] md:min-h-[260px]"
+                style={{
+                  background:
+                    "linear-gradient(135deg,#004b5e 0%,#007a96 100%)",
+                }}
+              >
+                <p className="font-[Josefin_Sans] text-[11px] text-white/40 tracking-[0.15em] mb-2">
+                  FAST PASS TO BUSINESS
+                </p>
+                <h3
+                  className="font-[Josefin_Sans] font-bold text-[22px] md:text-[24px] text-white mb-2"
+                  style={{ letterSpacing: "0.02em" }}
+                >
+                  SARUDEMO
+                </h3>
+                <p className="text-white/45 text-[13px] leading-[1.8]">
+                  猿でも出来る起業。最短最速の起業ファストパス。
+                </p>
+              </Link>
+              <Link
+                href="/manabiya"
+                className="nav-card flex flex-col justify-end p-7 md:p-8 min-h-[200px] md:min-h-[260px]"
+                style={{
+                  background:
+                    "linear-gradient(135deg,#005064 0%,#008ba3 100%)",
+                }}
+              >
+                <p className="font-[Josefin_Sans] text-[11px] text-white/40 tracking-[0.15em] mb-2">
+                  COMMUNITY
+                </p>
+                <h3 className="font-[Noto_Sans_JP] font-bold text-[20px] md:text-[22px] text-white mb-2">
+                  ビジネスの学び家
+                </h3>
+                <p className="text-white/45 text-[13px] leading-[1.8]">
+                  副業・起業・エンタメを融合した総合コミュニティ。
+                </p>
+              </Link>
             </div>
           </FadeUp>
         </div>

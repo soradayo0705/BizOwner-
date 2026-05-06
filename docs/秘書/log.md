@@ -9,6 +9,155 @@
 
 ---
 
+## 2026-05-06（水）
+
+### 🎯 UTAGE構成変更：SARUDEMOのみCV先LINEを別アカウント化
+- 従来「3LP→共通LINE1本」だった設計を「BizOwner+学び家=LINE① / SARUDEMO=LINE② 専用」の2LINE分岐型へ変更
+- 理由：SARUDEMO契約金150万円という高単価のため、個別対応比率を上げてCV率向上＆途中離脱削減を狙う
+- 反映ファイル：
+  - `docs/utage/設計図.md` v3：1章シンプル図／2章統合設計図／4-2章流入タグ／7-2章Stage1①ロードマップ／改訂履歴を更新
+  - `docs/utage/ファネル設計v1.md` v2：2章ファネル全体図を3LP+2LINE分岐型に書き換え（旧図は参考として残置）
+- メンバーサイト・決済・タグマスター・アフィリ機能はLINE①②共通基盤のまま（出口は1系統）
+- Stage 1所要日数：2日 → 2.5日（LINE連携が2チャネル分必要なため）
+
+### ✅ 確定した決定事項
+- BizOwner LP / 学び家LP のCTA → LINE①（共通）
+- SARUDEMO LP のCTA → LINE②（SARUDEMO専用・個別対応寄り）
+- 両LINEの会員は同じメンバーサイトに合流（タグで表示制御）
+- LINE②は「短尺シナリオ＋早期面談誘導」運用とし、運営チームの個別対応比率を高める
+
+### 📌 次回再開ポイント
+- ユーザーがUTAGEセットアップ手順の理解を擦り合わせたい段階。Day1（UTAGE慣らし＋タグ命名確定）から着手予定
+- LINE公式アカウント②（SARUDEMO専用）の開設状況・チャネルアクセストークンをクライアントに確認する必要あり
+- このやり方で不便が出た場合は再協議して別施策を検討する方針
+
+---
+
+## 2026-05-05（火）
+
+### 🎯 BizOwner LP HEROロゴ復元（SARUDEMOと同サイズ・同位置）
+- `docs/reference/BizOwnerロゴ背景透過.png` を `public/lp/bizowner-logo.png` に再コピー
+- BizOwner LP（`src/app/bizowner/page.tsx`）HERO左上にロゴブロックを追加。`top-4 left-4 md:top-6 md:left-8` / `h-12 md:h-14` / `width=400 height=400` と SARUDEMO LP と完全に同条件
+- 他LP・HPのロゴ設定は変更なし
+
+### 🎯 ビジネスの学び家 最終CTA中央寄せ修正 / BizOwner LP HEROロゴのみ削除
+- ビジネスの学び家 LP（`src/app/manabiya/page.tsx`）最終CTAのコンテンツコンテナを `flex flex-col items-center text-center` に変更し、PC/スマホとも要素中央配置を確実化
+- ロゴは `<ManabiyaLogo>`（fixed-width 88pxボックス）から直接 `<Image>` + `mx-auto block invert` の `h-20 md:h-24` に置き換え。`object-contain` の固定正方形ボックスに起因する視覚的なズレを排除
+- 各 `<FadeSlide>` に `className="w-full"` を付与し、初期 `translate` で内部要素が左寄りに見える可能性を回避（h2 / p / CTA の各ブロックを画面幅で揃えてから text-center）
+- BizOwner LP（`src/app/bizowner/page.tsx`）：HERO左上の `/lp/bizowner-logo.png` ロゴブロックを削除（SARUDEMO LP・HP Header・ビジネスの学び家 LPはロゴそのまま）
+- `npx tsc --noEmit` 通過
+
+### 🎯 ロゴ拡大・テキスト整理を元に戻す
+- BizOwner LP HERO左上：`h-20 md:h-24` → `h-12 md:h-14`、位置 `top-3 md:top-4 left-3 md:left-6` → `top-4 left-4 md:top-6 md:left-8` に復元
+- SARUDEMO LP HERO左上：同上
+- ビジネスの学び家 LP ヘッダー：`<ManabiyaLogo size={56}>` → `size={44}` に戻し、削除した `<p>ビジネスの学び家</p>` テキスト＋ラッパー `<div className="leading-tight text-left">` を復元（ロゴ＋ `BUSINESS LEARNING COMMUNITY` ＋「ビジネスの学び家」の元の3要素構成に戻す）
+- 最終CTAの `<ManabiyaLogo size={88} className="invert">` と HP Header のロゴ設定は変更なし
+
+### 🎯 全ロゴを背景透過版で再設置＋配置調整
+- `docs/reference/BizOwnerロゴ背景透過.png` → `public/bizowner-logo.png`（HP）／`public/lp/bizowner-logo.png`（BizOwner LP）に再コピー
+- `docs/reference/SARUDEMOロゴ背景透過.png` → `public/lp/sarudemo-logo.png` に再コピー
+- `docs/reference/ビジネスの学び家ロゴ背景透過.png` → `public/manabiya/manabiya-logo-pink.png` に再コピー
+- HP Header（`src/components/Header.tsx`）：黒一色透過ロゴをダーク背景上で白く見せるため `filter: invert(1) brightness(1.05)` を適用。デスクトップヘッダーは `h-[48px]`（56pxヘッダー内）、モバイルメニューは `h-[44px]` / `top-[8px] left-6` / `opacity-70`
+- BizOwner LP（`src/app/bizowner/page.tsx`）HERO左上：`h-20 md:h-24`（旧 `h-12 md:h-14`）に拡大。位置は `top-3 md:top-4 left-3 md:left-6`（白背景に黒ロゴそのまま）
+- SARUDEMO LP（`src/app/sarudemo/page.tsx`）HERO左上：同上 `h-20 md:h-24` / `top-3 md:top-4 left-3 md:left-6`
+- ビジネスの学び家 LP（`src/app/manabiya/page.tsx`）：
+  - ヘッダー左上を `<ManabiyaLogo size={56} animate={false} />` に拡大（旧 size=44）。新ロゴに「ビジネスの学び家」ワードマークが内包されているため、サブテキスト `BUSINESS LEARNING COMMUNITY` のみ残し、重複していた `<p>ビジネスの学び家</p>` テキストを削除
+  - 最終CTAセクション中央を `<ManabiyaLogo size={88} className="invert" />` に拡大（旧 size=56）。`bg-tgu-pink` 上で白く見せるため Tailwind `invert` クラスをラッパーに付与（`filter: invert(1)`）
+- `npx tsc --noEmit` 通過
+
+### 🎯 全ロゴ画像を削除（HP / BizOwner LP / SARUDEMO LP / ビジネスの学び家 LP）
+- HP Header（`src/components/Header.tsx`）：`<Image src="/bizowner-logo.png">` を削除し、デスクトップヘッダー左上・モバイルメニュー左上ともテキスト「BizOwner」（Josefin Sans 20px/18px、white）にフォールバック。`next/image` import も削除
+- BizOwner LP（`src/app/bizowner/page.tsx`）：HERO 左上の `/lp/bizowner-logo.png` ロゴブロック（`Logo (top-left)` 全体）を削除
+- SARUDEMO LP（`src/app/sarudemo/page.tsx`）：HERO 左上の `/lp/sarudemo-logo.png` ロゴブロック（`Logo (top-left)` 全体）を削除
+- ビジネスの学び家 LP（`src/app/manabiya/page.tsx`）：ヘッダー左上の `<ManabiyaLogo size={44} />`、最終CTA中央の `<ManabiyaLogo size={56} />`（`FadeSlide` ラッパーごと）を削除。`ManabiyaLogo` import も削除（ヘッダーは「ビジネスの学び家」テキスト＋サブテキストのみ残る）
+- 画像ファイル本体（`public/bizowner-logo.png` / `public/lp/bizowner-logo.png` / `public/lp/sarudemo-logo.png` / `public/manabiya/manabiya-logo-pink.png`）と `ManabiyaLogo.tsx` コンポーネントは未削除（参照ゼロのため不要なら別途削除可）
+- `npx tsc --noEmit` 通過
+
+### 📌 次回再開ポイント
+- ロゴ削除に関するクライアント確認待ち。新ロゴ差し替え予定があれば、HPヘッダー（テキスト「BizOwner」フォールバック中）と各LP HEROのロゴ位置に再配置する
+
+---
+
+## 2026-05-02（土）
+
+### 🎯 ロゴ画像を背景透過版に差し替え + SARUDEMO LINE CTA リンク紐付け
+- `docs/reference/BizOwnerロゴ背景透過.png` を `public/bizowner-logo.png`（HP Header）と `public/lp/bizowner-logo.png`（BizOwner LP HERO左上）の両方に上書き
+- `docs/reference/SARUDEMOロゴ背景透過.png` を `public/lp/sarudemo-logo.png`（SARUDEMO LP HERO左上）に上書き
+- `docs/reference/ビジネスの学び家ロゴ背景透過.png` を `public/manabiya/manabiya-logo-pink.png`（ManabiyaLogo コンポーネントが参照）に上書き
+- SARUDEMO LP の CTA `LINE登録` ボタンを全箇所（CtaBannerPremium／CtaBannerCard／HEROボタン／最終CTA、計4箇所）`href="https://line.me/R/ti/p/@532ikyxa"` + `target="_blank" rel="noopener noreferrer"` に紐付け（HERO左上のロゴ Link はページトップアンカーのため `href="#"` のまま）
+
+### 🎯 BizOwner / SARUDEMO LP 左上ロゴ追加
+- `docs/reference/BizOwner ロゴ.png` を `public/lp/bizowner-logo.png` として配置
+- `docs/reference/SARUDEMO　ロゴ.png` を `public/lp/sarudemo-logo.png` として配置
+- 両LPのHEROセクション内、左上 `absolute top-4 left-4 md:top-6 md:left-8 z-30` にロゴを表示（高さ `h-12 md:h-14`）。`#` リンクでページトップへ戻るアンカー扱い
+- HEROの白背景に黒ロゴで自然に表示。スクロールでHEROを抜けた後は表示されない簡潔な配置
+
+### 🎯 BizOwner LP COMMUNITY セクション レイアウト統一
+- BizOwner LP `COMMUNITY`：見出し＋画像が `lg:grid-cols-2`（左に見出し / 右に画像）の2カラム、その下のカード4枚は `mx-auto max-w-[820px]` で中央揃え、という構造になっており、画像が右半分に寄っているためカードの右端が画像の右端より左に位置し、視覚的にカードが左寄りに見えていた
+- SARUDEMO 側は `text-center` で中央縦積み（見出し・画像・カードが完全に揃う）だったので、両LPで COMMUNITY セクションの見え方が左右逆方向にズレていた
+- BizOwner も SARUDEMO と同じ中央揃え縦積みレイアウトへ統一：見出し→説明文→画像→カードの順で中央配置。画像は `aspect-[3/2] max-w-[820px] mx-auto`、カードは `max-w-[820px] mx-auto`、で完全に幅・中心が揃う
+- ユーザー確認のうえ、BizOwner / SARUDEMO 両LPの `COMMUNITY` セクションからコミュニティ画像ブロックを削除。見出し・説明文の直下に4項目カードが来る構成へ変更し、画像ぶんの余白を解消
+
+### 🎯 HP・BizOwner LP クライアントFB反映
+- HP：左上のテキストロゴを `BizOwner ロゴ.png` 画像へ差し替え（`public/bizowner-logo.png`）。ヘッダーのダーク背景上で表示するため `filter: invert(1)` + `mix-blend-mode: screen` で背景白を透過させ、ロゴをホワイト見せに
+- ヘッダー高さを 48px → 56px に上げ、`leading-[48px]` も追従更新
+- 会社名表記を全面 `Bestimulate` → `BizOwner` に統一（`src/app/page.tsx` / `layout.tsx` / `services/page.tsx` / `components/Header.tsx` / `components/Footer.tsx` / `bizowner/page.tsx` / `sarudemo/page.tsx`）
+- BizOwner LP `02-ABOUT`：「売上からの天引き払い」表記を本文・カードから削除。文言を「月額11,000円という低コストで始められ、CICブラックの方も安心」「初月無料・解約自由で安心」に整える
+- BizOwner LP `COMMUNITY`：4カードに `auto-rows-fr` + `h-full` + `flex-col justify-center` を適用し、行高さ揃えで余白の崩れを解消
+- BizOwner LP `03-HOW IT WORKS` / 料金プラン：`FC加盟 200万円〜` の `〜` を削除し `200万円` に統一
+- BizOwner LP FAQ：1問目「BizOwnerが許可した案件にてご利用いただけます。基本的には本部案件にご活用ください。」、3問目「解説動画をご覧のうえ実施してください。」、4問目「週1回の個別コンサル枠でご質問にお答えします。」へ更新（言い回しは自然な敬体に整える）
+- 学び家LP：`docs/reference/ビジネスの学び家　ロゴ.jpg` を `public/manabiya/manabiya-logo.jpg` として配置し、`ManabiyaLogo` を画像ロゴ表示に差し替え（ヘッダー・最終CTA）
+- 学び家LP：`docs/reference/ビジネスの学び家ロゴ（ピンク）.png` を `public/manabiya/manabiya-logo-pink.png` として追加し、ヘッダー／最終CTAロゴをピンク版へ切替
+- 学び家LP：`ManabiyaLogo` を正方形表示（`size x size`）へ変更して横長表示を解消。`object-center` に変更しロゴ位置を中央化
+- 学び家LPヘッダー：ロゴ横テキスト（英字サブライン＋「ビジネスの学び家」）の間隔と縦位置を微調整
+- 透過ロゴ差し替え：`docs/reference/BizOwnerロゴ背景透過.png` / `SARUDEMOロゴ背景透過.png` / `ビジネスの学び家ロゴ背景透過.png` をそれぞれ `public/bizowner-logo.png`、`public/lp/bizowner-logo.png`、`public/lp/sarudemo-logo.png`、`public/manabiya/manabiya-logo-pink.png` に反映
+- 学び家LPの `#contact` ロゴ表示は `object-center` + `mx-auto` で中央寄せを明示
+- 学び家LP FV：募集バッジから `2026` を削除、スマホFVの人物サイズと左右位置を再調整して中央の余白感を軽減
+- 学び家LP文言：`副業→起業` / `若手プロフェッショナル→夢を持った人々` / 福利厚生文言（オンライン占い・個別コーチング/コンサル）へ更新
+- 学び家LP数値：`6+→100`、`20+→年間100回以上`＋ラベルを「イベント数」、`11,000→10,000`、料金表記を「/ 月（税別）」へ更新
+- 学び家LP構成：サークル導入ブロックを上部中央へ移動、CTA補足文1箇所削除、FLOWを「LINE追加」「会員登録」「案内に従い無料登録」に調整
+- 学び家LP FAQ：設問を「占いやコーチング、コンサルの内容は？」に変更し、回答を「週1時間×月4回の占い・コーチング・コンサルを受けられる権利を付与」に更新
+
+### ✅ 確定した決定事項
+- 会社名（屋号）は `BizOwner` に統一。LP footer の「by Bestimulate」表記は削除
+- 「天引き払い」という訴求はLPからは外す（FAQ・カード・ABOUT本文）
+- FC加盟料金の表記は `200万円`（〜抜き）
+
+### 📌 次回再開ポイント
+- ヘッダー上の透過ロゴ（CSS フィルタ表現）はブラウザ確認推奨。実画像を白抜きSVG化するなら別途差し替え
+- SARUDEMO・学び家LP側にも同様のロゴ／屋号差し替えを適用するかクライアントへ確認
+
+---
+
+## 2026-04-30（木）
+
+### 🗓️ 明日のクライアントMTG共有
+- 明日（2026-05-01）クライアントとのミーティング予定
+- 3つのLP（HP / BizOwner / SARUDEMO / 学び家）はクライアントから細かい修正点をヒアリング → 反映 → 最終完成という流れで進める方針
+- UTAGE打ち合わせは **明日14:00から**
+- それまでに UTAGE の大枠（骨組み）だけでも組んでおきたい
+
+### 📌 次回再開ポイント
+- 今日中：UTAGE STEP 0（初期設定）〜骨組み着手
+- 明日：MTG前に大枠完成 → 14時打ち合わせ → LP・UTAGE両方のFB回収 → 修正
+
+---
+
+## 2026-05-02（土）
+
+### 🎯 SARUDEMO LP 文言・数値・レイアウト修正
+- `src/app/sarudemo/page.tsx`：ABOUTの「営業→教育」「サポート→コンサル」、3カラムカード・WHYセクション・報酬モデル6枠の金額（100〜300万/月、資金調達・申請支援は1000万以上・「/回」削除）、比較表（BizOwner価格200万円・支払一括、SARUDEMO150万円表記整理、権利収入100〜300、目標「年商1億の大社長」）、料金ブロック「税別」のみ、フロー（LINEのみ／面談説明コピー／全面コンサル・教育表現）、FAQ（リターン・資金調達回答）を反映
+- コミュニティセクション：PCで右列（4カード）を広げる非対称グリッド＋カードの余白・高さ調整
+- 追加調整：比較表の `100〜300万/月` を `100〜300万円/月` に統一、報酬モデルの `1000万以上` を `1000万円以上` に更新
+- 追加調整：コミュニティブロックの余白を圧縮（`py-24 md:py-28` / 見出し下マージン縮小 / 画像とカードの間隔縮小）して、上部中央の見出しと本文の間延び感を解消
+- 追加調整：ABOUTセクション画像の金枠（装飾ボーダー）をレスポンシブ化。スマホでは `left-0` で中央寄せし、`md` 以上で従来の `-left-4` に戻すよう修正（スマホ左寄り崩れを解消）
+
+### ✅ 確定した決定事項
+- SARUDEMO LP上の数値・表記はクライアント指示どおり上記に更新
+
+### 📌 次回再開ポイント
+- 実機幅でコミュニティ列のバランスを再確認（必要なら `1.22fr` を微調整）
+
 ## 2026-04-29（水）
 
 ### 🎯 ビジネスの学び家LP ファーストビュー修正
