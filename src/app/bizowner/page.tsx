@@ -377,7 +377,7 @@ export default function BizOwnerPage() {
               { title: "ECショップ", sub: "メルカリ / 楽天市場等", icon: "🛒" },
               { title: "権利運用", sub: "ビザ / 派遣 / 物販等", icon: "📊" },
               { title: "補助金・助成金", sub: "行政申請サポート", icon: "📋" },
-              { title: "個人単発", sub: "アフィリ / MNP / 投資", icon: "💡" },
+              { title: "個人単発", sub: "アフィリ / 投資", icon: "💡" },
               { title: "夢の事業", sub: "やりたいビジネスを支援", icon: "🚀", accent: true },
             ].map((item) => (
               <StaggerItem key={item.title}>
@@ -410,12 +410,12 @@ export default function BizOwnerPage() {
             <h2 className="font-bold text-white text-[26px] md:text-[40px] leading-[1.4] mb-6">
               ただの副業じゃ終わらない。
               <br />
-              <span className="text-lp-accent">&ldquo;ビジネスの学び家&rdquo;</span>
+              <span className="text-lp-accent">&ldquo;GoisuGuild&rdquo;</span>
               <br className="md:hidden" />
               という、青春。
             </h2>
             <p className="text-white/60 text-[15px] leading-[2] max-w-lg mx-auto">
-              BizOwner会員は「ビジネスの学び家」コミュニティに参加可能。
+              BizOwner会員は「GoisuGuild」コミュニティに参加可能。
               ビジネスだけじゃない、仲間と楽しむ場がここにあります。
             </p>
           </FadeSlide>
@@ -519,7 +519,7 @@ export default function BizOwnerPage() {
                     { label: "知識・経験", biz: "不要", other: "ある程度必要", self: "自力で習得" },
                     { label: "サポート", biz: "本部が全面支援", other: "講師による指導", self: "なし" },
                     { label: "収益化", biz: "即日可能", other: "数ヶ月後", self: "不確定" },
-                    { label: "コミュニティ", biz: "学び家に所属", other: "期間限定", self: "なし" },
+                    { label: "コミュニティ", biz: "あり", other: "期間限定", self: "なし" },
                   ].map((row, i) => (
                     <tr key={i} className={i < 4 ? "border-b border-gray-50" : ""}>
                       <td className="p-3 md:p-5 font-bold text-text-dark bg-gray-50/50 whitespace-nowrap">{row.label}</td>
@@ -638,7 +638,7 @@ export default function BizOwnerPage() {
           <StaggerChildren staggerMs={100} className="space-y-4 lp-accordion">
             {[
               { q: "作った法人は自由に使って良いですか？", a: "作成した法人は、BizOwnerが許可した案件にてご利用いただけます。基本的には本部案件にご活用ください。" },
-              { q: "新しくサークルを作ってもいいですか？", a: "もちろんです。学び家ではメンバー発信のサークルを歓迎しています。" },
+              { q: "新しくサークルを作ってもいいですか？", a: "もちろんです。GoisuGuildではメンバー発信のサークルを歓迎しています。" },
               { q: "案件やサービスの参加方法は？", a: "会員サイトから案件一覧をご確認いただき、興味のあるものは解説動画をご覧のうえ実施してください。" },
               { q: "個別の質疑応答はどこでできますか？", a: "週1回、個別コンサルを受けられる権限をご用意しています。そちらで個別のご質問にお答えしますので、ぜひご活用ください。" },
               { q: "本当に知識ゼロでも大丈夫ですか？", a: "はい。案件の実行方法は会員サイトの動画で全て学べます。本部のサポートもあるのでご安心ください。" },

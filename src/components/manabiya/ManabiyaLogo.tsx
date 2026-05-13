@@ -41,8 +41,8 @@ export default function ManabiyaLogo({
       style={{ width: w, height: h }}
     >
       <Image
-        src="/manabiya/manabiya-logo-pink.png"
-        alt="ビジネスの学び家"
+        src="/goisu-guild-logo.png"
+        alt="GoisuGuild"
         width={1024}
         height={1024}
         className="h-full w-full object-contain object-center mx-auto"

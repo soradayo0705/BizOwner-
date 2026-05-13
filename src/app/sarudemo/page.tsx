@@ -39,7 +39,7 @@ function CtaBannerCard() {
         <div className="lp-gradient-border">
           <div className="bg-white py-8 px-6 md:px-10 text-center">
             <p className="text-lp font-bold text-[18px] md:text-[22px] mb-2">まずは無料で話を聞いてみませんか？</p>
-            <p className="text-text-light text-[13px] mb-6">LINE登録後、無料ウェビナーでSARUDEMOの全貌をご確認いただけます。</p>
+            <p className="text-text-light text-[13px] mb-6">LINE登録後、担当者とのセッションにてSARUDEMOの全貌を丁寧に説明致します。</p>
             <a href="https://line.me/R/ti/p/@532ikyxa" target="_blank" rel="noopener noreferrer" className="cta-btn cta-glow lp-shine text-[15px] md:text-[16px] px-8 py-4">
               <LineIcon className="w-5 h-5" />
               LINE登録して詳細を見る
@@ -326,7 +326,7 @@ export default function SarudemoPage() {
           <StaggerChildren staggerMs={200} className="grid lg:grid-cols-3 gap-8 md:gap-10">
             {[
               { num: "01", title: "起業のファストパス", highlight: "1年以内に社長へ", dark: false },
-              { num: "02", title: "脱サラなんて当たり前", highlight: "年商1億円を目標", dark: false, offset: true },
+              { num: "02", title: "脱サラなんて当たり前", highlight: "年商1億円を目標", dark: false },
               { num: "03", title: "プロチームが全面支援", highlight: "経営のプロがコンサル", dark: true },
             ].map((s) => (
               <StaggerItem key={s.num}>
@@ -410,7 +410,7 @@ export default function SarudemoPage() {
             <h2 className="font-bold text-white text-[26px] md:text-[40px] leading-[1.4]">
               ただの起業じゃ終わらない。
               <br />
-              <span className="bg-gradient-to-r from-lp-accent to-lp-sky bg-clip-text" style={{ WebkitTextFillColor: "transparent" }}>&ldquo;ビジネスの学び家&rdquo;</span>という、青春。
+              <span className="bg-gradient-to-r from-lp-accent to-lp-sky bg-clip-text" style={{ WebkitTextFillColor: "transparent" }}>&ldquo;GoisuGuild&rdquo;</span>という、青春。
             </h2>
           </FadeSlide>
           <StaggerChildren staggerMs={120} className="mt-5 md:mt-6 mx-auto max-w-[820px] grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 auto-rows-fr">
@@ -512,9 +512,8 @@ export default function SarudemoPage() {
                     ["支払方法", "一括", "クレジットカード可"],
                     ["権利収入", "1.5万円/月", "100〜300万円/月"],
                     ["目標", "副収入の確保", "年商1億の大社長"],
-                    ["コミュニティ", "学び家\n月額1万円", "学び家\n月額1万円"],
-                  ].map((row, i) => (
-                    <tr key={i} className={i < 6 ? "border-b border-gray-50 hover:bg-gray-50/50 transition-colors" : ""}>
+                  ].map((row, i, arr) => (
+                    <tr key={i} className={i < arr.length - 1 ? "border-b border-gray-50 hover:bg-gray-50/50 transition-colors" : ""}>
                       <td className="p-3 md:p-5 font-bold text-lp whitespace-nowrap">{row[0]}</td>
                       <td className="p-3 md:p-5 text-center text-text-body whitespace-pre-line">{row[1]}</td>
                       <td className="p-3 md:p-5 text-center font-bold text-lp bg-blue-50/10 whitespace-pre-line">{row[2]}</td>
@@ -562,7 +561,7 @@ export default function SarudemoPage() {
               {/* Sub Prices */}
               <TiltCard intensity={4}>
                 <div className="bg-bg-section p-8 rounded-2xl text-center border border-gray-100 shadow-sm">
-                  <h3 className="font-bold text-lp mb-4 text-[14px]">学び家 会費</h3>
+                  <h3 className="font-bold text-lp mb-4 text-[14px]">コミュニティ 会費</h3>
                   <div className="flex justify-center items-baseline gap-1">
                     <span className="font-[Inter] text-[28px] font-bold text-lp"><CountUp end={10000} /></span>
                     <span className="text-text-body font-bold text-[13px]">円/月</span>
@@ -709,14 +708,14 @@ export default function SarudemoPage() {
       <footer className="bg-[#04101A] py-12 text-white/50 border-t border-white/5">
         <div className="max-w-[800px] mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="font-[Montserrat] font-bold text-[20px] text-white/80 tracking-widest">BizOwner</div>
+            <div className="font-[Montserrat] font-bold text-[20px] text-white/80 tracking-widest">SARUDEMO</div>
             <div className="flex gap-6 text-[12px] font-medium">
               <Link href="/" className="hover:text-white transition-colors">ホーム</Link>
               <Link href="/services" className="hover:text-white transition-colors">サービス一覧</Link>
               <Link href="/#contact" className="hover:text-white transition-colors">お問い合わせ</Link>
             </div>
           </div>
-          <p className="text-white/20 text-[11px] text-center mt-8 font-[Inter]">&copy; 2026 BizOwner. All Rights Reserved.</p>
+          <p className="text-white/20 text-[11px] text-center mt-8 font-[Inter]">&copy; 2026 SARUDEMO. All Rights Reserved.</p>
         </div>
       </footer>
     </div>

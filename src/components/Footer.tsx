@@ -44,7 +44,7 @@ export default function Footer() {
                     href="/manabiya"
                     className="hover:text-primary transition-colors"
                   >
-                    ビジネスの学び家
+                    GoisuGuild
                   </Link>
                 </li>
               </ul>

@@ -10,9 +10,9 @@ import TiltCard from "@/components/manabiya/TiltCard";
 import LineIcon from "@/components/LineIcon";
 
 export const metadata: Metadata = {
-  title: "ビジネスの学び家｜学ぶ、遊ぶ、稼ぐ。全部ここに。",
+  title: "GoisuGuild｜学ぶ、遊ぶ、稼ぐ。全部ここに。",
   description:
-    "副業×起業×エンタメ。コスパ最強の福利厚生コミュニティ「ビジネスの学び家」。動画学習・サークル活動・イベント・特典が全部込み。",
+    "副業×起業×エンタメ。コスパ最強の福利厚生コミュニティ「GoisuGuild」。動画学習・サークル活動・イベント・特典が全部込み。",
 };
 
 /* ─── LINE CTA Button (TGU-style) ─── */
@@ -118,14 +118,14 @@ export default function ManabiyaPage() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-[0_2px_12px_-4px_rgba(0,0,0,0.08)]">
         <div className="max-w-[1400px] mx-auto pl-3 md:pl-6 pr-0 h-16 md:h-[76px] flex items-center justify-between">
           {/* Left: Logo + site name */}
-          <Link href="#top" className="flex items-center gap-2 md:gap-3 flex-shrink-0" aria-label="ファーストビューへ戻る">
-            <ManabiyaLogo size={44} animate={false} />
+          <Link href="#top" className="flex items-center gap-2.5 md:gap-4 flex-shrink-0" aria-label="ファーストビューへ戻る">
+            <ManabiyaLogo size={56} animate={false} />
             <div className="leading-tight text-left">
               <p className="hidden sm:block text-[8px] md:text-[9px] leading-none text-tgu-pink font-bold tracking-[0.2em]">
                 BUSINESS LEARNING COMMUNITY
               </p>
               <p className="text-[15px] md:text-[19px] font-black tracking-wider text-[#2D2D2D] mt-[2px] md:mt-[3px] leading-none">
-                ビジネスの学び家
+                GoisuGuild
               </p>
             </div>
           </Link>
@@ -269,7 +269,7 @@ export default function ManabiyaPage() {
             <div className="campus-art-card campus-art-card-left uni-bob">
               <Image
                 src="/manabiya/boy.png"
-                alt="ビジネスの学び家で遊ぶ男性メンバー"
+                alt="GoisuGuildで遊ぶ男性メンバー"
                 width={1024}
                 height={1536}
                 className="campus-person-img"
@@ -281,7 +281,7 @@ export default function ManabiyaPage() {
             <div className="campus-art-card campus-art-card-right uni-bob-delay">
               <Image
                 src="/manabiya/girl.png"
-                alt="ビジネスの学び家で学ぶ女性メンバー"
+                alt="GoisuGuildで学ぶ女性メンバー"
                 width={1024}
                 height={1536}
                 className="campus-person-img"
@@ -294,7 +294,7 @@ export default function ManabiyaPage() {
             <div className="campus-crowd-photo">
               <Image
                 src="/manabiya/group.png"
-                alt="ビジネスの学び家の仲間たち"
+                alt="GoisuGuildの仲間たち"
                 width={1536}
                 height={1024}
                 className="campus-crowd-img"
@@ -415,7 +415,7 @@ export default function ManabiyaPage() {
                 好きなことで繋がり、共に笑い、共に挑戦し、そして結果を出す。
               </p>
               <p>
-                「ビジネスの学び家」は、独立・起業を目指す夢を持った人々が、
+                「GoisuGuild」は、独立・起業を目指す夢を持った人々が、
                 熱狂をもって共に生きるための、全く新しいコミュニティプラットフォームです。
               </p>
             </div>
@@ -433,7 +433,7 @@ export default function ManabiyaPage() {
         <div className="max-w-[1100px] mx-auto px-4 md:px-6">
           <FadeSlide className="text-center mb-14 md:mb-20">
             <SectionLabel en="4 VALUES" className="justify-center text-tgu-pink" />
-            <h2 className="text-2xl md:text-[36px] font-black leading-[1.4]">学び家の4つの価値</h2>
+            <h2 className="text-2xl md:text-[36px] font-black leading-[1.4]">GoisuGuildの4つの価値</h2>
           </FadeSlide>
 
           <div className="space-y-8 md:space-y-10">
@@ -479,7 +479,7 @@ export default function ManabiyaPage() {
                 icon: "🎁",
                 title: "豪華特典",
                 sub: "Special Benefits",
-                desc: "オンライン占い、個別コーチング・コンサル、プレゼント企画、提携サービスの会員特別割引など。学び家だけの限定福利厚生。",
+                desc: "オンライン占い、個別コーチング・コンサル、プレゼント企画、提携サービスの会員特別割引など。GoisuGuildだけの限定福利厚生。",
                 reverse: true,
               },
             ].map((item) => (
@@ -763,7 +763,7 @@ export default function ManabiyaPage() {
             {[
               { icon: "🔮", iconBg: "bg-tgu-pink", title: "オンライン占い・コーチング", desc: "恋愛やビジネス、自己理解まで。プロと対話しながら週1時間×月4回までご利用いただけます。次の一歩のヒントづくりに。" },
               { icon: "🎁", iconBg: "bg-tgu-yellow", title: "豪華プレゼント企画", desc: "ミッション達成で豪華賞品をご自宅へ郵送。毎月1回以上、ゲリラ開催も！" },
-              { icon: "💎", iconBg: "bg-tgu-purple", title: "提携サービス特別割引", desc: "様々なサービスの特別優待券を配布。学び家メンバーだけの限定特典。" },
+              { icon: "💎", iconBg: "bg-tgu-purple", title: "提携サービス特別割引", desc: "様々なサービスの特別優待券を配布。GoisuGuildメンバーだけの限定特典。" },
             ].map((item) => (
               <StaggerItem key={item.title}>
                 <div className="flex flex-col sm:flex-row items-center gap-5 bg-white p-6 md:p-8 rounded-[20px] shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -802,7 +802,7 @@ export default function ManabiyaPage() {
                   <tr>
                     <th className="p-2.5 md:p-4 border-b-2 border-white font-medium text-[#999]">機能・内容</th>
                     <th className="p-2.5 md:p-4 border-b-2 border-white font-bold text-center text-tgu-pink bg-tgu-pink-light rounded-t-xl">
-                      ビジネスの<br />学び家
+                      GoisuGuild
                     </th>
                     <th className="p-2.5 md:p-4 border-b-2 border-white font-medium text-center text-[#bbb]">
                       <span className="hidden md:inline">一般的な</span><span className="md:hidden">一般</span>
@@ -927,11 +927,10 @@ export default function ManabiyaPage() {
 
           <StaggerChildren staggerMs={80} className="space-y-3">
             {[
-              { q: "学び家だけの利用はできますか？", a: "学び家はBizOwner会員限定のコミュニティです。BizOwnerに入会いただくことで、学び家のすべてのサービスをご利用いただけます。", borderColor: "hover:border-tgu-cyan" },
-              { q: "サークルの参加費はいくらですか？", a: "サークルごとに団長が費用を設定しています。BizOwner月額会費以外の追加料金は各活動ごとに異なります。", borderColor: "hover:border-tgu-pink" },
+              { q: "サークルの参加費はいくらですか？", a: "サークルごとに団長が費用を設定しています。月額会費以外の追加料金は各活動ごとに異なります。", borderColor: "hover:border-tgu-pink" },
               { q: "新しくサークルを作ってもいいですか？", a: "もちろんです！毎月1回の全体MTGでプレゼンし、参加希望者が集まれば新サークルを立ち上げられます。", borderColor: "hover:border-tgu-yellow" },
               { q: "会員サイトの動画はどんな内容ですか？", a: "副業の始め方や初心者向けビジネスセミナーを中心に提供しています。動画は随時追加され、今後は各分野のプロによる講座も増やしていく予定です。", borderColor: "hover:border-tgu-green" },
-              { q: "占いやコーチング、コンサルの内容は？", a: "はい。学び家は週1時間×月4回の占い・コーチング・コンサルを受けられる権利を付与します。", borderColor: "hover:border-tgu-purple" },
+              { q: "占いやコーチング、コンサルの内容は？", a: "週1時間×月4回の占い・コーチング・コンサルを受けられる権利を付与します。内容はメンバーのご希望をうかがい、完全オーダーメイドで対応いたします。", borderColor: "hover:border-tgu-purple" },
               { q: "途中で解約できますか？", a: "はい、いつでも解約可能です。違約金や引き止めは一切ありません。無料期間内に退会された場合、費用は一切かかりません。", borderColor: "hover:border-tgu-coral" },
             ].map((faq, i) => (
               <StaggerItem key={i}>
@@ -973,11 +972,11 @@ export default function ManabiyaPage() {
         <div className="relative z-10 max-w-[700px] mx-auto px-4 md:px-6 flex flex-col items-center text-center">
           <FadeSlide className="w-full flex justify-center">
             <Image
-              src="/manabiya/manabiya-logo-pink.png"
-              alt="ビジネスの学び家"
+              src="/goisu-guild-logo.png"
+              alt="GoisuGuild"
               width={1024}
               height={1024}
-              className="block mx-auto h-20 md:h-24 w-auto invert select-none mb-6"
+              className="block mx-auto h-20 md:h-24 w-auto select-none mb-6"
             />
           </FadeSlide>
           <FadeSlide delay={200} className="w-full">
