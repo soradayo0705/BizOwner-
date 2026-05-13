@@ -927,6 +927,7 @@ export default function ManabiyaPage() {
 
           <StaggerChildren staggerMs={80} className="space-y-3">
             {[
+              { q: "GoisuGuildだけの利用はできますか？", a: "GoisuGuildはBizOwner会員限定のコミュニティです。BizOwnerに入会いただくことで、GoisuGuildのすべてのサービスをご利用いただけます。", borderColor: "hover:border-tgu-cyan" },
               { q: "サークルの参加費はいくらですか？", a: "サークルごとに団長が費用を設定しています。月額会費以外の追加料金は各活動ごとに異なります。", borderColor: "hover:border-tgu-pink" },
               { q: "新しくサークルを作ってもいいですか？", a: "もちろんです！毎月1回の全体MTGでプレゼンし、参加希望者が集まれば新サークルを立ち上げられます。", borderColor: "hover:border-tgu-yellow" },
               { q: "会員サイトの動画はどんな内容ですか？", a: "副業の始め方や初心者向けビジネスセミナーを中心に提供しています。動画は随時追加され、今後は各分野のプロによる講座も増やしていく予定です。", borderColor: "hover:border-tgu-green" },

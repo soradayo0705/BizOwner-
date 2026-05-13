@@ -512,6 +512,7 @@ export default function SarudemoPage() {
                     ["支払方法", "一括", "クレジットカード可"],
                     ["権利収入", "1.5万円/月", "100〜300万円/月"],
                     ["目標", "副収入の確保", "年商1億の大社長"],
+                    ["コミュニティ", "GoisuGuild\n月額1万円", "GoisuGuild\n月額1万円"],
                   ].map((row, i, arr) => (
                     <tr key={i} className={i < arr.length - 1 ? "border-b border-gray-50 hover:bg-gray-50/50 transition-colors" : ""}>
                       <td className="p-3 md:p-5 font-bold text-lp whitespace-nowrap">{row[0]}</td>
