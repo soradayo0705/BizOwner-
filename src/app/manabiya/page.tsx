@@ -124,7 +124,7 @@ export default function ManabiyaPage() {
               <p className="hidden sm:block text-[8px] md:text-[9px] leading-none text-tgu-pink font-bold tracking-[0.2em]">
                 BUSINESS LEARNING COMMUNITY
               </p>
-              <p className="text-[15px] md:text-[19px] font-black tracking-wider text-[#2D2D2D] mt-[2px] md:mt-[3px] leading-none">
+              <p className="text-[18px] md:text-[22px] font-black tracking-wider text-[#2D2D2D] mt-[2px] md:mt-[3px] leading-none">
                 GoisuGuild
               </p>
             </div>

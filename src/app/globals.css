@@ -159,6 +159,11 @@ body {
   border-radius: 980px;
   transition: all 0.3s;
 }
+@media (max-width: 767px) {
+  .nav-card::after {
+    display: none;
+  }
+}
 .nav-card:hover::after {
   background: #fff;
   color: #006785;

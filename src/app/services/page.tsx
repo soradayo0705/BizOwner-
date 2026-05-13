@@ -214,7 +214,7 @@ export default function ServicesPage() {
                   className="nav-card group relative overflow-hidden flex flex-col p-7 md:p-8 min-h-[380px] md:min-h-[440px]"
                   style={{ background: s.bg }}
                 >
-                  <div className="absolute -right-12 -bottom-12 w-[240px] h-[240px] opacity-[0.07] pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.12]">
+                  <div className="absolute -right-16 -bottom-16 md:-right-12 md:-bottom-12 w-[170px] h-[170px] md:w-[240px] md:h-[240px] opacity-[0.05] md:opacity-[0.07] pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.12]">
                     <Image
                       src={s.logo}
                       alt=""
