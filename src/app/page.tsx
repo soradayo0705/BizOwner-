@@ -376,7 +376,7 @@ export default function Home() {
                 <Link
                   key={s.href}
                   href={s.href}
-                  className="nav-card group relative overflow-hidden flex flex-col md:flex-row md:items-center p-7 md:p-10 min-h-[200px] md:min-h-[220px] gap-6 md:gap-10"
+                  className="nav-card group relative overflow-hidden flex flex-col md:flex-row md:items-center p-7 pb-16 md:p-10 min-h-[200px] md:min-h-[220px] gap-6 md:gap-10"
                   style={{ background: s.bg }}
                 >
                   <div className="absolute -right-10 -bottom-10 w-[260px] h-[260px] opacity-[0.07] pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.12]">

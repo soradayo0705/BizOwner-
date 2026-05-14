@@ -211,7 +211,7 @@ export default function ServicesPage() {
                 <Link
                   key={s.href}
                   href={s.href}
-                  className="nav-card group relative overflow-hidden flex flex-col p-7 md:p-8 min-h-[380px] md:min-h-[440px]"
+                  className="nav-card group relative overflow-hidden flex flex-col p-7 pb-16 md:p-8 min-h-[380px] md:min-h-[440px]"
                   style={{ background: s.bg }}
                 >
                   <div className="absolute -right-12 -bottom-12 w-[240px] h-[240px] opacity-[0.07] pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.12]">
