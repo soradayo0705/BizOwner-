@@ -331,7 +331,7 @@ export default function SarudemoPage() {
             ].map((s) => (
               <StaggerItem key={s.num}>
                 <TiltCard intensity={5}>
-                  <div className={`relative group ${s.dark ? "bg-gradient-to-br from-lp to-[#061729] shadow-[0_20px_40px_-10px_rgba(11,42,74,0.3)]" : "bg-white border border-gray-100 shadow-[0_8px_30px_-10px_rgba(0,0,0,0.06)]"} p-10 rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-300 ${s.offset ? "lg:mt-10" : ""}`}>
+                  <div className={`relative group ${s.dark ? "bg-gradient-to-br from-lp to-[#061729] shadow-[0_20px_40px_-10px_rgba(11,42,74,0.3)]" : "bg-white border border-gray-100 shadow-[0_8px_30px_-10px_rgba(0,0,0,0.06)]"} p-10 rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-300`}>
                     <span className={`lp-bg-number top-[-20px] right-[10px] ${s.dark ? "!text-white/5" : ""}`} style={{ fontSize: "140px" }}>{s.num}</span>
                     {s.dark && <div className="absolute top-0 right-0 w-32 h-32 bg-[#D4AF37]/20 rounded-bl-full blur-xl" />}
                     <div className="relative z-10">
