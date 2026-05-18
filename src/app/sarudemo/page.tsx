@@ -136,16 +136,16 @@ export default function SarudemoPage() {
             </div>
 
             <FadeSlide direction="right" delay={400} className="flex-1 w-full max-w-[400px] lg:max-w-none relative">
-              <ImageReveal direction="right" className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] rotate-2 hover:rotate-0 transition-transform duration-500">
+              <ImageReveal immediate direction="right" className="relative z-10 rounded-2xl overflow-hidden shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] rotate-2 hover:rotate-0 transition-transform duration-500">
                 <Image src="/lp/sarudemo-hero.png" alt="SARUDEMO" width={1536} height={1024} className="w-full h-[320px] md:h-[500px] object-cover" priority />
-                <div className="absolute inset-0 bg-gradient-to-t from-lp/60 to-transparent" />
-                <div className="absolute bottom-6 left-6 text-white">
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-lp/60 to-transparent" />
+                <div className="absolute bottom-6 left-6 z-20 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
                   <p className="font-[Montserrat] font-bold text-[22px] tracking-widest text-[#D4AF37]">SARUDEMO</p>
-                  <p className="text-[12px] opacity-90">Premium Entrepreneurship</p>
+                  <p className="text-[13px] opacity-95">Premium Entrepreneurship</p>
                 </div>
               </ImageReveal>
               {/* Floating stats */}
-              <div className="absolute -bottom-4 -left-4 md:-left-8 bg-white rounded-xl shadow-lg p-3 md:p-4 z-20 lp-float-slow border border-gray-100">
+              <div className="absolute -bottom-4 right-4 md:right-10 bg-white rounded-xl shadow-lg p-3 md:p-4 z-20 lp-float-slow border border-gray-100">
                 <p className="text-[10px] text-text-light font-medium">目標年商</p>
                 <p className="font-[Inter] font-bold text-lp text-[18px] md:text-[22px]">1<span className="text-[13px] text-text-light font-normal">億円</span></p>
               </div>
@@ -254,7 +254,6 @@ export default function SarudemoPage() {
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 mb-20">
             <FadeSlide direction="left" className="flex-1 w-full">
               <div className="relative">
-                <div className="absolute top-3 left-0 md:top-4 md:-left-4 w-full h-full border-2 border-[#D4AF37]/20 rounded-2xl" />
                 <ImageReveal direction="left" className="aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] relative z-10">
                   <Image src="/lp/sarudemo-business.png" alt="ビジネスオーナー" width={1536} height={1024} className="w-full h-full object-cover" />
                 </ImageReveal>

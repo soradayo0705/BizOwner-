@@ -141,12 +141,12 @@ export default function BizOwnerPage() {
             </div>
             <FadeSlide direction="right" delay={400}>
               <div className="flex justify-center relative">
-                <div className="absolute inset-0 bg-gradient-to-tr from-lp-accent to-lp rounded-2xl rotate-3 scale-[1.02] opacity-10" />
-                <ImageReveal direction="right" className="w-[220px] h-[280px] md:w-[360px] md:h-[450px] rounded-2xl overflow-hidden shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] border-4 border-white relative z-10">
+                <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-tr from-lp-accent to-lp rounded-2xl rotate-3 scale-[1.02] opacity-10" />
+                <ImageReveal immediate direction="right" className="w-[220px] h-[280px] md:w-[360px] md:h-[450px] rounded-2xl overflow-hidden shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] border-4 border-white relative z-10">
                   <Image src="/lp/bizowner-hero.png" alt="BizOwner" width={1024} height={1536} className="w-full h-full object-cover" priority />
                 </ImageReveal>
                 {/* Floating stats */}
-                <div className="absolute -bottom-4 -left-4 md:-left-8 bg-white rounded-xl shadow-lg p-3 md:p-4 z-20 lp-float-slow border border-gray-100">
+                <div className="absolute -bottom-4 right-3 md:right-6 bg-white rounded-xl shadow-lg p-3 md:p-4 z-20 lp-float-slow border border-gray-100">
                   <p className="text-[10px] text-text-light font-medium">月額費用</p>
                   <p className="font-[Inter] font-bold text-lp text-[18px] md:text-[22px]">¥11,000<span className="text-[11px] text-text-light font-normal">/月</span></p>
                 </div>
@@ -255,7 +255,6 @@ export default function BizOwnerPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-14 items-center mb-20">
             <div className="relative hidden md:block">
-              <div className="absolute top-4 -left-4 w-full h-full border-2 border-lp-accent/20 rounded-2xl" />
               <ImageReveal direction="left" className="rounded-2xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] relative z-10">
                 <Image src="/lp/bizowner-sidework.png" alt="副業イメージ" width={1536} height={1024} className="w-full h-[300px] md:h-[400px] object-cover" />
               </ImageReveal>

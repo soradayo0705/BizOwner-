@@ -9,6 +9,75 @@
 
 ---
 
+## 2026-05-18（月）
+
+### 🎯 BizOwner / SARUDEMO LP 画像Reveal埋もれ修正
+- `ImageReveal` に `immediate` props を追加し、`immediate` かつ `delay === 0` の場合はSSR時点から `mn-visible` を付けてクリップされないよう修正
+- `ImageReveal` のIntersectionObserverを `threshold: 0.05` / `rootMargin: 120px 0px` に緩和
+- 監視対象の外枠と `clip-path` を掛ける内側要素を分離し、クリップ状態がIntersectionObserverの交差判定を妨げない構造に変更
+- BizOwner / SARUDEMO のヒーロー画像に `immediate` を指定
+- BizOwnerヒーローの装飾グラデーションに `z-0 pointer-events-none`、画像側に `relative z-10` を明示。SARUDEMOヒーロー画像側も `relative z-10` を明示し、画像内グラデーションに `pointer-events-none` を追加
+
+### 🎯 BizOwner / SARUDEMO LP 02 ABOUT画像枠削除
+- BizOwner LPの `02 — ABOUT` 画像背面にあった薄い青枠を削除
+- SARUDEMO LPの `02 — ABOUT` 画像背面にあった薄い金色枠を削除
+- 画像本体・角丸・シャドウ・Reveal演出は維持
+
+### 🎯 BizOwner / SARUDEMO LP FV画像内テキスト可読性調整
+- FV画像左下に重なっていた浮きカードを右下へ移動し、画像内テキストを隠さない配置に変更
+- SARUDEMO FV画像内の `SARUDEMO / Premium Entrepreneurship` テキストに `z-20` とドロップシャドウを追加し、サブテキストを少し大きくして可読性を改善
+- Puppeteerスクショで `/bizowner` / `/sarudemo` のFV表示を確認
+
+### ✅ 確定した決定事項
+- FV画像は演出待ちにせず、初期表示時点でクリップ解除済みにする
+- 下層画像はReveal演出を維持しつつ、外枠監視で確実に発火させる
+
+### 📌 次回再開ポイント
+- `npm run build` 成功済み
+- Puppeteerで `/bizowner` / `/sarudemo` を確認し、各ページ3つの `ImageReveal` がスクロール後すべて `mn-visible` / `clip-path: inset(0px)` になることを確認済み
+
+---
+
+## 2026-05-17（日）
+
+### 🎯 BizOwner LP 画像差し替え
+- `docs/reference/` 配下の指定画像3点を `public/lp/` に同名で上書き配置（コード修正不要で反映）
+  - `BizOwner（ファーストビュー）.png` → `bizowner-hero.png`
+  - `BizOwner（副業）.png` → `bizowner-sidework.png`
+  - `顧問紹介(起業ニキ).png` → `advisor-kigyo-niki.png`
+- ロゴ（`bizowner-logo.png`）は変更指示なしのため据え置き
+
+### 📌 次回再開ポイント
+- ブラウザで `/bizowner` を開き表示崩れ・トリミングのバランスを確認
+- 問題なければ SARUDEMO LP の画像差し替えに着手
+
+---
+
+## 2026-05-16（土）
+
+### 🎯 LP画像表示不具合の原因調査
+- BizOwner LP / SARUDEMO LP の画像が表示されないという報告を受け、コード上の画像パスと `public/lp` 配下の実ファイルを照合
+- 該当画像（`bizowner-hero.png` / `bizowner-sidework.png` / `sarudemo-hero.png` / `sarudemo-business.png` / `advisor-kigyo-niki.png` / 各ロゴ）はローカルに存在し、Git管理済みであることを確認
+- `npm run build` は成功。`next start -p 3007` でローカル配信し、画像本体 `/lp/...` とNext画像最適化URL `/_next/image?...` がどちらも 200 で返ることを確認
+
+### 🚧 ブロッカー・気づいたこと
+- ローカルのNextサーバーでは画像表示に必要なURLが正常応答するため、コード上のパスミスではない可能性が高い
+- 配信先がNextサーバー/Vercelではなく静的ホスティングの場合、`next/image` が生成する `/_next/image?...` が動かず画像が表示されない可能性が高い
+
+### 📌 次回再開ポイント
+- 公開先URLで `/_next/image?url=%2Flp%2Fbizowner-hero.png...` が 404/500 になっていないか確認
+- 静的ホスティング運用なら `next.config.ts` に `images: { unoptimized: true }` を追加するか、LP画像を通常の `<img>` に切り替える
+
+### 🎯 ローカル確認環境の起動
+- `next.config.ts` に `images: { unoptimized: true }` を追加し、LP画像が `/_next/image?...` ではなく `/lp/...png` の直接参照になるよう変更
+- `npm run build` 成功を確認
+- `screen` の detached セッション `bizowner-next` で `npm run dev -- -p 3000` を起動
+- `http://localhost:3000/bizowner` / `http://localhost:3000/sarudemo` が 200 で返り、画像HTMLが `/lp/...png` を参照していることを確認
+
+### 📌 次回再開ポイント
+- ローカル確認URL：`http://localhost:3000/bizowner` / `http://localhost:3000/sarudemo`
+- サーバー停止時は `screen -S bizowner-next -X quit`
+
 ## 2026-05-09（土）
 
 ### 🎯 UTAGE構築：UTAGE-Zoom自動連携を不採用に決定
