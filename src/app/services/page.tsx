@@ -196,7 +196,7 @@ export default function ServicesPage() {
                   bg: "linear-gradient(160deg,#003a4a 0%,#006e87 60%,#00a3b8 100%)",
                 },
                 {
-                  href: "/manabiya",
+                  href: "/goisuguild",
                   logo: "/goisu-guild-logo.png",
                   alt: "GoisuGuild ロゴ",
                   eyebrow: "COMMUNITY",

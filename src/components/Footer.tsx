@@ -41,7 +41,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/manabiya"
+                    href="/goisuguild"
                     className="hover:text-primary transition-colors"
                   >
                     GoisuGuild
