@@ -9,6 +9,45 @@
 
 ---
 
+## 2026-06-02（火）
+
+### 🎯 Zeroichi Home：スマホ ハンバーガーメニューの「ぼやけ／黒ずみ」不具合修正
+- 症状：メニューを開くとパネル（紹介/価値/イベント等のカード・LINE CTA）が全体的にぼやけて灰色がかる
+- 原因：背景の薄暗オーバーレイ（`.manabiya-mobile-menu[open] summary::before`）が `summary`（`z-index:61`）のスタッキングコンテキスト内にあるため、パネル（`z-index:60`）の**上**に描画されていた。元々付いていた `backdrop-filter: blur` がパネルごとぼかし、暗幕がパネルを灰色化させていた
+- 対応：`.manabiya-mobile-panel` の `z-index` を `60 → 70` に引き上げ、パネルがオーバーレイより前面に来るよう修正（`globals.css`）。暗幕は背後ページのみを暗くする本来の挙動に
+
+### 🎯 Zeroichi Home：FV下部の集合写真（crowd）の頭切れ修正
+- 症状：FV下端の集合イラスト（`/manabiya/group.png`）の人物の頭が切れていた
+- 原因：横長・低い帯（モバイル高さ82px）に `object-fit: cover` で表示しており、`object-position: center 47%` だと切り出し位置が低く、頭頂部が外れていた
+- 対応：`.campus-crowd-img` の `object-position` を調整（`center 47%` 起点で 34→28→40→最終 40%）。さらに「人物を上げると頭が枠上端で切れる」のは重なりではなく `object-fit:cover`＋低い固定高さ＋`overflow:hidden` で横一本のバンドだけ切り出している構造が原因と判明
+- 最終対応：帯の高さ自体を増やして頭〜胴を収める。`.campus-crowd-photo` の `height` をデスクトップ `clamp(118px,17vh,170px)→clamp(150px,21vh,230px)` / ≤1023px `104→140px` / ≤640px `82→116px`、`object-position: center 40%`
+- **元に戻す方法**：各該当行のコメントに元の値を明記済み（高さ各値と `object-position: 47%`）
+
+### 📌 次回再開ポイント
+- dev サーバーで反映されない場合はハードリロード（CSSキャッシュ）
+
+## 2026-06-01（月）
+
+### 🎯 サービス名・ロゴ変更：GoisuGuild → Zeroichi Home
+- HP・各LP内の「GoisuGuild」表記をすべて「Zeroichi Home」に変更（`src/app/page.tsx` / `services/page.tsx` / `bizowner/page.tsx` / `sarudemo/page.tsx` / `goisuguild/page.tsx` / `components/Footer.tsx` / `components/manabiya/ManabiyaLogo.tsx`）
+- 新ロゴ `docs/reference/Zeroichi Homeロゴ背景透過.png` を `public/zeroichi-home-logo.png` として配置
+- ロゴ参照を `/goisu-guild-logo.png` → `/zeroichi-home-logo.png` に差し替え（ManabiyaLogo・goisuguildページ・HPサービスカード等）
+- metadata（title/description）も Zeroichi Home に更新
+
+### 🎯 Zeroichi Home（旧goisuguild）追加対応
+- URLパスを `/goisuguild` → `/zeroichi-home` にリネーム（`git mv src/app/goisuguild src/app/zeroichi-home`）。HP・サービス一覧・Footerの `href` も更新。旧URLは404
+- EVENTS & CONTESTSの3カード（講演会／パーティー／ビジコン）の下端が揃っていなかったのを修正。StaggerItem/TiltCard/カード本体に `h-full`＋flex化し、グリッドstretchで高さ統一（実測bottom 824pxで3枚一致）
+- スマホのハンバーガーメニューをLPの雰囲気に合わせてリッチ化（`globals.css` の `.manabiya-mobile-*`）。グラデ角丸ボタン＋虹色アクセント＋ロゴ付きヘッダー＋カラーアイコン付き2列メニュー＋LINE CTA、スライドダウン＋背景ブラー演出を追加
+
+### ✅ 確定した決定事項
+- サービス名は「Zeroichi Home」、URLパスは `/zeroichi-home` で確定
+
+### 📌 次回再開ポイント
+- 旧 `public/goisu-guild-logo.png` は未使用（必要なら削除して整理）
+- dev サーバーはポート3000がBeads、3001も使用中のため **3002** で起動中（`http://localhost:3002/zeroichi-home`）
+
+---
+
 ## 2026-05-18（月）
 
 ### 🎯 BizOwner / SARUDEMO LP 画像Reveal埋もれ修正

@@ -1329,16 +1329,32 @@ details[open] summary::after {
 }
 
 .manabiya-mobile-menu summary {
-  width: 56px;
-  height: 100%;
-  min-height: 64px;
+  position: relative;
+  z-index: 61;
+  width: 48px;
+  height: 48px;
+  align-self: center;
+  margin: 0 12px 0 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   list-style: none;
   cursor: pointer;
+  border-radius: 14px;
+  background: #E84B8A;
+  border: 3px solid #2d1a2a;
+  box-shadow: 3px 3px 0 rgba(45, 26, 42, 0.22);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.25s ease;
+}
+
+.manabiya-mobile-menu summary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 rgba(45, 26, 42, 0.22);
+}
+
+.manabiya-mobile-menu[open] summary {
   background: #2d1a2a;
 }
 
@@ -1352,16 +1368,26 @@ details[open] summary::after {
   display: none;
 }
 
+/* dim backdrop behind the panel — no blur */
+.manabiya-mobile-menu[open] summary::before {
+  content: "";
+  position: fixed;
+  inset: 64px 0 0 0;
+  z-index: -1;
+  background: rgba(45, 26, 42, 0.3);
+  animation: mmFade 0.3s ease;
+}
+
 .manabiya-mobile-menu summary span {
-  width: 24px;
+  width: 22px;
   height: 3px;
   border-radius: 999px;
   background: #fff;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
 }
 
 .manabiya-mobile-menu[open] summary span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 
 .manabiya-mobile-menu[open] summary span:nth-child(2) {
@@ -1369,36 +1395,154 @@ details[open] summary::after {
 }
 
 .manabiya-mobile-menu[open] summary span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
 }
 
-.manabiya-mobile-menu nav {
+/* ── Slide-down panel — brochure style ── */
+.manabiya-mobile-panel {
   position: fixed;
   top: 64px;
   left: 0;
   right: 0;
-  z-index: 60;
+  z-index: 70;
+  padding: 0 14px 18px;
+  background: #fff;
+  border-bottom: 4px solid #2d1a2a;
+  border-radius: 0 0 26px 26px;
+  box-shadow: 0 16px 0 -8px rgba(45, 26, 42, 0.12);
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  animation: mmSlideDown 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* candy stripe top accent (matches FV) */
+.manabiya-mobile-panel::before {
+  content: "";
+  display: block;
+  height: 8px;
+  width: 100%;
+  margin-bottom: 16px;
+  background-image: repeating-linear-gradient(-45deg, #E84B8A 0 12px, #ffffff 12px 24px);
+}
+
+.manabiya-mobile-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 2px 14px;
+  margin-bottom: 14px;
+  border-bottom: 2px dashed rgba(45, 26, 42, 0.18);
+}
+
+.manabiya-mobile-panel-en {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #E84B8A;
+  line-height: 1;
+}
+
+.manabiya-mobile-panel-name {
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #2d1a2a;
+  margin-top: 3px;
+  line-height: 1;
+}
+
+.manabiya-mobile-panel nav {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.98);
-  border-bottom: 3px solid #2d1a2a;
-  box-shadow: 0 18px 32px rgba(45, 26, 42, 0.14);
 }
 
-.manabiya-mobile-menu nav a {
+.manabiya-mobile-panel nav a {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #fff;
+  border: 2.5px solid #2d1a2a;
+  color: #2d1a2a;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 2px 2px 0 rgba(45, 26, 42, 0.14);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+}
+
+.manabiya-mobile-panel nav a:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 rgba(45, 26, 42, 0.14);
+  background: #FDEEF3;
+}
+
+.manabiya-mobile-panel nav a .mm-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  color: #fff;
+  background: #E84B8A;
+  border: 2px solid #2d1a2a;
+}
+
+.manabiya-mobile-panel nav a .mm-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.manabiya-mobile-panel nav a .mm-label {
+  flex: 1;
+}
+
+.manabiya-mobile-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 14px;
   border-radius: 999px;
-  background: #fdeef3;
-  border: 2px solid rgba(45, 26, 42, 0.12);
-  color: #2d1a2a;
-  font-size: 14px;
+  background: #06c755;
+  border: 3px solid #2d1a2a;
+  color: #fff;
+  font-size: 15px;
   font-weight: 900;
   text-decoration: none;
+  box-shadow: 3px 3px 0 rgba(45, 26, 42, 0.22);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.manabiya-mobile-cta:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 rgba(45, 26, 42, 0.22);
+}
+
+@keyframes mmSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mmFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1617,7 +1761,8 @@ details[open] summary::after {
 .campus-crowd-photo {
   position: relative;
   width: min(1180px, 96vw);
-  height: clamp(118px, 17vh, 170px);
+  /* 高さを上げると頭〜胴がより多く写る。元の値: clamp(118px, 17vh, 170px) */
+  height: clamp(150px, 21vh, 230px);
   margin: 0 auto;
   overflow: hidden;
   border-radius: 40% 40% 0 0 / 24% 24% 0 0;
@@ -1645,7 +1790,8 @@ details[open] summary::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 47%;
+  /* 数値が大きいほど人物が上・小さいほど下（頭が切れたら下げる）。元の状態は 47% */
+  object-position: center 40%;
   filter: saturate(1.08) contrast(1.1) brightness(1.05);
 }
 
@@ -1824,7 +1970,7 @@ details[open] summary::after {
 
   .campus-crowd-photo {
     width: 112vw;
-    height: 104px;
+    height: 140px; /* 元の値: 104px */
     transform: translateX(-6vw);
   }
 }
@@ -1916,7 +2062,7 @@ details[open] summary::after {
 
   .campus-crowd-photo {
     width: 110vw;
-    height: 82px;
+    height: 116px; /* 元の値: 82px */
     transform: translateX(-5vw);
   }
 }

@@ -409,7 +409,7 @@ export default function SarudemoPage() {
             <h2 className="font-bold text-white text-[26px] md:text-[40px] leading-[1.4]">
               ただの起業じゃ終わらない。
               <br />
-              <span className="bg-gradient-to-r from-lp-accent to-lp-sky bg-clip-text" style={{ WebkitTextFillColor: "transparent" }}>&ldquo;GoisuGuild&rdquo;</span>という、青春。
+              <span className="bg-gradient-to-r from-lp-accent to-lp-sky bg-clip-text" style={{ WebkitTextFillColor: "transparent" }}>&ldquo;Zeroichi Home&rdquo;</span>という、青春。
             </h2>
           </FadeSlide>
           <StaggerChildren staggerMs={120} className="mt-5 md:mt-6 mx-auto max-w-[820px] grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 auto-rows-fr">

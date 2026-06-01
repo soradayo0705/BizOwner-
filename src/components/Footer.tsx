@@ -41,10 +41,10 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/goisuguild"
+                    href="/zeroichi-home"
                     className="hover:text-primary transition-colors"
                   >
-                    GoisuGuild
+                    Zeroichi Home
                   </Link>
                 </li>
               </ul>

@@ -409,12 +409,12 @@ export default function BizOwnerPage() {
             <h2 className="font-bold text-white text-[26px] md:text-[40px] leading-[1.4] mb-6">
               ただの副業じゃ終わらない。
               <br />
-              <span className="text-lp-accent">&ldquo;GoisuGuild&rdquo;</span>
+              <span className="text-lp-accent">&ldquo;Zeroichi Home&rdquo;</span>
               <br className="md:hidden" />
               という、青春。
             </h2>
             <p className="text-white/60 text-[15px] leading-[2] max-w-lg mx-auto">
-              BizOwner会員は「GoisuGuild」コミュニティに参加可能。
+              BizOwner会員は「Zeroichi Home」コミュニティに参加可能。
               ビジネスだけじゃない、仲間と楽しむ場がここにあります。
             </p>
           </FadeSlide>
@@ -637,7 +637,7 @@ export default function BizOwnerPage() {
           <StaggerChildren staggerMs={100} className="space-y-4 lp-accordion">
             {[
               { q: "作った法人は自由に使って良いですか？", a: "作成した法人は、BizOwnerが許可した案件にてご利用いただけます。基本的には本部案件にご活用ください。" },
-              { q: "新しくサークルを作ってもいいですか？", a: "もちろんです。GoisuGuildではメンバー発信のサークルを歓迎しています。" },
+              { q: "新しくサークルを作ってもいいですか？", a: "もちろんです。Zeroichi Homeではメンバー発信のサークルを歓迎しています。" },
               { q: "案件やサービスの参加方法は？", a: "会員サイトから案件一覧をご確認いただき、興味のあるものは解説動画をご覧のうえ実施してください。" },
               { q: "個別の質疑応答はどこでできますか？", a: "週1回、個別コンサルを受けられる権限をご用意しています。そちらで個別のご質問にお答えしますので、ぜひご活用ください。" },
               { q: "本当に知識ゼロでも大丈夫ですか？", a: "はい。案件の実行方法は会員サイトの動画で全て学べます。本部のサポートもあるのでご安心ください。" },

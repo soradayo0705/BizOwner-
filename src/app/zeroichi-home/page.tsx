@@ -10,9 +10,9 @@ import TiltCard from "@/components/manabiya/TiltCard";
 import LineIcon from "@/components/LineIcon";
 
 export const metadata: Metadata = {
-  title: "GoisuGuild｜学ぶ、遊ぶ、稼ぐ。全部ここに。",
+  title: "Zeroichi Home｜学ぶ、遊ぶ、稼ぐ。全部ここに。",
   description:
-    "副業×起業×エンタメ。コスパ最強の福利厚生コミュニティ「GoisuGuild」。動画学習・サークル活動・イベント・特典が全部込み。",
+    "副業×起業×エンタメ。コスパ最強の福利厚生コミュニティ「Zeroichi Home」。動画学習・サークル活動・イベント・特典が全部込み。",
 };
 
 /* ─── LINE CTA Button (TGU-style) ─── */
@@ -125,7 +125,7 @@ export default function ManabiyaPage() {
                 BUSINESS LEARNING COMMUNITY
               </p>
               <p className="text-[15px] md:text-[19px] font-black tracking-wider text-[#2D2D2D] mt-[2px] md:mt-[3px] leading-none">
-                GoisuGuild
+                Zeroichi Home
               </p>
             </div>
           </Link>
@@ -194,18 +194,34 @@ export default function ManabiyaPage() {
                 <span />
                 <span />
               </summary>
-              <nav>
-                {[
-                  { label: "紹介", href: "#intro" },
-                  { label: "価値", href: "#values" },
-                  { label: "イベント", href: "#events" },
-                  { label: "サークル", href: "#circles" },
-                  { label: "料金", href: "#pricing" },
-                  { label: "FAQ", href: "#faq" },
-                ].map((item) => (
-                  <a key={item.href} href={item.href}>{item.label}</a>
-                ))}
-              </nav>
+              <div className="manabiya-mobile-panel">
+                <div className="manabiya-mobile-panel-head">
+                  <ManabiyaLogo size={34} animate={false} />
+                  <div className="leading-tight">
+                    <p className="manabiya-mobile-panel-en">BUSINESS LEARNING COMMUNITY</p>
+                    <p className="manabiya-mobile-panel-name">Zeroichi Home</p>
+                  </div>
+                </div>
+                <nav>
+                  {[
+                    { label: "紹介", href: "#intro", icon: NavIcon.intro },
+                    { label: "価値", href: "#values", icon: NavIcon.content },
+                    { label: "イベント", href: "#events", icon: NavIcon.event },
+                    { label: "サークル", href: "#circles", icon: NavIcon.intro },
+                    { label: "料金", href: "#pricing", icon: NavIcon.price },
+                    { label: "FAQ", href: "#faq", icon: NavIcon.contact },
+                  ].map((item) => (
+                    <a key={item.href} href={item.href}>
+                      <span className="mm-icon">{item.icon}</span>
+                      <span className="mm-label">{item.label}</span>
+                    </a>
+                  ))}
+                </nav>
+                <a href="#contact" className="manabiya-mobile-cta">
+                  <LineIcon className="w-6 h-6" />
+                  公式LINEで無料登録
+                </a>
+              </div>
             </details>
           </div>
         </div>
@@ -269,7 +285,7 @@ export default function ManabiyaPage() {
             <div className="campus-art-card campus-art-card-left uni-bob">
               <Image
                 src="/manabiya/boy.png"
-                alt="GoisuGuildで遊ぶ男性メンバー"
+                alt="Zeroichi Homeで遊ぶ男性メンバー"
                 width={1024}
                 height={1536}
                 className="campus-person-img"
@@ -281,7 +297,7 @@ export default function ManabiyaPage() {
             <div className="campus-art-card campus-art-card-right uni-bob-delay">
               <Image
                 src="/manabiya/girl.png"
-                alt="GoisuGuildで学ぶ女性メンバー"
+                alt="Zeroichi Homeで学ぶ女性メンバー"
                 width={1024}
                 height={1536}
                 className="campus-person-img"
@@ -294,7 +310,7 @@ export default function ManabiyaPage() {
             <div className="campus-crowd-photo">
               <Image
                 src="/manabiya/group.png"
-                alt="GoisuGuildの仲間たち"
+                alt="Zeroichi Homeの仲間たち"
                 width={1536}
                 height={1024}
                 className="campus-crowd-img"
@@ -415,7 +431,7 @@ export default function ManabiyaPage() {
                 好きなことで繋がり、共に笑い、共に挑戦し、そして結果を出す。
               </p>
               <p>
-                「GoisuGuild」は、独立・起業を目指す夢を持った人々が、
+                「Zeroichi Home」は、独立・起業を目指す夢を持った人々が、
                 熱狂をもって共に生きるための、全く新しいコミュニティプラットフォームです。
               </p>
             </div>
@@ -433,7 +449,7 @@ export default function ManabiyaPage() {
         <div className="max-w-[1100px] mx-auto px-4 md:px-6">
           <FadeSlide className="text-center mb-14 md:mb-20">
             <SectionLabel en="4 VALUES" className="justify-center text-tgu-pink" />
-            <h2 className="text-2xl md:text-[36px] font-black leading-[1.4]">GoisuGuildの4つの価値</h2>
+            <h2 className="text-2xl md:text-[36px] font-black leading-[1.4]">Zeroichi Homeの4つの価値</h2>
           </FadeSlide>
 
           <div className="space-y-8 md:space-y-10">
@@ -479,7 +495,7 @@ export default function ManabiyaPage() {
                 icon: "🎁",
                 title: "豪華特典",
                 sub: "Special Benefits",
-                desc: "オンライン占い、個別コーチング・コンサル、プレゼント企画、提携サービスの会員特別割引など。GoisuGuildだけの限定福利厚生。",
+                desc: "オンライン占い、個別コーチング・コンサル、プレゼント企画、提携サービスの会員特別割引など。Zeroichi Homeだけの限定福利厚生。",
                 reverse: true,
               },
             ].map((item) => (
@@ -628,9 +644,9 @@ export default function ManabiyaPage() {
                 desc: "ビジネスコンテストから、エンタメ性の高いミスコン・のど自慢大会まで。",
               },
             ].map((item) => (
-              <StaggerItem key={item.title}>
-                <TiltCard intensity={3}>
-                  <div className="tgu-card bg-white overflow-hidden shadow-[0_4px_20px_-6px_rgba(0,0,0,0.08)] group">
+              <StaggerItem key={item.title} className="h-full">
+                <TiltCard intensity={3} className="h-full">
+                  <div className="tgu-card bg-white overflow-hidden shadow-[0_4px_20px_-6px_rgba(0,0,0,0.08)] group h-full flex flex-col">
                     <div className="overflow-hidden rounded-t-[22px]">
                       <Image
                         src={item.img}
@@ -640,8 +656,8 @@ export default function ManabiyaPage() {
                         className="w-full h-[200px] md:h-[220px] object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <div className="p-5 md:p-6">
-                      <span className={`text-[11px] font-bold ${item.tagBg} px-4 py-1.5 rounded-full inline-block mb-3`}>
+                    <div className="p-5 md:p-6 flex flex-col flex-1">
+                      <span className={`text-[11px] font-bold ${item.tagBg} px-4 py-1.5 rounded-full inline-block mb-3 self-start`}>
                         {item.tag}
                       </span>
                       <h3 className="text-[17px] md:text-[18px] font-bold mb-2 group-hover:text-tgu-pink transition-colors">{item.title}</h3>
@@ -763,7 +779,7 @@ export default function ManabiyaPage() {
             {[
               { icon: "🔮", iconBg: "bg-tgu-pink", title: "オンライン占い・コーチング", desc: "恋愛やビジネス、自己理解まで。プロと対話しながら週1時間×月4回までご利用いただけます。次の一歩のヒントづくりに。" },
               { icon: "🎁", iconBg: "bg-tgu-yellow", title: "豪華プレゼント企画", desc: "ミッション達成で豪華賞品をご自宅へ郵送。毎月1回以上、ゲリラ開催も！" },
-              { icon: "💎", iconBg: "bg-tgu-purple", title: "提携サービス特別割引", desc: "様々なサービスの特別優待券を配布。GoisuGuildメンバーだけの限定特典。" },
+              { icon: "💎", iconBg: "bg-tgu-purple", title: "提携サービス特別割引", desc: "様々なサービスの特別優待券を配布。Zeroichi Homeメンバーだけの限定特典。" },
             ].map((item) => (
               <StaggerItem key={item.title}>
                 <div className="flex flex-col sm:flex-row items-center gap-5 bg-white p-6 md:p-8 rounded-[20px] shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -802,7 +818,7 @@ export default function ManabiyaPage() {
                   <tr>
                     <th className="p-2.5 md:p-4 border-b-2 border-white font-medium text-[#999]">機能・内容</th>
                     <th className="p-2.5 md:p-4 border-b-2 border-white font-bold text-center text-tgu-pink bg-tgu-pink-light rounded-t-xl">
-                      GoisuGuild
+                      Zeroichi Home
                     </th>
                     <th className="p-2.5 md:p-4 border-b-2 border-white font-medium text-center text-[#bbb]">
                       <span className="hidden md:inline">一般的な</span><span className="md:hidden">一般</span>
@@ -927,7 +943,7 @@ export default function ManabiyaPage() {
 
           <StaggerChildren staggerMs={80} className="space-y-3">
             {[
-              { q: "GoisuGuildだけの利用はできますか？", a: "はい、できます。まずは1ヵ月無料トライアルからお試しください！", borderColor: "hover:border-tgu-cyan" },
+              { q: "Zeroichi Homeだけの利用はできますか？", a: "はい、できます。まずは1ヵ月無料トライアルからお試しください！", borderColor: "hover:border-tgu-cyan" },
               { q: "サークルの参加費はいくらですか？", a: "サークルごとに団長が費用を設定しています。月額会費以外の追加料金は各活動ごとに異なります。", borderColor: "hover:border-tgu-pink" },
               { q: "新しくサークルを作ってもいいですか？", a: "もちろんです！毎月1回の全体MTGでプレゼンし、参加希望者が集まれば新サークルを立ち上げられます。", borderColor: "hover:border-tgu-yellow" },
               { q: "会員サイトの動画はどんな内容ですか？", a: "副業の始め方や初心者向けビジネスセミナーを中心に提供しています。動画は随時追加され、今後は各分野のプロによる講座も増やしていく予定です。", borderColor: "hover:border-tgu-green" },
@@ -973,8 +989,8 @@ export default function ManabiyaPage() {
         <div className="relative z-10 max-w-[700px] mx-auto px-4 md:px-6 flex flex-col items-center text-center">
           <FadeSlide className="w-full flex justify-center">
             <Image
-              src="/goisu-guild-logo.png"
-              alt="GoisuGuild"
+              src="/zeroichi-home-logo.png"
+              alt="Zeroichi Home"
               width={1024}
               height={1024}
               className="block mx-auto h-20 md:h-24 w-auto select-none mb-6"
