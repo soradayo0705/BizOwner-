@@ -15,11 +15,16 @@ export const metadata: Metadata = {
     "副業×起業×エンタメ。コスパ最強の福利厚生コミュニティ「Zeroichi Home」。動画学習・サークル活動・イベント・特典が全部込み。",
 };
 
+/* メインCV：公式LINE追加。全CTAの遷移先 */
+const LINE_URL = "https://lin.ee/6siBqPz";
+
 /* ─── LINE CTA Button (TGU-style) ─── */
 function LineCta({ children, large = false }: { children: React.ReactNode; large?: boolean }) {
   return (
     <a
-      href="#"
+      href={LINE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
       className={`mn-cta-pulse inline-flex items-center gap-3 bg-line hover:bg-[#05b34c] text-white font-bold rounded-full shadow-[0_8px_24px_-6px_rgba(6,199,85,0.35)] transition-all hover:scale-105 hover:-translate-y-0.5 ${
         large ? "text-base md:text-xl px-8 md:px-12 py-5 md:py-6" : "text-base md:text-lg px-8 md:px-10 py-4 md:py-5"
       }`}
@@ -154,7 +159,9 @@ export default function ManabiyaPage() {
           {/* Right: LINE登録 */}
           <div className="flex items-stretch h-full">
             <a
-              href="#contact"
+              href={LINE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="公式LINEで無料登録"
               className="manabiya-header-line relative flex flex-col items-center justify-center text-white font-black transition group"
             >
@@ -217,7 +224,7 @@ export default function ManabiyaPage() {
                     </a>
                   ))}
                 </nav>
-                <a href="#contact" className="manabiya-mobile-cta">
+                <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="manabiya-mobile-cta">
                   <LineIcon className="w-6 h-6" />
                   公式LINEで無料登録
                 </a>
@@ -234,7 +241,7 @@ export default function ManabiyaPage() {
         <a href="#events" className="bg-tgu-pink hover:bg-[#D63878]">
           イベント情報
         </a>
-        <a href="#contact" className="bg-[#F48FB1] hover:bg-[#EC88A5]">
+        <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="bg-[#F48FB1] hover:bg-[#EC88A5]">
           LINE登録
         </a>
       </aside>
@@ -334,7 +341,9 @@ export default function ManabiyaPage() {
           </div>
           <div className="flex flex-col items-center gap-1.5 shrink-0">
             <a
-              href="#"
+              href={LINE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="tgu-cta-pulse inline-flex items-center gap-3 bg-line hover:bg-[#05b34c] text-white font-black text-[15px] md:text-[18px] px-7 md:px-10 py-4 md:py-5 rounded-full shadow-[0_8px_24px_-6px_rgba(6,199,85,0.45)] transition-all hover:scale-105 hover:-translate-y-0.5"
             >
               <LineIcon className="w-6 h-6 md:w-7 md:h-7" />
@@ -750,7 +759,9 @@ export default function ManabiyaPage() {
               <h2 className="text-lg md:text-xl font-black mb-1.5">興味が湧いたら、まずはLINE登録！</h2>
             </div>
             <a
-              href="#"
+              href={LINE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mn-cta-pulse relative z-10 shrink-0 flex items-center gap-3 bg-line hover:bg-[#05b34c] text-white font-bold text-[15px] px-7 py-4 rounded-full shadow-md transition-transform hover:scale-105"
             >
               <LineIcon className="w-6 h-6" />
@@ -878,7 +889,7 @@ export default function ManabiyaPage() {
                   ))}
                 </ul>
 
-                <a href="#" className="block w-full text-center bg-white text-tgu-pink font-bold text-[15px] md:text-[17px] py-4 rounded-full hover:bg-tgu-yellow hover:text-[#2D2D2D] transition-colors shadow-md">
+                <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-white text-tgu-pink font-bold text-[15px] md:text-[17px] py-4 rounded-full hover:bg-tgu-yellow hover:text-[#2D2D2D] transition-colors shadow-md">
                   1ヶ月無料で試してみる
                 </a>
               </div>
@@ -1010,7 +1021,9 @@ export default function ManabiyaPage() {
           </FadeSlide>
           <FadeSlide delay={600} className="w-full flex flex-col items-center">
             <a
-              href="#"
+              href={LINE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="tgu-cta-pulse inline-flex items-center gap-3 bg-white text-tgu-pink font-black text-[17px] md:text-[20px] px-10 md:px-14 py-5 md:py-6 rounded-full shadow-[0_12px_32px_-8px_rgba(0,0,0,0.2)] transition-all hover:scale-105 hover:-translate-y-1"
             >
               <LineIcon className="w-7 h-7 md:w-8 md:h-8" />

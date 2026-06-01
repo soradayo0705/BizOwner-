@@ -11,6 +11,14 @@
 
 ## 2026-06-02（火）
 
+### 🎯 Zeroichi Home：CV（公式LINE追加）に本番LINE URLを紐付け
+- メインCV遷移先 `https://lin.ee/6siBqPz` を `LINE_URL` 定数として定義（`src/app/zeroichi-home/page.tsx`）
+- 全LINE登録CTA（計8箇所）の `href="#"` / `href="#contact"` を `LINE_URL` に差し替え、`target="_blank" rel="noopener noreferrer"` で別タブ起動に統一
+  - ①`LineCta`共通コンポーネント（intro/values セクション）②ヘッダーのLINE登録リボン ③スマホメニューCTA ④右サイドバー「LINE登録」⑤FV直下CTA「LINEで無料登録（1分）」⑥バナー「LINEで情報を受け取る」⑦料金カード「1ヶ月無料で試してみる」⑧最終CTA「今すぐLINE登録（無料）」
+- ヘッダー/サイドバー/スマホメニューは従来 `#contact` へのスクロールだったが、CV直結のため直接LINE遷移に変更
+
+
+
 ### 🎯 Zeroichi Home：スマホ ハンバーガーメニューの「ぼやけ／黒ずみ」不具合修正
 - 症状：メニューを開くとパネル（紹介/価値/イベント等のカード・LINE CTA）が全体的にぼやけて灰色がかる
 - 原因：背景の薄暗オーバーレイ（`.manabiya-mobile-menu[open] summary::before`）が `summary`（`z-index:61`）のスタッキングコンテキスト内にあるため、パネル（`z-index:60`）の**上**に描画されていた。元々付いていた `backdrop-filter: blur` がパネルごとぼかし、暗幕がパネルを灰色化させていた
