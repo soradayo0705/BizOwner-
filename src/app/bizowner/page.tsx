@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "BizOwner｜副業感覚で会社のオーナーに",
 };
 
+/* メインCV：公式LINE追加。全CTAの遷移先 */
+const LINE_URL = "https://utage-system.com/line/open/YWF9a1li6ut7";
+
 /* ── CTA Banner (variation A - full width) ── */
 function CtaBannerFull() {
   return (
@@ -21,7 +24,7 @@ function CtaBannerFull() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-cta/20 rounded-full blur-[100px]" />
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10 flex flex-col items-center">
         <p className="text-white/60 text-[13px] font-bold mb-4 tracking-wider">＼ 今すぐ無料で始める ／</p>
-        <a href="#" className="cta-btn cta-glow lp-shine text-[16px] md:text-[18px] px-10 py-5">
+        <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="cta-btn cta-glow lp-shine text-[16px] md:text-[18px] px-10 py-5">
           <LineIcon className="w-6 h-6" />
           1ヶ月無料でLINE登録する
         </a>
@@ -40,7 +43,7 @@ function CtaBannerCard() {
           <div className="bg-white py-8 px-6 md:px-10 text-center">
             <p className="text-lp font-bold text-[18px] md:text-[22px] mb-2">まずは無料で体験してみませんか？</p>
             <p className="text-text-light text-[13px] mb-6">1ヶ月無料・解約自由。リスクゼロで始められます。</p>
-            <a href="#" className="cta-btn cta-glow lp-shine text-[15px] md:text-[16px] px-8 py-4">
+            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="cta-btn cta-glow lp-shine text-[15px] md:text-[16px] px-8 py-4">
               <LineIcon className="w-5 h-5" />
               LINE登録して無料体験する
             </a>
@@ -131,7 +134,7 @@ export default function BizOwnerPage() {
               </FadeSlide>
               <FadeSlide direction="up" delay={700}>
                 <div className="flex flex-col gap-3">
-                  <a href="#" className="cta-btn cta-glow lp-shine text-[16px] md:text-[18px] w-full max-w-md px-8 py-5 justify-center">
+                  <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="cta-btn cta-glow lp-shine text-[16px] md:text-[18px] w-full max-w-md px-8 py-5 justify-center">
                     <LineIcon className="w-6 h-6" />
                     1ヶ月無料でLINE登録する
                   </a>
@@ -684,7 +687,7 @@ export default function BizOwnerPage() {
               <br className="hidden md:block" />
               まずは無料でLINE登録して、詳しい情報を受け取ってください。
             </p>
-            <a href="#" className="cta-btn lp-shine text-[18px] px-12 py-6 shadow-[0_0_40px_rgba(232,93,47,0.4)] hover:shadow-[0_0_60px_rgba(232,93,47,0.6)] hover:-translate-y-1 transition-all">
+            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="cta-btn lp-shine text-[18px] px-12 py-6 shadow-[0_0_40px_rgba(232,93,47,0.4)] hover:shadow-[0_0_60px_rgba(232,93,47,0.6)] hover:-translate-y-1 transition-all">
               <LineIcon className="w-7 h-7" />
               1ヶ月無料でLINE登録する
             </a>

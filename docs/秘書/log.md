@@ -9,6 +9,14 @@
 
 ---
 
+## 2026-06-05（木）
+
+### 🎯 BizOwner：CV（公式LINE追加）にUTAGE LINE URLを紐付け
+- メインCV遷移先 `https://utage-system.com/line/open/YWF9a1li6ut7` を `LINE_URL` 定数として定義（`src/app/bizowner/page.tsx`）
+- 全LINE登録CTA（計4箇所）の `href="#"` を `LINE_URL` に差し替え、`target="_blank" rel="noopener noreferrer"` で別タブ起動に統一
+  - ①`CtaBannerFull`（フル幅CTAバナー）②`CtaBannerCard`（カード型CTAバナー）③HERO内CTA「1ヶ月無料でLINE登録する」④最終CTA「1ヶ月無料でLINE登録する」
+- ロゴリンク（`href="#"`）はCVではないため変更せず
+
 ## 2026-06-02（火）
 
 ### 🎯 Zeroichi Home：CV（公式LINE追加）に本番LINE URLを紐付け
