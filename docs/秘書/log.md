@@ -11,6 +11,15 @@
 
 ## 2026-06-05（木）
 
+### 🎯 株式会社WOWNER HP：お問い合わせフォームのメール送信【保留中】
+- 現状フォーム（`src/app/ContactForm.tsx`）は送信しても `alert` を出すだけで、入力内容はどこにも飛んでいない
+- メアドをコードに書くだけでは届かない＝「宛先メアド」＋「送信サービス（Web3Forms/Resend等の土管）」の2点セットが必須、とクライアント説明用に整理
+- **保留理由**：送信先メアドが未定。クライアント確認後に着手予定
+- 📄 構築手順・方式比較・チェックリストを `docs/reference/お問い合わせフォーム送信設定メモ.md` に保存。再開時はこれを開く
+
+### 📌 次回再開ポイント（お問い合わせフォーム）
+- クライアントから受信用メアドが届いたら `docs/reference/お問い合わせフォーム送信設定メモ.md` を参照して構築再開（推奨方式: Web3Forms）
+
 ### 🎯 BizOwner：CV（公式LINE追加）にUTAGE LINE URLを紐付け
 - メインCV遷移先 `https://utage-system.com/line/open/YWF9a1li6ut7` を `LINE_URL` 定数として定義（`src/app/bizowner/page.tsx`）
 - 全LINE登録CTA（計4箇所）の `href="#"` を `LINE_URL` に差し替え、`target="_blank" rel="noopener noreferrer"` で別タブ起動に統一
