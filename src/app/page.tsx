@@ -53,25 +53,29 @@ export default function Home() {
           <h1
             className="font-semibold text-white mb-8 fv-title-anim"
             style={{
-              fontFamily: "var(--font-orbitron), sans-serif",
-              fontSize: "clamp(3rem,9vw,7.2rem)",
-              lineHeight: 1.07,
-              letterSpacing: "0.18em",
+              fontFamily: "var(--font-noto-serif-jp), serif",
+              fontSize: "clamp(2.6rem,9.5vw,6.4rem)",
+              lineHeight: 1.16,
+              letterSpacing: "0.16em",
             }}
           >
-            WOWNER
+            全国起業家協会
           </h1>
           <p
             className="font-[Noto_Sans_JP] text-white text-lg md:text-[22px] font-medium mb-3 fv-fade"
             style={{ letterSpacing: "0.08em", animationDelay: "0.4s" }}
           >
-            ビジネスを、より戦略的に、より本質的に
+            ビジネスを、より戦略的に、
+            <br className="md:hidden" />
+            より本質的に
           </p>
           <p
             className="text-white/60 text-sm md:text-base mb-12 fv-fade"
             style={{ letterSpacing: "-0.2px", animationDelay: "0.65s" }}
           >
-            営業支援・コミュニティ構築・経営支援で、事業成長を加速します
+            営業支援・コミュニティ構築・経営支援で、
+            <br className="md:hidden" />
+            事業成長を加速します
           </p>
           <div className="flex flex-wrap gap-5 justify-center fv-fade" style={{ animationDelay: "0.9s" }}>
             <Link href="/services" className="btn-ghost white">
@@ -121,7 +125,7 @@ export default function Home() {
                   className="font-[Noto_Sans_JP] text-text-main text-[14px] leading-[2.1] mb-5"
                   style={{ letterSpacing: "-0.2px" }}
                 >
-                  株式会社WOWNERは、営業代行・コミュニティ運営・経営コンサルティングの3つの柱で企業の成長を多角的に支援するビジネスパートナーです。
+                  一般社団法人 全国起業家協会は、営業代行・コミュニティ運営・経営コンサルティングの3つの柱で企業の成長を多角的に支援するビジネスパートナーです。
                 </p>
                 <p
                   className="font-[Noto_Sans_JP] text-text-main text-[14px] leading-[2.1]"

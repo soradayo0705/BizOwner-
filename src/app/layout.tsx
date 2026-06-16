@@ -52,8 +52,8 @@ const orbitron = Orbitron({
 
 export const metadata: Metadata = {
   title: {
-    default: "株式会社WOWNER",
-    template: "%s | WOWNER",
+    default: "一般社団法人 全国起業家協会",
+    template: "%s | 全国起業家協会",
   },
   description:
     "営業支援・コミュニティ構築・経営支援で、事業成長を加速します。",
