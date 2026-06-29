@@ -1,13 +1,102 @@
 "use client";
 
+import { useState, type FormEvent } from "react";
+
+type Status = "idle" | "submitting" | "success" | "error";
+
+const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
+
+const CATEGORY_LABELS: Record<string, string> = {
+  sales: "営業代行について",
+  community: "コミュニティー運営について",
+  consulting: "経営コンサルティングについて",
+  other: "その他",
+};
+
 export default function ContactForm() {
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (status === "submitting") return;
+
+    const form = e.currentTarget;
+
+    if (!ACCESS_KEY) {
+      setStatus("error");
+      setErrorMessage(
+        "送信設定が未完了です。お手数ですがしばらくしてから再度お試しください。"
+      );
+      return;
+    }
+
+    setStatus("submitting");
+    setErrorMessage("");
+
+    const data = new FormData(form);
+    const category = String(data.get("category") ?? "");
+
+    const payload = {
+      access_key: ACCESS_KEY,
+      subject: "【WOWNER】お問い合わせフォームからの新着メッセージ",
+      from_name: "WOWNER お問い合わせフォーム",
+      name: data.get("name"),
+      company: data.get("company") || "（未記入）",
+      email: data.get("email"),
+      phone: data.get("phone") || "（未記入）",
+      category: CATEGORY_LABELS[category] ?? category,
+      message: data.get("message"),
+    };
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await res.json();
+
+      if (res.ok && result.success) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+        setErrorMessage(
+          "送信に失敗しました。お手数ですが時間をおいて再度お試しください。"
+        );
+      }
+    } catch {
+      setStatus("error");
+      setErrorMessage(
+        "送信に失敗しました。通信環境をご確認のうえ、再度お試しください。"
+      );
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <div className="bg-white border border-[#e0e0e0] p-8 md:p-12 text-center">
+        <p className="font-[Noto_Sans_JP] text-[18px] font-semibold text-text-heading mb-3">
+          送信ありがとうございます。
+        </p>
+        <p className="font-[Noto_Sans_JP] text-[14px] text-text-main leading-relaxed">
+          お問い合わせを受け付けました。
+          <br />
+          担当者より追ってご連絡いたします。
+        </p>
+      </div>
+    );
+  }
+
   return (
     <form
       className="bg-white border border-[#e0e0e0] p-8 md:p-12"
-      onSubmit={(e) => {
-        e.preventDefault();
-        alert("送信ありがとうございます。");
-      }}
+      onSubmit={handleSubmit}
     >
       <div className="grid gap-6">
         <div>
@@ -87,9 +176,18 @@ export default function ContactForm() {
             placeholder="お気軽にお問い合わせください"
           />
         </div>
+        {status === "error" && (
+          <p className="font-[Noto_Sans_JP] text-[13px] text-red-600 -mt-2">
+            {errorMessage}
+          </p>
+        )}
         <div className="text-center pt-2">
-          <button type="submit" className="btn-ghost">
-            送信
+          <button
+            type="submit"
+            className="btn-ghost disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={status === "submitting"}
+          >
+            {status === "submitting" ? "送信中..." : "送信"}
             <span className="arrow"></span>
           </button>
         </div>
