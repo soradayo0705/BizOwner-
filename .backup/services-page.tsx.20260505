@@ -39,7 +39,7 @@ export default function ServicesPage() {
                 letterSpacing: "-0.2px",
               }}
             >
-              BizOwnerが提供する3つの事業領域と、各サービスの詳細をご紹介します。
+              全国起業家協会が提供する3つの事業領域と、各サービスの詳細をご紹介します。
             </p>
           </FadeUp>
         </div>
@@ -71,7 +71,7 @@ export default function ServicesPage() {
                       d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                     />
                   ),
-                  title: "営業代行",
+                  title: "営業支援",
                   desc: "新規開拓から既存顧客フォローまで、経験豊富なプロフェッショナルが営業力を強化。成果にコミットします。",
                   items: [
                     "新規顧客の開拓・アポイント獲得",
@@ -187,7 +187,7 @@ export default function ServicesPage() {
                   BizOwner
                 </h3>
                 <p className="text-white/45 text-[13px] leading-[1.8]">
-                  副業感覚で会社経営。権利収入を実現するビジネスプログラム。
+                  ビジネス素人から会社経営。権利収入を実現するビジネスプログラム。
                 </p>
               </Link>
               <Link

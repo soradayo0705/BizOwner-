@@ -40,7 +40,7 @@ export default function ServicesPage() {
                 letterSpacing: "-0.2px",
               }}
             >
-              BizOwnerが提供する3つの事業領域と、各サービスの詳細をご紹介します。
+              全国起業家協会が提供する3つの事業領域と、各サービスの詳細をご紹介します。
             </p>
           </FadeUp>
         </div>
@@ -72,7 +72,7 @@ export default function ServicesPage() {
                       d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                     />
                   ),
-                  title: "営業代行",
+                  title: "営業支援",
                   desc: "新規開拓から既存顧客フォローまで、経験豊富なプロフェッショナルが営業力を強化。成果にコミットします。",
                   items: [
                     "新規顧客の開拓・アポイント獲得",
@@ -176,11 +176,11 @@ export default function ServicesPage() {
                   logo: "/lp/bizowner-logo.png",
                   alt: "BizOwner ロゴ",
                   eyebrow: "BUSINESS PROGRAM",
-                  badge: "CICブラック対応",
+                  badge: "ビジネス初心者対応",
                   title: "BizOwner",
                   titleFont: "font-[Josefin_Sans]",
-                  desc: "副業感覚で会社経営。知識ゼロ・リスク最小限で始められる権利収入の仕組み。",
-                  tags: ["月額11,000円〜", "知識不要", "権利収入"],
+                  desc: "ビジネス素人から会社経営。知識ゼロ・リスク最小限で始められる権利収入の仕組み。",
+                  tags: ["月額50,000円〜", "知識不要", "権利収入"],
                   bg: "linear-gradient(160deg,#002b3a 0%,#005f7e 55%,#0088a8 100%)",
                 },
                 {
@@ -203,8 +203,8 @@ export default function ServicesPage() {
                   badge: "総合コミュニティ",
                   title: "Zeroichi Home",
                   titleFont: "font-[Josefin_Sans]",
-                  desc: "副業・起業・エンタメを融合した総合コミュニティ。仲間と学び成長する場。",
-                  tags: ["副業×起業×エンタメ", "学び合い", "イベント"],
+                  desc: "全国起業家協会が提供する総合コミュニティ。仲間と学び成長する場。",
+                  tags: ["全国起業家協会", "学び合い", "イベント"],
                   bg: "linear-gradient(160deg,#003d52 0%,#0088a8 60%,#0fb1c4 100%)",
                 },
               ].map((s) => (

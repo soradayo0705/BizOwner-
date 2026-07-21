@@ -368,7 +368,7 @@ export default function ManabiyaPage() {
                 [
                   { kind: "count" as const, num: 100, suffix: "", label: "案件カテゴリ", color: "bg-tgu-cyan" },
                   { kind: "text" as const, text: "年間100回以上", label: "イベント数", color: "bg-tgu-coral" },
-                  { kind: "count" as const, num: 10000, suffix: "", label: "円/月〜", color: "bg-tgu-pink" },
+                  { kind: "count" as const, num: 50000, suffix: "", label: "円/月〜", color: "bg-tgu-pink" },
                 ] as const
               ).map((s) => (
                 <div key={s.label} className="text-center">
@@ -469,9 +469,9 @@ export default function ManabiyaPage() {
                 iconBg: "bg-tgu-cyan",
                 stripColor: "text-tgu-cyan/15",
                 icon: "🎬",
-                title: "会員サイト",
-                sub: "Video Learning",
-                desc: "副業・起業の基礎から実践まで。プロフェッショナルによる高品質な動画コンテンツが見放題。いつでもどこでも、あなたのペースで学べます。",
+                title: "独自ツール",
+                sub: "Business tool",
+                desc: "ビジネスに必要なものは全てここに。独自開発のツールや機能が、あなたの目標達成・自己管理・案件管理を強力にサポート。メンバー同士で使いこなして、夢の実現を加速しよう。",
                 reverse: false,
               },
               {
@@ -578,7 +578,7 @@ export default function ManabiyaPage() {
                 <ul className="space-y-5">
                   {[
                     { title: "起業スタートアップ講座", desc: "ビジネスを始めるまでの流れを、ステップごとにわかりやすく解説します。" },
-                    { title: "ビジネスセミナー見放題", desc: "マーケティング、営業、SNS運用など、超実践的な講義。" },
+                    { title: "ビジネスセミナー参加し放題", desc: "マーケティング、営業、SNS運用など、超実践的な講義。" },
                   ].map((item) => (
                     <li key={item.title} className="flex items-start gap-4">
                       <span className="w-7 h-7 shrink-0 mt-0.5 bg-tgu-pink rounded-full flex items-center justify-center">
@@ -788,7 +788,7 @@ export default function ManabiyaPage() {
 
           <StaggerChildren staggerMs={150} className="space-y-5">
             {[
-              { icon: "🔮", iconBg: "bg-tgu-pink", title: "オンライン占い・コーチング", desc: "恋愛やビジネス、自己理解まで。プロと対話しながら週1時間×月4回までご利用いただけます。次の一歩のヒントづくりに。" },
+              { icon: "🔮", iconBg: "bg-tgu-pink", title: "オンライン占い・コーチング", desc: "恋愛やビジネス、自己理解まで。プロと対話しながら追加料金なしで、ご利用いただけます。次の一歩のヒントづくりに。" },
               { icon: "🎁", iconBg: "bg-tgu-yellow", title: "豪華プレゼント企画", desc: "ミッション達成で豪華賞品をご自宅へ郵送。毎月1回以上、ゲリラ開催も！" },
               { icon: "💎", iconBg: "bg-tgu-purple", title: "提携サービス特別割引", desc: "様々なサービスの特別優待券を配布。Zeroichi Homeメンバーだけの限定特典。" },
             ].map((item) => (
@@ -840,7 +840,7 @@ export default function ManabiyaPage() {
                 </thead>
                 <tbody className="font-medium">
                   {[
-                    ["動画学習", "✓ 見放題", "数千円〜"],
+                    ["独自ツール", "✓ 使い放題", "数千円〜"],
                     ["イベント参加", "✓ 多数開催", "都度高額"],
                     ["サークル活動", "✓ 追加費用なし", "✕ なし"],
                     ["無料特典", "✓ あり", "✕ なし"],
@@ -869,7 +869,7 @@ export default function ManabiyaPage() {
 
                 <div className="flex items-baseline gap-1 mb-2">
                   <span className="text-[36px] md:text-[48px] font-black font-[var(--font-montserrat)]">
-                    ¥<CountUp end={10000} />
+                    ¥<CountUp end={50000} />
                   </span>
                 </div>
                 <p className="text-[14px] opacity-70 mb-5">/ 月（税別）</p>
@@ -879,7 +879,7 @@ export default function ManabiyaPage() {
                 </span>
 
                 <ul className="space-y-3 mb-8 text-[13px] md:text-[14px] font-medium">
-                  {["動画コンテンツ見放題", "セミナー/イベント参加権", "全サークルへの参加自由", "特別優待の利用"].map((item) => (
+                  {["独自ツール使い放題", "セミナー/イベント参加権", "全サークルへの参加自由", "特別優待の利用"].map((item) => (
                     <li key={item} className="flex items-center gap-3">
                       <svg className="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
@@ -920,7 +920,7 @@ export default function ManabiyaPage() {
             {[
               { num: "1", color: "bg-tgu-cyan", title: "LINE追加", desc: "公式アカウントを友達追加" },
               { num: "2", color: "bg-tgu-pink", title: "会員登録", desc: "案内に従い無料登録" },
-              { num: "3", color: "bg-tgu-green", title: "動画で学習", desc: "サイトで基礎をインプット" },
+              { num: "3", color: "bg-tgu-green", title: "セミナーで学習", desc: "プロから基礎をインプット" },
               { num: "4", color: "bg-tgu-yellow", title: "サークル参加", desc: "趣味の合う仲間と合流" },
               { num: "5", color: "bg-tgu-coral", title: "人生が変わる", desc: "学びと遊びのサイクル完成", highlight: true },
             ].map((step) => (
@@ -957,8 +957,8 @@ export default function ManabiyaPage() {
               { q: "Zeroichi Homeだけの利用はできますか？", a: "はい、できます。まずは1ヵ月無料トライアルからお試しください！", borderColor: "hover:border-tgu-cyan" },
               { q: "サークルの参加費はいくらですか？", a: "サークルごとに団長が費用を設定しています。月額会費以外の追加料金は各活動ごとに異なります。", borderColor: "hover:border-tgu-pink" },
               { q: "新しくサークルを作ってもいいですか？", a: "もちろんです！毎月1回の全体MTGでプレゼンし、参加希望者が集まれば新サークルを立ち上げられます。", borderColor: "hover:border-tgu-yellow" },
-              { q: "会員サイトの動画はどんな内容ですか？", a: "副業の始め方や初心者向けビジネスセミナーを中心に提供しています。動画は随時追加され、今後は各分野のプロによる講座も増やしていく予定です。", borderColor: "hover:border-tgu-green" },
-              { q: "占いやコーチング、コンサルの内容は？", a: "週1時間×月4回の占い・コーチング・コンサルを受けられる権利を付与します。内容はメンバーのご希望をうかがい、完全オーダーメイドで対応いたします。", borderColor: "hover:border-tgu-purple" },
+              { q: "ビジネスセミナーはどんな内容ですか？", a: "副業の始め方や初心者向けの内容を中心に提供しています。セミナー日程は随時追加され、今後は各分野のプロによる講座も増やしていく予定です。", borderColor: "hover:border-tgu-green" },
+              { q: "占いやコーチング、コンサルの内容は？", a: "希望者のみ占い・コーチング・コンサルを受けられる権利を付与します。内容はメンバーのご希望をうかがい、完全オーダーメイドで対応いたします。", borderColor: "hover:border-tgu-purple" },
               { q: "途中で解約できますか？", a: "はい、いつでも解約可能です。違約金や引き止めは一切ありません。無料期間内に退会された場合、費用は一切かかりません。", borderColor: "hover:border-tgu-coral" },
             ].map((faq, i) => (
               <StaggerItem key={i}>
