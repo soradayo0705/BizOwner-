@@ -125,7 +125,7 @@ export default function Home() {
                   className="font-[Noto_Sans_JP] text-text-main text-[14px] leading-[2.1] mb-5"
                   style={{ letterSpacing: "-0.2px" }}
                 >
-                  一般社団法人 全国起業家協会は、営業代行・コミュニティ運営・経営コンサルティングの3つの柱で企業の成長を多角的に支援するビジネスパートナーです。
+                  一般社団法人 全国起業家協会は、営業支援・コミュニティ運営・経営コンサルティングの3つの柱で企業の成長を多角的に支援するビジネスパートナーです。
                 </p>
                 <p
                   className="font-[Noto_Sans_JP] text-text-main text-[14px] leading-[2.1]"
@@ -235,7 +235,7 @@ export default function Home() {
                       d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                     />
                   ),
-                  title: "営業代行",
+                  title: "営業支援",
                   desc: "新規開拓から既存顧客フォローまで、経験豊富なプロフェッショナルが営業力を強化。成果にコミットします。",
                   items: [
                     "新規顧客の開拓・アポイント獲得",
@@ -345,11 +345,11 @@ export default function Home() {
                   logo: "/lp/bizowner-logo.png",
                   alt: "BizOwner ロゴ",
                   eyebrow: "BUSINESS PROGRAM",
-                  badge: "CICブラック対応",
+                  badge: "ビジネス初心者対応",
                   title: "BizOwner",
                   titleFont: "font-[Josefin_Sans]",
-                  desc: "副業感覚で会社経営。知識ゼロ・リスク最小限で始められる権利収入の仕組みを提供します。",
-                  tags: ["月額11,000円〜", "知識不要", "権利収入", "3ステップ"],
+                  desc: "ビジネス素人から会社経営。知識ゼロ・リスク最小限で始められる権利収入の仕組みを提供します。",
+                  tags: ["月額50,000円〜", "知識不要", "権利収入", "3ステップ"],
                   bg: "linear-gradient(120deg,#002b3a 0%,#005f7e 55%,#0088a8 100%)",
                 },
                 {
@@ -372,8 +372,8 @@ export default function Home() {
                   badge: "総合コミュニティ",
                   title: "Zeroichi Home",
                   titleFont: "font-[Josefin_Sans]",
-                  desc: "副業・起業・エンタメを融合した総合コミュニティ。仲間とともに学び、成長する場を提供します。",
-                  tags: ["副業×起業×エンタメ", "学び合い", "イベント"],
+                  desc: "全国起業家協会が提供する総合コミュニティ。仲間とともに学び、成長する場を提供します。",
+                  tags: ["全国起業家協会", "学び合い", "イベント"],
                   bg: "linear-gradient(120deg,#003d52 0%,#0088a8 60%,#0fb1c4 100%)",
                 },
               ].map((s) => (

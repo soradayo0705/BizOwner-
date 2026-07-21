@@ -53,7 +53,7 @@ function CtaBannerCard() {
 
 /* ── Marquee Banner ── */
 function MarqueeBanner() {
-  const items = ["猿でも出来る起業のファストパス", "最短最速で社長へ", "年商1億円を目標", "再現性のある成功を", "プロチームが全面コンサル", "契約金150万円で人生が変わる"];
+  const items = ["猿でも出来る起業のファストパス", "最短最速で社長へ", "年商1億円を目標", "再現性のある成功を", "プロチームが全面コンサル", "契約金300万円で人生が変わる"];
   const doubled = [...items, ...items];
   return (
     <div className="bg-lp py-4 overflow-hidden">
@@ -367,7 +367,7 @@ export default function SarudemoPage() {
             {[
               { title: "権利収入", sub: "EC / 人材 / ビザ等", amount: "100〜300万円/月", icon: "💰" },
               { title: "人材派遣", sub: "BPO / アフィリエイト", amount: "100〜300万円/月", icon: "👥" },
-              { title: "営業代行", sub: "成果報酬 / 全案件共有", amount: "100〜300万円/月", icon: "📈" },
+              { title: "物件オーナー", sub: "民泊 / 店舗 / 事業所", amount: "100〜300万円/月", icon: "📈" },
               { title: "資金調達", sub: "デット / エクイティ", amount: "1000万円以上", icon: "🏦" },
               { title: "申請支援", sub: "補助金 / 助成金", amount: "1000万円以上", icon: "📋" },
               { title: "自社事業", sub: "好きなことを自由に", amount: "無限大", icon: "🚀", accent: true },
@@ -414,7 +414,7 @@ export default function SarudemoPage() {
           </FadeSlide>
           <StaggerChildren staggerMs={120} className="mt-5 md:mt-6 mx-auto max-w-[820px] grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 auto-rows-fr">
             {[
-              { emoji: "🎬", title: "会員サイト", desc: "動画で学べる" },
+              { emoji: "🎬", title: "独自ツール", desc: "一流のIT顧問監修" },
               { emoji: "🎉", title: "楽しい行事", desc: "BBQ・旅行など" },
               { emoji: "⚽", title: "チーム所属", desc: "仲間と切磋琢磨" },
               { emoji: "🎁", title: "福利厚生", desc: "会員限定特典" },
@@ -505,13 +505,13 @@ export default function SarudemoPage() {
                 </thead>
                 <tbody>
                   {[
-                    ["コンセプト", "副業感覚で\n権利収入", "最短最速で起業"],
-                    ["対象", "CICブラック", "CICホワイト"],
-                    ["価格", "200万円", "150万円"],
+                    ["コンセプト", "ビジネス素人から\n権利収入", "最短最速で起業"],
+                    ["対象", "ビジネス初心者", "CICホワイト"],
+                    ["価格", "500万円", "300万円"],
                     ["支払方法", "一括", "クレジットカード可"],
-                    ["権利収入", "1.5万円/月", "100〜300万円/月"],
+                    ["権利収入", "10,000円/件", "100〜300万円/月"],
                     ["目標", "副収入の確保", "年商1億の大社長"],
-                    ["コミュニティ", "月額1万円", "月額1万円"],
+                    ["コミュニティ", "月額5万円", "月額5万円"],
                   ].map((row, i, arr) => (
                     <tr key={i} className={i < arr.length - 1 ? "border-b border-gray-50 hover:bg-gray-50/50 transition-colors" : ""}>
                       <td className="p-3 md:p-5 font-bold text-lp whitespace-nowrap">{row[0]}</td>
@@ -550,7 +550,7 @@ export default function SarudemoPage() {
                     <h3 className="text-[#D4AF37] font-bold text-[18px] mb-4 tracking-widest relative z-10">SARUDEMO契約金</h3>
                     <div className="flex justify-center items-baseline gap-2 mb-2 relative z-10">
                       <span className="font-[Inter] text-[48px] md:text-[64px] font-bold text-white">
-                        <CountUp end={1500000} />
+                        <CountUp end={3000000} />
                       </span>
                       <span className="text-white/80 font-bold text-[18px]">円</span>
                     </div>
@@ -563,10 +563,10 @@ export default function SarudemoPage() {
                 <div className="bg-bg-section p-8 rounded-2xl text-center border border-gray-100 shadow-sm">
                   <h3 className="font-bold text-lp mb-4 text-[14px]">コミュニティ 会費</h3>
                   <div className="flex justify-center items-baseline gap-1">
-                    <span className="font-[Inter] text-[28px] font-bold text-lp"><CountUp end={10000} /></span>
+                    <span className="font-[Inter] text-[28px] font-bold text-lp"><CountUp end={50000} /></span>
                     <span className="text-text-body font-bold text-[13px]">円/月</span>
                   </div>
-                  <p className="text-[11px] text-text-light mt-2">入会必須</p>
+                  <p className="text-[11px] text-text-light mt-2">Zeroichi Home</p>
                 </div>
               </TiltCard>
               <TiltCard intensity={4} className="md:col-span-2">
@@ -644,8 +644,8 @@ export default function SarudemoPage() {
           </FadeSlide>
           <StaggerChildren staggerMs={100} className="space-y-4 lp-accordion">
             {[
-              { q: "BizOwnerとSARUDEMOの違いは何ですか？", a: "同じ運営チームが提供する2つのプランです。BizOwnerは副業感覚で小さく始めたい方向け、SARUDEMOは本気で起業・独立を目指す方向けです。SARUDEMOは契約金150万円で、より大きな報酬モデルとプロチームによる手厚いサポートが特徴です。" },
-              { q: "150万円の投資に見合うリターンはありますか？", a: "権利収入だけで月100〜300万円、営業代行や資金調達を含めるとさらに大きな収益が見込めます。BizOwnerで同等レベルになるには総額200万円以上が必要なため、本気の方にはSARUDEMOがお得です。" },
+              { q: "BizOwnerとSARUDEMOの違いは何ですか？", a: "同じ運営チームが提供する2つのプランです。BizOwnerはビジネス素人から小さく始めたい方向け、SARUDEMOは本気で起業・独立を目指す方向けです。SARUDEMOは契約金300万円で、より大きな報酬モデルとプロチームによる手厚いサポートが特徴です。" },
+              { q: "300万円の投資に見合うリターンはありますか？", a: "権利収入だけで月100〜300万円、営業支援や資金調達を含めるとさらに大きな収益が見込めます。BizOwnerで同等レベルになるには総額500万円以上が必要なため、本気の方にはSARUDEMOがお得です。" },
               { q: "起業経験がゼロでも大丈夫ですか？", a: "はい。SARUDEMOは「猿でも出来る」がコンセプト。実業のフランチャイズテンプレートに沿って進めるだけなので、経験は不要です。経営のプロチームが全面コンサルします。" },
               { q: "資金調達のサポートはありますか？", a: "はい。個人・法人の各種融資や投資家のご紹介など、多角的な資金調達をサポートいたします。" },
               { q: "契約期間はどれくらいですか？", a: "契約期間は1年間です。2期目以降は顧問料として月額10万円がかかりますが、その分プロチームの継続サポートを受けられます。" },

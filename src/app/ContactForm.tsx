@@ -7,7 +7,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
 
 const CATEGORY_LABELS: Record<string, string> = {
-  sales: "営業代行について",
+  sales: "営業支援について",
   community: "コミュニティー運営について",
   consulting: "経営コンサルティングについて",
   other: "その他",
@@ -158,7 +158,7 @@ export default function ContactForm() {
             <option value="" disabled>
               選択してください
             </option>
-            <option value="sales">営業代行について</option>
+            <option value="sales">営業支援について</option>
             <option value="community">コミュニティー運営について</option>
             <option value="consulting">経営コンサルティングについて</option>
             <option value="other">その他</option>

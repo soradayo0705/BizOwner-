@@ -10,7 +10,7 @@ import LineDivider from "@/components/lp/LineDivider";
 import LineIcon from "@/components/LineIcon";
 
 export const metadata: Metadata = {
-  title: "BizOwner｜副業感覚で会社のオーナーに",
+  title: "BizOwner｜ビジネス素人から会社のオーナーに",
 };
 
 /* メインCV：公式LINE追加。全CTAの遷移先 */
@@ -56,7 +56,7 @@ function CtaBannerCard() {
 
 /* ── Marquee Banner ── */
 function MarqueeBanner() {
-  const items = ["副業感覚で会社のオーナーに", "月額11,000円から", "知識ゼロ・経験ゼロでOK", "権利収入で未来を変える", "CICブラックでも参加可能", "1ヶ月無料キャンペーン中"];
+  const items = ["ビジネス素人から会社のオーナーに", "月額50,000円から", "知識ゼロ・経験ゼロでOK", "権利収入で未来を変える", "ビジネス初心者でも参加可能", "1ヶ月無料キャンペーン中"];
   const doubled = [...items, ...items];
   return (
     <div className="bg-lp py-4 overflow-hidden">
@@ -120,14 +120,14 @@ export default function BizOwnerPage() {
                   className="font-bold text-text-dark"
                   style={{ fontSize: "clamp(32px,6vw,56px)", lineHeight: 1.25, letterSpacing: "0.02em" }}
                 >
-                  副業感覚で、
+                  ビジネス素人から、
                   <br />
                   会社の<span className="text-lp-accent lp-marker">オーナー</span>になる。
                 </h1>
               </FadeSlide>
               <FadeSlide direction="up" delay={500}>
                 <p className="text-[16px] md:text-[18px] text-text-body leading-[1.9] max-w-lg">
-                  月額11,000円から始める、あなたの権利収入ライフ。
+                  月額50,000円から始める、あなたの権利収入ライフ。
                   <br className="hidden md:block" />
                   知識ゼロ・経験ゼロでもOK。
                 </p>
@@ -250,7 +250,7 @@ export default function BizOwnerPage() {
                 <span className="font-[Inter] font-bold text-lp-accent text-[12px] tracking-[0.3em]">02 — ABOUT</span>
               </div>
               <h2 className="font-bold text-text-dark text-[26px] md:text-[36px] leading-[1.5]">
-                副業感覚で、会社経営。
+                ビジネス素人から、会社経営。
                 <br />
                 大家さん気分で、<span className="text-lp-accent lp-marker">権利収入</span>。
               </h2>
@@ -268,7 +268,7 @@ export default function BizOwnerPage() {
               </p>
               <div className="w-16 h-[3px] bg-gradient-to-r from-lp-accent to-cta my-6" />
               <p className="text-[14px] leading-[2] text-text-light">
-                月額11,000円という低コストで始められ、CICブラックの方でも安心して参加いただけます。本部が伴走するので、初めてでも迷わず一歩を踏み出せます。
+                月額50,000円という低コストで始められ、ビジネス初心者の方でも安心して参加いただけます。本部が伴走するので、初めてでも迷わず一歩を踏み出せます。
               </p>
             </FadeSlide>
           </div>
@@ -277,7 +277,7 @@ export default function BizOwnerPage() {
               {
                 icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />,
                 title: "誰でもOK",
-                desc: "年齢・学歴・経験不問。\nCICブラックの方も参加可能。",
+                desc: "年齢・学歴・経験不問。",
                 accent: "bg-blue-50",
               },
               {
@@ -288,7 +288,7 @@ export default function BizOwnerPage() {
               },
               {
                 icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />,
-                title: "月額11,000円から",
+                title: "月額50,000円から",
                 desc: "低コストで気軽にスタート。\n初月無料・解約自由で安心。",
                 accent: "bg-orange-50",
               },
@@ -328,9 +328,9 @@ export default function BizOwnerPage() {
           </FadeSlide>
           <StaggerChildren staggerMs={200} className="grid md:grid-cols-3 gap-8 pt-8">
             {[
-              { step: "01", title: "個人で案件参加", desc: "月額11,000円で会員登録。\n個人として案件に参加し、\nすぐに副収入をスタート。", price: "月額11,000円〜", accent: false },
-              { step: "02", title: "法人で追加収益", desc: "法人を作成し、法人案件にも参加。\n収益チャネルが倍増し、\n権利収入が加速。", price: "+100,000円で法人作成", accent: false },
-              { step: "03", title: "FC化で独立", desc: "フランチャイズオーナーとして\n完全独立。自分のチームを持ち、\n本格的なビジネスオーナーへ。", price: "FC加盟 200万円", accent: true },
+              { step: "01", title: "まずは面談", desc: "無料で会員登録。\n内容を理解した上で、\n権利収入の下準備をスタート", price: "月額50,000円", accent: false },
+              { step: "02", title: "法人で権利収入", desc: "法人を作成し、利益が発生開始。\n収益チャネルが倍増し、\n権利収入が加速。", price: "+500,000円で法人作成", accent: false },
+              { step: "03", title: "FC化で独立", desc: "フランチャイズオーナーとして\n完全独立。自分のチームを持ち、\n本格的なビジネスオーナーへ。", price: "FC加盟 500万円", accent: true },
             ].map((s, i) => (
               <StaggerItem key={s.step}>
                 <TiltCard intensity={5} className="h-full">
@@ -379,7 +379,7 @@ export default function BizOwnerPage() {
               { title: "ECショップ", sub: "メルカリ / 楽天市場等", icon: "🛒" },
               { title: "権利運用", sub: "ビザ / 派遣 / 物販等", icon: "📊" },
               { title: "補助金・助成金", sub: "行政申請サポート", icon: "📋" },
-              { title: "個人単発", sub: "アフィリ / 投資", icon: "💡" },
+              { title: "物件オーナー", sub: "民泊 / 店舗 / 事業所", icon: "💡" },
               { title: "夢の事業", sub: "やりたいビジネスを支援", icon: "🚀", accent: true },
             ].map((item) => (
               <StaggerItem key={item.title}>
@@ -410,7 +410,7 @@ export default function BizOwnerPage() {
               <span className="font-[Inter] font-bold text-[12px] tracking-[0.3em]">COMMUNITY</span>
             </div>
             <h2 className="font-bold text-white text-[26px] md:text-[40px] leading-[1.4] mb-6">
-              ただの副業じゃ終わらない。
+              権利収入だけじゃ終わらない。
               <br />
               <span className="text-lp-accent">&ldquo;Zeroichi Home&rdquo;</span>
               <br className="md:hidden" />
@@ -423,7 +423,7 @@ export default function BizOwnerPage() {
           </FadeSlide>
           <StaggerChildren staggerMs={120} className="mt-5 md:mt-6 mx-auto max-w-[820px] grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 auto-rows-fr">
             {[
-              { emoji: "🎬", title: "会員サイト", desc: "動画で学べる" },
+              { emoji: "🎬", title: "独自ツール", desc: "一流のIT顧問監修" },
               { emoji: "🎉", title: "楽しい行事", desc: "BBQ・旅行など" },
               { emoji: "⚽", title: "チーム所属", desc: "仲間と切磋琢磨" },
               { emoji: "🎁", title: "福利厚生", desc: "会員限定特典" },
@@ -517,10 +517,10 @@ export default function BizOwnerPage() {
                 </thead>
                 <tbody>
                   {[
-                    { label: "初期費用", biz: "月額11,000円", other: "30〜100万円", self: "0円〜" },
+                    { label: "初期費用", biz: "月額50,000円", other: "30〜100万円", self: "0円〜" },
                     { label: "知識・経験", biz: "不要", other: "ある程度必要", self: "自力で習得" },
                     { label: "サポート", biz: "本部が全面支援", other: "講師による指導", self: "なし" },
-                    { label: "収益化", biz: "即日可能", other: "数ヶ月後", self: "不確定" },
+                    { label: "収益化", biz: "法人作成後、すぐに利益", other: "数ヶ月後", self: "不確定" },
                     { label: "コミュニティ", biz: "あり", other: "期間限定", self: "なし" },
                   ].map((row, i) => (
                     <tr key={i} className={i < 4 ? "border-b border-gray-50" : ""}>
@@ -555,9 +555,9 @@ export default function BizOwnerPage() {
           </FadeSlide>
           <StaggerChildren staggerMs={100} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
             {[
-              { label: "ご利用料金", price: 11000, unit: "円", sub: "/月（税込）", highlight: true },
-              { label: "法人作成費用", price: 100000, unit: "円", sub: "一括" },
-              { label: "FC加盟料金", price: 200, unit: "万円", sub: "一括" },
+              { label: "ご利用料金", price: 50000, unit: "円", sub: "/月（税込）", highlight: true },
+              { label: "法人作成費用", price: 500000, unit: "円", sub: "一括" },
+              { label: "FC加盟料金", price: 500, unit: "万円", sub: "一括" },
               { label: "サークル等費用", price: 0, unit: "", sub: "各サークルによる", isText: true },
             ].map((p) => (
               <StaggerItem key={p.label}>
@@ -602,10 +602,10 @@ export default function BizOwnerPage() {
             <div className="absolute left-[27px] md:left-[41px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-lp-accent via-lp to-cta/20 rounded-full" />
             <div className="space-y-10">
               {[
-                { title: "公式LINE追加・ウェビナー視聴", desc: "まずはLINE登録。無料ウェビナーでサービス内容を確認。" },
+                { title: "公式LINE追加", desc: "まずはLINE登録。個別面談でサービス内容を確認。" },
                 { title: "個人情報・決済フォーム入力", desc: "納得いただけたら、簡単なフォーム入力で登録完了。" },
-                { title: "会員サイトから案件確認・実施", desc: "個人案件に参加して、すぐに副収入をスタート。" },
-                { title: "法人作成を本部へ依頼", desc: "法人案件にも参加し、収益を拡大。" },
+                { title: "専属コンサルタントの案内のもと実施", desc: "法人を作る下準備をスタート。" },
+                { title: "法人作成を本部へ依頼", desc: "法人を使って、収益を拡大。" },
                 { title: "FC加盟で完全独立", desc: "フランチャイズオーナーとして、ビジネスオーナーへ。", last: true },
               ].map((item, i) => (
                 <StaggerItem key={i}>
@@ -641,9 +641,9 @@ export default function BizOwnerPage() {
             {[
               { q: "作った法人は自由に使って良いですか？", a: "作成した法人は、BizOwnerが許可した案件にてご利用いただけます。基本的には本部案件にご活用ください。" },
               { q: "新しくサークルを作ってもいいですか？", a: "もちろんです。Zeroichi Homeではメンバー発信のサークルを歓迎しています。" },
-              { q: "案件やサービスの参加方法は？", a: "会員サイトから案件一覧をご確認いただき、興味のあるものは解説動画をご覧のうえ実施してください。" },
+              { q: "BizOwnerの進め方は？", a: "専属コンサルタントの案内に従ってください。" },
               { q: "個別の質疑応答はどこでできますか？", a: "週1回、個別コンサルを受けられる権限をご用意しています。そちらで個別のご質問にお答えしますので、ぜひご活用ください。" },
-              { q: "本当に知識ゼロでも大丈夫ですか？", a: "はい。案件の実行方法は会員サイトの動画で全て学べます。本部のサポートもあるのでご安心ください。" },
+              { q: "本当に知識ゼロでも大丈夫ですか？", a: "はい。本部のサポートの上で行うため、誰でも権利収入を得られます。" },
               { q: "途中で解約できますか？", a: "はい、いつでも解約可能です。違約金や引き止めは一切ありません。" },
             ].map((faq, i) => (
               <StaggerItem key={i}>
@@ -683,7 +683,7 @@ export default function BizOwnerPage() {
               <span className="bg-gradient-to-r from-lp-accent to-lp-sky bg-clip-text" style={{ WebkitTextFillColor: "transparent" }}>オーナー</span>になる。
             </h2>
             <p className="text-white/50 text-[15px] leading-[2] mb-12 max-w-lg mx-auto">
-              副業感覚で会社経営。知識ゼロから始める権利収入。
+              ビジネス素人から会社経営。知識ゼロから始める権利収入。
               <br className="hidden md:block" />
               まずは無料でLINE登録して、詳しい情報を受け取ってください。
             </p>
